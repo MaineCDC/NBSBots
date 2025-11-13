@@ -6,12 +6,14 @@ from anaplasma_files.anaplasma_bot import start_anaplasma
 from audrey_files.audrey_bot import start_audrey
 from athena_files.athena_bot import start_athena
 from giardia_files.giardia_bot import start_giardia
+from strep_files.strep_bot import start_strep
 # run the get credentials function
 bots = {
     1: start_athena,
     2: start_audrey,
     3: start_anaplasma,
-    4: start_giardia
+    4: start_giardia,
+    5: start_strep
 }
 targets = []
 def selection():
@@ -35,6 +37,7 @@ def run_bots():
     print("2. audrey")
     print("3. anaplasma")
     print("4. giardiasis")
+    print("5. strep")
     selection()
     try:
         for  target in targets:
@@ -71,4 +74,3 @@ if __name__ == '__main__':
     print("waking bots...")
     run_bots()
     print("putting bots to sleep...")
-

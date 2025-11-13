@@ -1,4 +1,4 @@
-from base import NBSdriver
+from Base import NBSdriver
 import configparser
 import pyodbc
 import pandas as pd
@@ -9,9 +9,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
 from datetime import timedelta
 from epiweeks import Week
-from selenium.common.exceptions import ElementNotInteractableException
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import ElementNotInteractableException,StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException,TimeoutException
 from time import sleep
+import dask.dataframe as dd
 
 class Audrey(NBSdriver):
     """ A class inherits all basic NBS functionality from NBSdriver and adds
@@ -100,6 +101,12 @@ class Audrey(NBSdriver):
         self.patient_list = self.patient_list.drop_duplicates(ignore_index=True)
         Connection.close()
         print ('Data recieved and database connection closed.')
+        
+        
+    def write_general_comment(self, note):
+        """Write a note in the general comments box of an investigation."""
+        xpath = '//*[@id="INV167"]'
+        self.find_element(By.XPATH, xpath).send_keys(note)
 
     def get_unassigned_covid_labs(self):
         """ Connect to the analyis NBS database and execute a query to return a
@@ -431,27 +438,45 @@ class Audrey(NBSdriver):
 
     def read_street(self):
         """ Read the current street address."""
-        self.street = self.find_element(By.XPATH, self.street_path).get_attribute('value')
+        try:
+            self.street = self.find_element(By.XPATH, self.street_path).get_attribute('value')
+        except Exception as e:
+            self.street = None
 
     def read_city(self):
         """Read the current city/town."""
-        self.city = self.find_element(By.XPATH, self.city_path).get_attribute('value')
+        try:
+            self.city = self.find_element(By.XPATH, self.city_path).get_attribute('value')
+        except Exception as e:
+            self.city = None
 
     def read_zip(self):
         """Read the current zip code. """
-        self.zip_code = self.find_element(By.XPATH, self.zip_path).get_attribute('value')
+        try:
+            self.zip_code = self.find_element(By.XPATH, self.zip_path).get_attribute('value')
+        except Exception as e:
+            self.zip_code = None
 
     def write_zip(self):
         """Write zip code. Intended for use after looking up a missing zip code with zip_code_lookup()."""
-        self.find_element(By.XPATH, self.zip_path).send_keys(self.zip_code)
+        try:
+            self.find_element(By.XPATH, self.zip_path).send_keys(self.zip_code)
+        except Exception as e:
+            print("")
 
     def read_county(self):
         """Read the current county. """
-        self.county = self.find_element(By.XPATH, self.county_path).get_attribute('value')
+        try:
+            self.county = self.find_element(By.XPATH, self.county_path).get_attribute('value')
+        except Exception as e:
+            self.county = None
 
     def write_county(self):
         """Write county. Intended for use after looking up a missing missing count with county_lookup()."""
-        self.find_element(By.XPATH, self.county_path).send_keys(self.county)
+        try:
+            self.find_element(By.XPATH, self.county_path).send_keys(self.county)
+        except Exception as e:
+            print("")
 
     def read_address(self):
         """ Read parts of the patient address except for state and country."""
@@ -858,7 +883,7 @@ class Audrey(NBSdriver):
         jurisdiction match. If a county is available that does not match the
         jurisdication then update the jurisdiction accordingly."""
         county_path = '//*[@id="DEM165"]'
-        jurisdiction_path = '//*[@id="INV107"]'
+        jurisdiction_path = '//*[@id="INV107"]|//*[@id="NBS_UI_19"]/tbody/tr[1]/td[2]/input|//*[@id="NBS_UI_19"]/tbody/tr[1]/td[2]'
         transfer_ownership_path = '/html/body/div/div/form/div[2]/div[1]/table[2]/tbody/tr/td[1]/table/tbody/tr/td[3]/input'
         new_jurisdiction_path = '//*[@id="subsect_transferOwn"]/tbody/tr[2]/td[2]/input'
         submit_jurisdiction_path = '//*[@id="topButtId"]/input[1]'
@@ -866,7 +891,9 @@ class Audrey(NBSdriver):
         if county and (not county.isnumeric()):
             self.GoToCaseInfo()
             jurisdiction = self.ReadText(jurisdiction_path)
-            if not jurisdiction in county:
+            if not jurisdiction:
+                jurisdiction = self.ReadText('//*[@id="NBS_UI_19"]/tbody/tr[1]/td[2]')
+            if jurisdiction and jurisdiction not in county:
                 self.find_element(By.XPATH, transfer_ownership_path).click()
                 self.switch_to_secondary_window()
                 self.find_element(By.XPATH, new_jurisdiction_path).send_keys(Keys.CONTROL+'a')
@@ -878,14 +905,25 @@ class Audrey(NBSdriver):
 
     def create_notification(self):
         """After completing a case create notification for it."""
-        create_button_path = '//*[@id="createNoti"]'
-        WebDriverWait(self,self.wait_before_timeout).until(EC.presence_of_element_located((By.XPATH, create_button_path)))
-        self.find_element(By.XPATH,create_button_path).click()
-        self.switch_to_secondary_window()
-        submit_button_path = '//*[@id="botcreatenotId"]/input[1]'
-        WebDriverWait(self,self.wait_before_timeout).until(EC.presence_of_element_located((By.XPATH, submit_button_path)))
-        self.find_element(By.XPATH, submit_button_path).click()
-        self.switch_to.window(self.main_window_handle)
+        for i in range(3):
+            try:
+                create_button_path = '//*[@id="createNoti"]'
+                WebDriverWait(self,self.wait_before_timeout).until(EC.presence_of_element_located((By.XPATH, create_button_path)))
+                self.find_element(By.XPATH,create_button_path).click()
+                self.switch_to_secondary_window()
+                submit_button_path = '//*[@id="botcreatenotId"]/input[1]'
+                WebDriverWait(self,self.wait_before_timeout).until(EC.presence_of_element_located((By.XPATH, submit_button_path)))
+                self.find_element(By.XPATH, submit_button_path).click()
+                self.switch_to.window(self.main_window_handle)
+                break
+            except TimeoutException:
+                print(f"Timeout waiting for create_notification, retry_number: {i}")
+            except StaleElementReferenceException:
+                print(f"StaleElementReferenceException for create_notification, trying again... retry_number: {i}")
+            except NoSuchElementException:
+                print(f"No create_notification found, retry_number: {i}")
+            except Exception as e:
+                print(f"{e} has occured for create_notification, retry_number: {i}")
 
     def send_bad_address_email(self):
         """Email the COVID Admin the list of patients with incomplete addresses."""

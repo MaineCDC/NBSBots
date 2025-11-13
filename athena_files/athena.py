@@ -1,5 +1,5 @@
+from Base import NBSdriver
 import pandas as pd
-from base import NBSdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -63,7 +63,7 @@ class Athena(NBSdriver):
         self.CheckCountyStateReportDate()
         self.CheckReportingSourceType()
         self.CheckReportingOrganization()
-        self.CheckPerformingLaboratory()
+        self.CheckPreformingLaboratory()
         self.CheckCollectionDate()
         self.CheckCurrentStatus()
         self.CheckProbableReason()
@@ -319,7 +319,7 @@ class Athena(NBSdriver):
             self.issues.append('Closed date cannot be before investigation start date.')
 
 #################### Hospital Check Methods ###################################
-    def CheckHospitalizationIndicator(self):
+    '''def CheckHospitalizationIndicator(self):
         """ Read hospitalization status. If an investigation was conducted it must be Yes or No """
         self.hospitalization_indicator = self.ReadText('//*[@id="INV128"]')
         if (self.ltf != 'Yes') & (self.investigator):
@@ -367,14 +367,14 @@ class Athena(NBSdriver):
         if not death_date:
             self.issues.append('Date of death is blank.')
         elif death_date > self.now:
-            self.issues.append('Date of death date cannot be in the future')
+            self.issues.append('Date of death date cannot be in the future')'''
 
 ################### Investigation Details Check Methods ########################
-    def CheckJurisdiction(self):
+    '''def CheckJurisdiction(self):
         """ Jurisdiction and county must match. """
         jurisdiction = self.CheckForValue('//*[@id="INV107"]','Jurisdiction is blank.')
-        # if jurisdiction not in self.county:
-        #     self.issues.append('County and jurisdiction mismatch.')
+        if jurisdiction not in self.county:
+            self.issues.append('County and jurisdiction mismatch.')
 
     def CheckProgramArea(self):
         """ Program area must be Airborne. """
@@ -390,7 +390,7 @@ class Athena(NBSdriver):
         elif self.investigation_start_date < self.report_date:
             self.issues.append('Investigation start date must be on or after report date.')
         elif self.investigation_start_date > self.now:
-            self.issues.append('Investigation start date cannot be in the future.')
+            self.issues.append('Investigation start date cannot be in the future.')'''
 
     # def CheckInvestigationStatus(self):
     #     """ Only accept closed investigations for review. """
@@ -538,7 +538,7 @@ class Athena(NBSdriver):
         investigation matches."""
         if self.fr_aoe & (self.first_responder != 'Yes'):
             self.issues.append('AOEs indicate that the case is a first responder, but the investigation does not.')
-    
+
     def CheckPregnancyAOE(self):
         """ Ensure that if AOEs show a patient is pregnany that the
         investigation matches."""
@@ -546,9 +546,9 @@ class Athena(NBSdriver):
         if self.preg_aoe & (pregnant_status != 'Yes'):
             self.issues.append('AOEs indicate that the case is pregnant, but the investigation does not.')
 
-############### Performing Lab Check Methods ##################################
-    # def CheckPerformingLaboratory(self):
-    #     """ Ensure that performing laboratory is not empty. """
+############### Preforming Lab Check Methods ##################################
+    # def CheckPreformingLaboratory(self):
+    #     """ Ensure that preforming laboratory is not empty. """
     #     reporting_organization = self.ReadText('//*[@id="ME6105"]')
     #     if not reporting_organization:
     #         self.issues.append('Performing laboratory is blank.')
@@ -588,7 +588,7 @@ class Athena(NBSdriver):
                 self.issues.append('Race is non-white, case should be assigned for investigation.')
 
     ###################### Other Personal Details Check Methods ####################
-    def CheckDOB(self):
+    '''def CheckDOB(self):
         """ Must provide DOB. """
         self.dob = self.ReadDate('//*[@id="DEM115"]')
         if not self.dob:
@@ -600,12 +600,12 @@ class Athena(NBSdriver):
 
     def CheckCurrentSex(self):
         """ Ensure patient current sex is not blank. """
-        patient_sex = self.CheckForValue('//*[@id="DEM113"]','Current Sex is blank.')
+        patient_sex = self.CheckForValue('//*[@id="DEM113"]','Current Sex is blank.')'''
 
 #################### Reporting Address Check Methods ###########################
-    def CheckStAddr(self):
+    '''def CheckStAddr(self):
         """ Must provide street address. """
-        street_address = self.CheckForValue( '//*[@id="DEM159"]', 'Street address is blank.')
+        street_address = self.CheckForValue( '//*[@id="DEM159"]', 'Street address is blank.')'''
 
     # def CheckCity(self):
     #     """ Must provide city. """
@@ -619,7 +619,7 @@ class Athena(NBSdriver):
     #         print(f"state: {state}")
 
     ####################### Investigator Check Methods ############################
-    def CheckInvestigator(self):
+    '''def CheckInvestigator(self):
         """ Check if an investigator was assigned to the case. """
         investigator = self.ReadText('//*[@id="INV180"]')
         self.investigator_name = investigator
@@ -635,7 +635,7 @@ class Athena(NBSdriver):
             assigned_date = self.ReadText('//*[@id="INV110"]')
             if not assigned_date:
                 self.issues.append('Missing investigator assigned date.')
-                print(f"investigator_assigned_date: {assigned_date}")
+                print(f"investigator_assigned_date: {assigned_date}")'''
 
     def ExposureChecks(self):
         """ A method to conduct all checks required to review the exposure section. """
@@ -858,7 +858,7 @@ class Athena(NBSdriver):
                 self.issues.append("If ilness duration has a number then illness duration units must be specified.")
 
     ####################### Investigator Check Methods ############################
-    def CheckInvestigator(self):
+    '''def CheckInvestigator(self):
         """ Check if an investigator was assigned to the case. """
         investigator = self.ReadText('//*[@id="INV180"]')
         self.investigator_name = investigator
@@ -875,39 +875,39 @@ class Athena(NBSdriver):
             if not assigned_date:
                 self.issues.append('Missing investigator assigned date.')
 
-    # def ApproveNotification(self):
-    #     """ Approve notification on first case in notification queue. """
-    #     main_window_handle = self.current_window_handle
-    #     self.find_element(By.XPATH,'//*[@id="createNoti"]').click()
-    #     for handle in self.window_handles:
-    #         if handle != main_window_handle:
-    #             approval_comment_window = handle
-    #             break
-    #     self.switch_to.window(approval_comment_window)
-    #     self.find_element(By.XPATH,'//*[@id="botcreatenotId"]/input[1]').click()
-    #     self.switch_to.window(main_window_handle)
-    #     self.num_approved += 1
+    def ApproveNotification(self):
+        """ Approve notification on first case in notification queue. """
+        main_window_handle = self.current_window_handle
+        self.find_element(By.XPATH,'//*[@id="createNoti"]').click()
+        for handle in self.window_handles:
+            if handle != main_window_handle:
+                approval_comment_window = handle
+                break
+        self.switch_to.window(approval_comment_window)
+        self.find_element(By.XPATH,'//*[@id="botcreatenotId"]/input[1]').click()
+        self.switch_to.window(main_window_handle)
+        self.num_approved += 1
 
-    # def RejectNotification(self):
-    #     """ Reject notification on first case in notification queue.
-    #     To be used when issues were encountered during review of the case."""
-    #     reject_path = '//*[@id="parent"]/tbody/tr[1]/td[2]/img'
-    #     main_window_handle = self.current_window_handle
-    #     WebDriverWait(self,self.wait_before_timeout).until(EC.element_to_be_clickable((By.XPATH, reject_path)))
-    #     self.find_element(By.XPATH,reject_path).click()
-    #     rejection_comment_window = None
-    #     for handle in self.window_handles:
-    #         if handle != main_window_handle:
-    #             rejection_comment_window = handle
-    #             break
-    #     if rejection_comment_window:
-    #         self.switch_to.window(rejection_comment_window)
-    #         timestamp = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-    #         self.issues.append('-nbsbot ' + timestamp)
-    #         self.find_element(By.XPATH,'//*[@id="rejectComments"]').send_keys(' '.join(self.issues))
-    #         self.find_element(By.XPATH,'/html/body/form/table/tbody/tr[3]/td/input[1]').click()
-    #         self.switch_to.window(main_window_handle)
-    #         self.num_rejected += 1
+    def RejectNotification(self):
+        """ Reject notification on first case in notification queue.
+        To be used when issues were encountered during review of the case."""
+        reject_path = '//*[@id="parent"]/tbody/tr[1]/td[2]/img'
+        main_window_handle = self.current_window_handle
+        WebDriverWait(self,self.wait_before_timeout).until(EC.element_to_be_clickable((By.XPATH, reject_path)))
+        self.find_element(By.XPATH,reject_path).click()
+        rejection_comment_window = None
+        for handle in self.window_handles:
+            if handle != main_window_handle:
+                rejection_comment_window = handle
+                break
+        if rejection_comment_window:
+            self.switch_to.window(rejection_comment_window)
+            timestamp = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+            self.issues.append('-nbsbot ' + timestamp)
+            self.find_element(By.XPATH,'//*[@id="rejectComments"]').send_keys(' '.join(self.issues))
+            self.find_element(By.XPATH,'/html/body/form/table/tbody/tr[3]/td/input[1]').click()
+            self.switch_to.window(main_window_handle)
+            self.num_rejected += 1'''
 
     # def SendManualReviewEmail(self):
     #     """ Send email containing NBS IDs that required manual review."""
