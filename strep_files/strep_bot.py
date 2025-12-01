@@ -170,7 +170,7 @@ def start_strep(username, passcode):
         'Action': what_do,
         'Reason': reason
         })
-    bot_act.to_excel(f"saved/Strep/Strep_bot_activity_{datetime.now().date().strftime('%m_%d_%Y')}.xlsx")
+    bot_act.to_excel(f"saved/strep/Strep_bot_activity_{datetime.now().date().strftime('%m_%d_%Y')}.xlsx")
     print("Excel sheet created")
 
     '''completion_message = (

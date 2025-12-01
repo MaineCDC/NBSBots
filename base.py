@@ -183,6 +183,7 @@ class NBSdriver(webdriver.Chrome):
         self.reporting_organization = None
         self.reporting_provider = None
         self.returned_by_link = False
+        self.confirmation_method = None
 
         # Vaccination
         self.vax_recieved = None
@@ -1077,25 +1078,25 @@ class NBSdriver(webdriver.Chrome):
 
     def CheckConfirmationMethod(self):
         """Confirmation Method must be blank or consistent with correct case status."""
-        confirmation_method = self.ReadText('//*[@id="INV161"]')
-        if confirmation_method:
-            if (self.status == "C") and ("Laboratory confirmed" not in confirmation_method):
+        self.confirmation_method = self.ReadText('//*[@id="INV161"]')
+        if self.confirmation_method:
+            if (self.status == "C") and ("Laboratory confirmed" not in self.confirmation_method):
                 self.issues.append(
                     'Since correct case status is confirmed confirmation method should include "Laboratory confirmed".'
                 )
-            elif (self.status == "P") and ("Laboratory report" not in confirmation_method):
+            elif (self.status == "P") and ("Laboratory report" not in self.confirmation_method):
                 self.issues.append(
                     'Since correct case status is probable confirmation method should include "Laboratory report".'
                 )
             elif (self.status == "S") and (
-                "Clinical diagnosis (non-laboratory confirmed)" not in confirmation_method
+                "Clinical diagnosis (non-laboratory confirmed)" not in self.confirmation_method
             ):
                 self.issues.append(
                     'Since correct case status is suspect confirmation method should include "Clinical diagnosis (non-laboratory confirmed)".'
                 )
         else:
             self.issues.append("Confirmation method is missing")
-            print(f"confirmation_method: {confirmation_method}")
+            print(f"confirmation_method: {self.confirmation_method}")
 
     def CheckDetectionMethod(self):
         """Ensure Detection Method is not blank."""

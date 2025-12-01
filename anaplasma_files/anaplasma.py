@@ -77,7 +77,7 @@ class Anaplasma(NBSdriver):
         self.CheckReportingSourceType()
         self.CheckReportingOrganization()
         self.CheckConfirmationDate()
-        self.CheckAdmissionDate() #new code to get admission date and compare to discharge
+        # self.CheckAdmissionDate() #new code to get admission date and compare to discharge
         self.CheckDischargeDate()                                   #new code, added this from covidcase review. modified method logic
         self.CheckDiagnosisDate()
         self.CheckIllnessDurationUnits()
@@ -628,8 +628,14 @@ class Anaplasma(NBSdriver):
             if len(self.Lab_report_table) > 0:
                 self.earliest_date_received = pd.to_datetime(self.Lab_report_table["Date Received"], format="%m/%d/%Y %I:%M %p").min().date()
                 self.latest_date_received = pd.to_datetime(self.Lab_report_table["Date Received"], format="%m/%d/%Y %I:%M %p").max().date()
-                collectionDate = self.Lab_report_table["Date Collected"].values[0] if self.Lab_report_table["Date Collected"].values[0] != "No Date" else self.Lab_report_table["Date Collected"].values[1]
-                self.collection_date = pd.to_datetime(collectionDate).date() or None
+                
+                # Filter out "No Date" entries and find the earliest specimen collection date
+                valid_dates = self.Lab_report_table[self.Lab_report_table["Date Collected"] != "No Date"]["Date Collected"]
+                if len(valid_dates) > 0:
+                    self.collection_date = pd.to_datetime(valid_dates).min().date()
+                else:
+                    self.collection_date = None
+                
                 if not self.collection_date or self.collection_date == "No Date":
                     self.issues.append("Missing collection date.")
                     
@@ -1028,6 +1034,18 @@ class Anaplasma(NBSdriver):
         smtpObj = smtplib.SMTP(self.smtp_server)
         smtpObj.send_message(message)
         print('sent email', inv_id)
+
+    def CheckJurisdiction(self):
+        """Override base CheckJurisdiction to add anaplasma-specific logic for out of state cases."""
+        # Call the parent class method first
+        super().CheckJurisdiction()
+        
+        # Anaplasma-specific logic: Out of state cases should always be "Not a Case"
+        if self.jurisdiction == "Out of State":
+            if self.CaseStatus != "Not a Case":
+                self.issues.append("Out of state cases should always be 'Not a Case' for Anaplasma.")
+                self.CorrectCaseStatus = "Not a Case"
+                print(f"case_status: {self.CaseStatus} - Out of State jurisdiction")
 
     def CheckEPI(self):
         self.investigator_name = self.ReadText('//*[@id="headerCurrentInvestigator"]')
