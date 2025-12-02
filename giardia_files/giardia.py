@@ -74,7 +74,6 @@ class Giardia(NBSdriver):
         self.CheckInvestigationStatus()
         self.CheckSharedIndidcator()
         self.CheckReportDates()
-        # self.CheckStateCaseID()
         self.CheckReportingSourceType()
         self.CheckReportingOrganization()
         self.CheckInvestigator()
@@ -209,9 +208,6 @@ class Giardia(NBSdriver):
     def CheckSharedIndidcator(self):
         indicator = self.CheckForValue('//*[@id="NBS_UI_19"]/tbody/tr[5]/td[2]', 'Shared indicator is blank')
 
-    def CheckStateCaseID(self):
-        caseId = self.CheckForValue('//*[@id="INV173"]', 'state case id is blank')
-        
     ####################### Investigator Check Methods ############################
     def CheckInvestigator(self):
         investigator = self.ReadText('//*[@id="INV180"]')
