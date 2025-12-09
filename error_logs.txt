@@ -6117,3 +6117,278 @@ saved/12_02_2025 - 08:43:47.557188 | anaplasma - Traceback (most recent call las
     raise Exception(error_list)
 Exception: ["('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC12F9DC0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC12FAF30>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC12FA810>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC135CA40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC12FA9C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC12FBA70>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=57905): Max retries exceeded with url: /session/01ffc414c14c20872d7199354d5a2902/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019EC135C1D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))"]
 
+saved/12_02_2025 - 14:18:23.557861 | audrey - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\audrey_files\audrey_bot.py", line 73, in start_audrey
+    from .audrey import Audrey
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\audrey_files\audrey.py", line 1, in <module>
+    from Base import NBSdriver
+ModuleNotFoundError: No module named 'Base'
+
+saved/12_02_2025 - 14:19:18.253329 | audrey - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\audrey_files\audrey_bot.py", line 73, in start_audrey
+    from .audrey import Audrey
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\audrey_files\audrey.py", line 1, in <module>
+    from Base import NBSdriver
+ModuleNotFoundError: No module named 'Base'
+
+saved/12_03_2025 - 08:22:42.719478 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 286, in start_anaplasma
+    raise Exception(error_list)
+Exception: ["could not convert string to float: '10Y24.0'"]
+
+saved/12_04_2025 - 09:09:50.054646 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 286, in start_anaplasma
+    raise Exception(error_list)
+Exception: ["could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'"]
+
+saved/12_08_2025 - 08:44:45.686080 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 48, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x774103
+	0x774144
+	0x57e71d
+	0x5ca03d
+	0x5ca41b
+	0x6117f2
+	0x5ec954
+	0x60ee17
+	0x5ec706
+	0x5bda30
+	0x5bed54
+	0x9e57b4
+	0x9e098a
+	0x79c392
+	0x78c4c8
+	0x79324d
+	0x77c478
+	0x77c63c
+	0x7667ca
+	0x75c97ba9
+	0x76f6c3ab
+	0x76f6c32f
+
+
+saved/12_08_2025 - 08:46:32.674921 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 48, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x774103
+	0x774144
+	0x57e71d
+	0x5ca03d
+	0x5ca41b
+	0x6117f2
+	0x5ec954
+	0x60ee17
+	0x5ec706
+	0x5bda30
+	0x5bed54
+	0x9e57b4
+	0x9e098a
+	0x79c392
+	0x78c4c8
+	0x79324d
+	0x77c478
+	0x77c63c
+	0x7667ca
+	0x75c97ba9
+	0x76f6c3ab
+	0x76f6c32f
+
+
+saved/12_08_2025 - 08:47:38.208313 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 48, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 363, in _predicate
+    target = driver.find_element(*target)  # grab element at locator
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 770, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=142.0.7444.176)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x774103
+	0x774144
+	0x57e71d
+	0x56d910
+	0x58c714
+	0x5f3475
+	0x60e749
+	0x5ec706
+	0x5bda30
+	0x5bed54
+	0x9e57b4
+	0x9e098a
+	0x79c392
+	0x78c4c8
+	0x79324d
+	0x77c478
+	0x77c63c
+	0x7667ca
+	0x75c97ba9
+	0x76f6c3ab
+	0x76f6c32f
+
+
+saved/12_08_2025 - 08:49:04.734366 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 48, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x774103
+	0x774144
+	0x57e71d
+	0x5ca03d
+	0x5ca41b
+	0x6117f2
+	0x5ec954
+	0x60ee17
+	0x5ec706
+	0x5bda30
+	0x5bed54
+	0x9e57b4
+	0x9e098a
+	0x79c392
+	0x78c4c8
+	0x79324d
+	0x77c478
+	0x77c63c
+	0x7667ca
+	0x75c97ba9
+	0x76f6c3ab
+	0x76f6c32f
+
+
+saved/12_08_2025 - 08:52:46.604874 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 48, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x774103
+	0x774144
+	0x57e71d
+	0x5ca03d
+	0x5ca41b
+	0x6117f2
+	0x5ec954
+	0x60ee17
+	0x5ec706
+	0x5bda30
+	0x5bed54
+	0x9e57b4
+	0x9e098a
+	0x79c392
+	0x78c4c8
+	0x79324d
+	0x77c478
+	0x77c63c
+	0x7667ca
+	0x75c97ba9
+	0x76f6c3ab
+	0x76f6c32f
+
+
+saved/12_09_2025 - 09:12:39.785750 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 286, in start_anaplasma
+    raise Exception(error_list)
+Exception: ["could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'"]
+
+saved/12_09_2025 - 09:39:19.331674 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 286, in start_anaplasma
+    raise Exception(error_list)
+Exception: ["could not convert string to float: '10Y24.0'", "could not convert string to float: '10Y24.0'", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13625550>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13293560>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13291B50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF136006E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF136018E0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13293530>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF136003B0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13602210>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13265D00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF136001D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13600980>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13624770>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))", "HTTPConnectionPool(host='localhost', port=62026): Max retries exceeded with url: /session/6c4cec792c2af2fbb1d2424676c435af/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002CF13600530>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))"]
+
+saved/12_09_2025 - 11:59:37.486730 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 120, in start_anaplasma
+    save_and_print_results(f"{printNo}r")
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 109, in save_and_print_results
+    combined_data.to_excel(filename)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\pandas\core\generic.py", line 2417, in to_excel
+    formatter.write(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\pandas\io\formats\excel.py", line 943, in write
+    writer = ExcelWriter(
+             ^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\pandas\io\excel\_openpyxl.py", line 61, in __init__
+    super().__init__(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\pandas\io\excel\_base.py", line 1246, in __init__
+    self._handles = get_handle(
+                    ^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'saved/anaplasma/Anaplasma_bot_activity_1r_12_09_2025.xlsx'
+

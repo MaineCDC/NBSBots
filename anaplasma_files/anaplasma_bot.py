@@ -18,6 +18,7 @@ import pandas as pd
 from datetime import datetime
 import smtplib, ssl
 from email.message import EmailMessage
+import re
 
 from dotenv import load_dotenv
 import os
@@ -47,25 +48,75 @@ def start_anaplasma(username, passcode):
     NBS.set_credentials(username, passcode)
     NBS.log_in()
     NBS.GoToApprovalQueue()
-    # retries = 0
-    # for j in range(3):
-    # print("start", j)
+    
     patients_to_skip = set()
     error_list = []
     error = False
     n = 1
     gone_home = -1
     attempt_counter = 0
-    consecutive_no_case_attempts = 0  # Track consecutive attempts with no valid cases
-    max_consecutive_no_case_attempts = 3  # Stop after 3 consecutive attempts with no valid cases
+    consecutive_no_case_attempts = 0
+    max_consecutive_no_case_attempts = 1
     
     with open("patients_to_skip.txt", "r") as patient_reader:
         patients_to_skip |= set(patient_reader.readlines())
 
-    #set number of patients to review, preferrably the current number of cases 
-    #before running.
-    limit = 24
-    printAt = 24
+    # Sort queue first to get only Anaplasma cases
+    paths = {
+        "clear_filter_path":'//*[@id="removeFilters"]/a/font',
+        "description_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/img',
+        "clear_checkbox_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[2]/input',
+        "click_ok_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[1]',
+        "click_cancel_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[2]',
+        "tests":["Anapla"],
+        "submit_date_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[3]/a'
+    }
+    
+    print("Sorting queue to filter for Anaplasma cases...")
+    NBS.SortQueue(paths)
+    
+    # Count the number of Anaplasma cases in the queue
+    print("Counting Anaplasma cases in queue...")
+    try:
+        # Get the case count element using the provided XPath
+        case_count_element = NBS.find_element(By.XPATH, '//*[@id="bd"]/table[2]/tbody/tr/td/span[2]/b')
+        case_count_text = case_count_element.text.strip()
+        print(f"Case count text found: '{case_count_text}'")
+        
+        # Parse the count - Format: "Results 1 to 1 of 1" or "Results 1 to 16 of 45"
+        match = re.search(r'Results\s+\d+\s+to\s+\d+\s+of\s+(\d+)', case_count_text)
+        if match:
+            anaplasma_case_count = int(match.group(1))
+            print(f"Total Anaplasma cases in queue: {anaplasma_case_count}")
+        else:
+            raise ValueError(f"Could not parse count from: '{case_count_text}'")
+        
+    except Exception as e:
+        print(f"Error getting case count: {e}")
+        # Fallback: count table rows
+        try:
+            case_rows = NBS.find_elements(By.XPATH, '/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/tbody/tr')
+            anaplasma_case_count = len(case_rows)
+            print(f"Fallback: Found {anaplasma_case_count} case rows in table")
+        except:
+            # Ultimate fallback
+            anaplasma_case_count = 16
+            print("Could not determine case count, using default value of 16")
+    
+    # Check if there are any cases to process
+    if anaplasma_case_count == 0:
+        print("No Anaplasma cases found in queue. Exiting.")
+        NBS.SendAnaplasmaEmail("Anaplasma bot run completed - No cases in queue", "Status", "caleb.jones@maine.gov")
+        with open("patients_to_skip.txt", "w") as patient_writer:
+            patient_writer.write("\n".join(patients_to_skip) + "\n")
+        return
+    
+    # Set limit and printAt based on actual case count
+    limit = anaplasma_case_count
+    printAt = min(16, anaplasma_case_count)
+    
+    print(f"Set limit to {limit} and printAt to {printAt}")
+    
     printNo = 1
     page = 1
     loop = tqdm(generator())
@@ -140,21 +191,8 @@ def start_anaplasma(username, passcode):
             
         try:
             #Sort review queue so that only Anaplasma investigations are listed
-            paths = {
-                "clear_filter_path":'//*[@id="removeFilters"]/a/font',
-                "description_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/img',
-                "clear_checkbox_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[2]/input',
-                "click_ok_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[1]',
-                "click_cancel_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[2]',
-                "tests":["Anapla"],
-                "submit_date_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[3]/a'
-            }
             NBS.SortQueue(paths)
             print(f"sorting queue...: {NBS.queue_loaded}", "current_iteration:", loop.n)
-
-            #for test
-            # NBS.GoToNPage(page)
-            #test end
 
             if NBS.queue_loaded:
                 NBS.queue_loaded = None
@@ -180,7 +218,7 @@ def start_anaplasma(username, passcode):
                 inv_id = NBS.find_element(By.XPATH,'//*[@id="bd"]/table[3]/tbody/tr[2]/td[1]/span[2]').text 
                 print(f"present, {inv_id}", "current_iteration:", loop.n)
                 
-                if inv_id in patients_to_skip: #this caused order error in nbs comment ?
+                if inv_id in patients_to_skip:
                     print(f"skipping, {inv_id}", "current_iteration:", loop.n)
                     NBS.ReturnApprovalQueue()
                     print("going to approval queue", "current_iteration:", loop.n)
@@ -196,7 +234,6 @@ def start_anaplasma(username, passcode):
                     reason.append("Approved")
                     epi.append(NBS.investigator_name)
 
-                    #remove on test
                     NBS.ApproveNotification()
                     if "Out of state - should be Not a Case." not in NBS.issues:
                         NBS.SendAnaplasmaEmail("Out of state - should be Not a Case.", inv_id)
@@ -204,7 +241,7 @@ def start_anaplasma(username, passcode):
                         NBS.SendAnaplasmaEmail("Hey, please don't change anything at all and just click CN", inv_id)
                     print("current run approved", "current_iteration:", loop.n)
                     
-                NBS.ReturnApprovalQueue() #return to approval queue if no approval
+                NBS.ReturnApprovalQueue()
                 print("returning to approval queue..", "ending_iteration:", loop.n)
                 if NBS.queue_loaded:
                     NBS.queue_loaded = None
@@ -231,7 +268,6 @@ def start_anaplasma(username, passcode):
                         reason.append(' '.join(NBS.issues))
                         print("issues seen on append:", NBS.issues, "current_iteration:", loop.n)
 
-                        #remove on test
                         NBS.RejectNotification(n)
                         body = ''
                         if  all(case in NBS.issues  for case in ['City is blank.', 'County is blank.', 'Zip code is blank.']):
@@ -259,7 +295,6 @@ def start_anaplasma(username, passcode):
                 else:
                     attempt_counter = 0
                     print("No Anaplasma cases in notification queue.", "current_iteration:", loop.n)
-                    # If we've exhausted NBS attempts and still no cases, this counts as a no-case attempt
                     if consecutive_no_case_attempts >= max_consecutive_no_case_attempts:
                         print("Maximum consecutive no-case attempts reached. Ending run.")
                         break

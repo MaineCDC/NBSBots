@@ -18,6 +18,7 @@ import pandas as pd
 from datetime import datetime
 import smtplib, ssl
 from email.message import EmailMessage
+import re
 
 from dotenv import load_dotenv
 import os
@@ -43,7 +44,7 @@ def start_giardia(username, passcode):
     load_dotenv()
     
     
-    NBS = Giardia(production=False)
+    NBS = Giardia(production=True)
     NBS.set_credentials(username, passcode)
     NBS.log_in()
     NBS.GoToApprovalQueue()
@@ -99,34 +100,73 @@ def start_giardia(username, passcode):
     with open("patients_to_skip.txt", "r") as patient_reader:
         patients_to_skip |= set(patient_reader.readlines())
 
-    limit = 20
+    # Sort queue first to get only Giardia cases
+    paths = {
+        "clear_filter_path":'//*[@id="removeFilters"]/a/font',
+        "description_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/img',
+        "clear_checkbox_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[2]/input',
+        "click_ok_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[1]',
+        "click_cancel_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[2]',
+        "tests":["Giardiasis"],
+        "submit_date_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[3]/a'
+    }
+    
+    print("Sorting queue to filter for Giardia cases...")
+    NBS.SortQueue(paths)
+    
+    # Count the number of Giardia cases in the queue
+    print("Counting Giardia cases in queue...")
+    try:
+        # Get the case count element using the provided XPath
+        case_count_element = NBS.find_element(By.XPATH, '//*[@id="bd"]/table[2]/tbody/tr/td/span[2]/b')
+        case_count_text = case_count_element.text.strip()
+        print(f"Case count text found: '{case_count_text}'")
+        
+        # Parse the count - Format: "Results 1 to 1 of 1" or "Results 1 to 16 of 45"
+        match = re.search(r'Results\s+\d+\s+to\s+\d+\s+of\s+(\d+)', case_count_text)
+        if match:
+            giardia_case_count = int(match.group(1))
+            print(f"Total Giardia cases in queue: {giardia_case_count}")
+        else:
+            raise ValueError(f"Could not parse count from: '{case_count_text}'")
+        
+    except Exception as e:
+        print(f"Error getting case count: {e}")
+        # Fallback: count table rows
+        try:
+            case_rows = NBS.find_elements(By.XPATH, '/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/tbody/tr')
+            giardia_case_count = len(case_rows)
+            print(f"Fallback: Found {giardia_case_count} case rows in table")
+        except:
+            # Ultimate fallback
+            giardia_case_count = 20
+            print("Could not determine case count, using default value of 20")
+    
+    # Check if there are any cases to process
+    if giardia_case_count == 0:
+        print("No Giardia cases found in queue. Exiting.")
+        with open("patients_to_skip.txt", "w") as patient_writer:
+            patient_writer.write("\n".join(patients_to_skip) + "\n")
+        return
+    
+    # Set limit based on actual case count
+    limit = giardia_case_count
+    
+    print(f"Set limit to {limit}")
+    
     page = 2
     loop = tqdm(generator())
     for _ in loop:
-        print(f"current limit: {limit}")
-        #check if the bot haa gone through the set limit of reviews
+        print(f"current limit: {limit}", "starting_iteration:", loop.n)
+        
+        #check if the bot has gone through the set limit of reviews
         if loop.n == limit:
-            # if page > 1:
-            #     page -= 1
-            #     gone_home = 0
-            #     n = 1
-            #     limit += 20
-            #     continue
             break
+            
         try:
             #Sort review queue so that only giardia investigations are listed
-            paths = {
-                "clear_filter_path":'//*[@id="removeFilters"]/a/font',
-                "description_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/img',
-                "clear_checkbox_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[2]/input',
-                "click_ok_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[1]',
-                "click_cancel_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[8]/div/label[1]/input[2]',
-                "tests":["Giardiasis"],
-                "submit_date_path":'/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/thead/tr/th[3]/a'
-            }
             NBS.SortQueue(paths)
-            print(f"sorting queue...: {NBS.queue_loaded}")
-            # NBS.GoToNPage(page)
+            print(f"sorting queue...: {NBS.queue_loaded}", "current_iteration:", loop.n)
 
             if NBS.queue_loaded:
                 NBS.queue_loaded = None
@@ -139,16 +179,14 @@ def start_giardia(username, passcode):
             elif NBS.queue_loaded == False:
                 NBS.queue_loaded = None
                 print("failed to go to home, approval queue didn't load, breaking....")
-                # NBS.SendManualReviewEmail()
-                # NBS.Sleep()
-                # continue
                 break
             
             NBS.CheckFirstCase(n)
-            print("checked first case")
+            print("checked first case", "current_iteration:", loop.n)
+            
             if NBS.condition == 'Giardiasis':
                 NBS.GoToNCaseInApprovalQueue(n)
-                print("navigated to first case in queue")
+                print("navigated to first case in queue", "current_iteration:", loop.n)
                 if NBS.queue_loaded:
                     NBS.queue_loaded = None
                     if gone_home > NBS.num_attempts and loop.n >= limit:
@@ -159,27 +197,29 @@ def start_giardia(username, passcode):
                     continue
 
                 inv_id = NBS.find_element(By.XPATH,'//*[@id="bd"]/table[3]/tbody/tr[2]/td[1]/span[2]').text 
+                print(f"present, {inv_id}", "current_iteration:", loop.n)
+                
                 if inv_id in patients_to_skip:
-                    print(f"present, {inv_id}")
+                    print(f"skipping, {inv_id}", "current_iteration:", loop.n)
                     NBS.ReturnApprovalQueue()
-                    print("going to approval queue")
+                    print("going to approval queue", "current_iteration:", loop.n)
                     n += 1
-                    # limit += 1
                     print("Making up for skipped case with increased limit...", "current_iteration:", loop.n)
                     continue
                 
                 NBS.StandardChecks()
-                print("running standard checks")
+                print("running standard checks", "current_iteration:", loop.n)
+                
                 if not NBS.issues:
                     reviewed_ids.append(inv_id)
                     what_do.append("Approve Notification")
                     reason.append("Approved")
-                    # patients_to_skip.add(inv_id)
-                    print("approved")
+                    print("approved", "current_iteration:", loop.n)
                     NBS.ApproveNotification()
                     NBS.SendGiardiaEmail("Hey, please don't change anything at all and just click CN", inv_id)
+                    
                 NBS.ReturnApprovalQueue()
-                print("returning to approval queue..")
+                print("returning to approval queue..", "current_iteration:", loop.n)
 
                 if NBS.queue_loaded:
                     NBS.queue_loaded = None
@@ -192,27 +232,23 @@ def start_giardia(username, passcode):
 
                 if len(NBS.issues) > 0:
                     NBS.SortQueue(paths)
-                    print("sorting queue...")
-                    # NBS.GoToNPage(page)
+                    print("sorting queue...", "current_iteration:", loop.n)
 
                     if NBS.queue_loaded:
                         NBS.queue_loaded = None
-                        print("failed to go to home, skipping to approval queue....")
+                        print("failed to go to home, skipping to approval queue....", "current_iteration:", loop.n)
                         continue
 
                     NBS.CheckFirstCase(n)
-                    print("check for matching first case")
+                    print("check for matching first case", "current_iteration:", loop.n)
 
                     NBS.final_name = NBS.patient_name
-                    # if NBS.country != 'UNITED STATES':
-                    #     print("Skipping patient. No action carried out")
-                    #     patients_to_skip.add(inv_id)
+                    
                     if NBS.final_name == NBS.initial_name:
                         reviewed_ids.append(inv_id)
                         what_do.append("Reject Notification")
                         reason.append(' '.join(NBS.issues))
-                        # patients_to_skip.add(inv_id)
-                        print("rejected")
+                        print("rejected", "current_iteration:", loop.n)
 
                         NBS.RejectNotification(n)
                         body = ''
@@ -221,49 +257,40 @@ def start_giardia(username, passcode):
                         elif NBS.CorrectCaseStatus:
                             body = f'Hey, please only update the case status to {NBS.CorrectCaseStatus}, then click CN for this case.'
                         if body:
-                            print('mail', body)
+                            print('mail', body, "current_iteration:", loop.n)
                             NBS.SendGiardiaEmail(body, inv_id)
 
                         NBS.GoToApprovalQueue()
-                        print(f"returning approval queue....: {NBS.queue_loaded}")
+                        print(f"returning approval queue....: {NBS.queue_loaded}", "current_iteration:", loop.n)
                     elif NBS.final_name != NBS.initial_name:
-                        print(f"here : {NBS.final_name} {NBS.initial_name}")
-                        print('Case at top of queue changed. No action was taken on the reviewed case.')
+                        print(f"here : {NBS.final_name} {NBS.initial_name}", "current_iteration:", loop.n)
+                        print('Case at top of queue changed. No action was taken on the reviewed case.', "current_iteration:", loop.n)
                         NBS.num_fail += 1
             else:
                 if attempt_counter < NBS.num_attempts:
                     attempt_counter += 1
                 else:
                     attempt_counter = 0
-                    print("No giardia cases in notification queue.")
-                    # NBS.SendManualReviewEmail()
+                    print("No giardia cases in notification queue.", "current_iteration:", loop.n)
                     break
-                    # NBS.Sleep()
+                    
         except Exception as e:
-            # raise Exception(e)
             error_list.append(str(e))
             error = True
-        #     # print(tb)
-        #     with open("error_log.txt", "a") as log:
-        #         log.write(f"{datetime.now().date().strftime('%m_%d_%Y')} | giardia - {str(tb)}")
-        #     #NBS.send_smtp_email(NBS.covid_informatics_list, 'ERROR REPORT: NBSbot(giardia Notification Review) AKA Athena', tb, 'error email')
+            print(f"Exception occurred: {str(e)}", "current_iteration:", loop.n)
             
-    print("ending, printing, saving")
-    print(reviewed_ids)
+    print("ending, printing, saving", "current_iteration:", loop.n)
     
     if len(reviewed_ids) > 0:
         save_and_print_results("final")
     else:
         print("No final results to save.")
     
-
-
     with open("patients_to_skip.txt", "w") as patient_writer:
         patient_writer.write("\n".join(patients_to_skip) + "\n")
-    if error is not None: 
+        
+    if error: 
         raise Exception(error_list)
-    #NBS.send_smtp_email("disease.reporting@maine.gov", 'Notification Review Report: NBSbot(giardia Notification Review) AKA giardia de Armas', body, 'giardia Notification Review email')
 
 if __name__ == '__main__':
     start_giardia()
-    
