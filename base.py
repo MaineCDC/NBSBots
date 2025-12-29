@@ -183,6 +183,7 @@ class NBSdriver(webdriver.Chrome):
         self.reporting_organization = None
         self.reporting_provider = None
         self.returned_by_link = False
+        self.missing_tab = False
         self.confirmation_method = None
 
         # Vaccination
@@ -233,11 +234,18 @@ class NBSdriver(webdriver.Chrome):
         self.find_element(By.XPATH, path).click()
 
     def go_to_tab_two(self):
-        path = '//*[@id="tabs0head1"]'
-        WebDriverWait(self, self.wait_before_timeout).until(
-            EC.element_to_be_clickable((By.XPATH, path))
-        )
-        self.find_element(By.XPATH, path).click()
+        missing_tab = False
+        try:
+            path = '//*[@id="tabs0head1"]'
+            WebDriverWait(self, self.wait_before_timeout).until(
+                EC.element_to_be_clickable((By.XPATH, path))
+            )
+            self.find_element(By.XPATH, path).click()
+            return missing_tab
+        except (TimeoutException, NoSuchElementException) as e:
+           print(f"can't find element 2tab, {str(e)}")
+           missing_tab = True
+           return missing_tab
 
     def go_to_tab_three(self):
         path = '//*[@id="tabs0head2"]'
@@ -247,11 +255,18 @@ class NBSdriver(webdriver.Chrome):
         self.find_element(By.XPATH, path).click()
 
     def go_to_tab_five(self):
-        path = '//*[@id="tabs0head4"]'
-        WebDriverWait(self, self.wait_before_timeout).until(
-            EC.element_to_be_clickable((By.XPATH, path))
-        )
-        self.find_element(By.XPATH, path).click()
+        missing_tab = False
+        try: 
+            path = '//*[@id="tabs0head4"]'
+            WebDriverWait(self, self.wait_before_timeout).until(
+                EC.element_to_be_clickable((By.XPATH, path))
+            )
+            self.find_element(By.XPATH, path).click()
+            return missing_tab
+        except (TimeoutException, NoSuchElementException) as e:
+            print(f"can't find element 5tab, {str(e)}")
+            missing_tab = True
+            return missing_tab
 
     ################### Name Details check methods####################
 

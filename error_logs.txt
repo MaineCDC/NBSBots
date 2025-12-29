@@ -6392,3 +6392,758 @@ saved/12_09_2025 - 11:59:37.486730 | anaplasma - Traceback (most recent call las
              ^^^^^^^^^^^^^^^^^^^^^^^^^
 PermissionError: [Errno 13] Permission denied: 'saved/anaplasma/Anaplasma_bot_activity_1r_12_09_2025.xlsx'
 
+saved/12_12_2025 - 08:55:16.237344 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 49, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x910d13
+	0x910d54
+	0x6fe6dd
+	0x7493a5
+	0x74977b
+	0x790382
+	0x76b534
+	0x78db13
+	0x76b2e6
+	0x73d321
+	0x73e1d4
+	0xb64d54
+	0xb6030b
+	0xb7cbea
+	0x92ac18
+	0x932c1d
+	0x919018
+	0x9191d9
+	0x903568
+	0x76177ba9
+	0x7756c3ab
+	0x7756c32f
+
+
+saved/12_12_2025 - 09:39:21.863981 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 49, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x910d13
+	0x910d54
+	0x6fe6dd
+	0x7493a5
+	0x74977b
+	0x790382
+	0x76b534
+	0x78db13
+	0x76b2e6
+	0x73d321
+	0x73e1d4
+	0xb64d54
+	0xb6030b
+	0xb7cbea
+	0x92ac18
+	0x932c1d
+	0x919018
+	0x9191d9
+	0x903568
+	0x76177ba9
+	0x7756c3ab
+	0x7756c32f
+
+
+saved/12_15_2025 - 07:57:15.610397 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 49, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xa40d13
+	0xa40d54
+	0x82e6dd
+	0x8793a5
+	0x87977b
+	0x8c0382
+	0x89b534
+	0x8bdb13
+	0x89b2e6
+	0x86d321
+	0x86e1d4
+	0xc94d54
+	0xc9030b
+	0xcacbea
+	0xa5ac18
+	0xa62c1d
+	0xa49018
+	0xa491d9
+	0xa33568
+	0x76177ba9
+	0x7756c3ab
+	0x7756c32f
+
+
+saved/12_17_2025 - 09:41:06.779202 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 49, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x1101223
+	0x1101264
+	0xeee6dd
+	0xf393a5
+	0xf3977b
+	0xf80382
+	0xf5b534
+	0xf7db13
+	0xf5b2e6
+	0xf2d321
+	0xf2e1d4
+	0x1355264
+	0x135081b
+	0x136d0fa
+	0x111b128
+	0x112312d
+	0x1109528
+	0x11096e9
+	0x10f3a78
+	0x76177ba9
+	0x7756c3ab
+	0x7756c32f
+
+
+saved/12_18_2025 - 10:11:31.884563 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 49, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xe51223
+	0xe51264
+	0xc3e6dd
+	0xc893a5
+	0xc8977b
+	0xcd0382
+	0xcab534
+	0xccdb13
+	0xcab2e6
+	0xc7d321
+	0xc7e1d4
+	0x10a5264
+	0x10a081b
+	0x10bd0fa
+	0xe6b128
+	0xe7312d
+	0xe59528
+	0xe596e9
+	0xe43a78
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 09:10:42.599843 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 293, in start_giardia
+    raise Exception(error_list)
+Exception: ['Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n']
+
+saved/12_22_2025 - 09:18:51.526464 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 293, in start_giardia
+    raise Exception(error_list)
+Exception: ['Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n']
+
+saved/12_22_2025 - 11:56:42.493400 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 11:58:33.008596 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:00:13.908659 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:04:44.931622 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 293, in start_giardia
+    raise Exception(error_list)
+Exception: ['Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n']
+
+saved/12_22_2025 - 12:14:09.310276 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:17:04.705514 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connectionpool.py", line 495, in _make_request
+    conn.request(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connection.py", line 441, in request
+    self.endheaders()
+  File "C:\Program Files\Python312\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python312\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+  File "C:\Program Files\Python312\Lib\http\client.py", line 1037, in send
+    self.connect()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connection.py", line 279, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connection.py", line 214, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001A718158920>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 218, in log_in
+    print(self.page_source)
+          ^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 485, in page_source
+    return self.execute(Command.GET_PAGE_SOURCE)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 382, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 404, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 428, in _request
+    response = self._conn.request(method, url, body=body, headers=headers, timeout=self._client_config.timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\_request_methods.py", line 135, in request
+    return self.request_encode_url(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\_request_methods.py", line 182, in request_encode_url
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connectionpool.py", line 873, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connectionpool.py", line 873, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connectionpool.py", line 873, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=62319): Max retries exceeded with url: /session/a1e5eba1402a1ea29fe884239bbfbaf2/source (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A718158920>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+
+saved/12_22_2025 - 12:19:52.436949 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:20:59.554752 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:22:15.698395 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:25:02.988493 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:26:48.891693 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 219, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_22_2025 - 12:42:52.419527 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 293, in start_giardia
+    raise Exception(error_list)
+Exception: ['Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n', 'Message: \nStacktrace:\nSymbols not available. Dumping unresolved backtrace:\n\t0xb012d3\n\t0xb01314\n\t0x8ee6dd\n\t0x9393a5\n\t0x93977b\n\t0x980382\n\t0x95b534\n\t0x97db13\n\t0x95b2e6\n\t0x92d321\n\t0x92e1d4\n\t0xd55314\n\t0xd508cb\n\t0xd6d1aa\n\t0xb1b1d8\n\t0xb231dd\n\t0xb095d8\n\t0xb09799\n\t0xaf3b28\n\t0x76017ba9\n\t0x77aec3ab\n\t0x77aec32f\n']
+
+saved/12_22_2025 - 13:29:57.919643 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 49, in start_giardia
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 220, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0xb012d3
+	0xb01314
+	0x8ee6dd
+	0x9393a5
+	0x93977b
+	0x980382
+	0x95b534
+	0x97db13
+	0x95b2e6
+	0x92d321
+	0x92e1d4
+	0xd55314
+	0xd508cb
+	0xd6d1aa
+	0xb1b1d8
+	0xb231dd
+	0xb095d8
+	0xb09799
+	0xaf3b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_24_2025 - 09:10:36.258560 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 49, in start_anaplasma
+    NBS.log_in()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 220, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x11612d3
+	0x1161314
+	0xf4e6dd
+	0xf993a5
+	0xf9977b
+	0xfe0382
+	0xfbb534
+	0xfddb13
+	0xfbb2e6
+	0xf8d321
+	0xf8e1d4
+	0x13b5314
+	0x13b08cb
+	0x13cd1aa
+	0x117b1d8
+	0x11831dd
+	0x11695d8
+	0x1169799
+	0x1153b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+
+saved/12_26_2025 - 09:53:47.100868 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 76, in start_anaplasma
+    NBS.SortQueue(paths)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 587, in SortQueue
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 363, in _predicate
+    target = driver.find_element(*target)  # grab element at locator
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 770, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=143.0.7499.146)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x12112d3
+	0x1211314
+	0xffe6dd
+	0xfed99e
+	0x100c4e6
+	0x10721d8
+	0x108d44c
+	0x106b2e6
+	0x103d321
+	0x103e1d4
+	0x1465314
+	0x14608cb
+	0x147d1aa
+	0x122b1d8
+	0x12331dd
+	0x12195d8
+	0x1219799
+	0x1203b28
+	0x76017ba9
+	0x77aec3ab
+	0x77aec32f
+
+

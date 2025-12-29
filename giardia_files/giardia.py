@@ -37,14 +37,14 @@ class Giardia(NBSdriver):
         self.Reset()
         self.initial_name = self.patient_name
         
-        self.CheckFirstName()
-        self.CheckLastName()
-        self.CheckDOB()
-        self.CheckAge()
-        self.CheckAgeType()
-        self.CheckCurrentSex()#removed Ana
-        self.CheckMortality()
-        self.CheckStAddr()
+        self.CheckFirstNam
+        self.CheckLastNam
+        self.CheckDO
+        self.CheckAg
+        self.CheckAgeTyp
+        self.CheckCu
+        self.CheckMortalit
+        self.CheckStAdd
         # street_address = self.ReadText( '//*[@id="DEM159"]') #, 'Street address is blank.'
         if any(x in self.street_address for x in ["HOMELESS", "NO ADDRESS", "NO FIXED ADDRESS", "UNSHELTERED"]):
             pass
@@ -55,18 +55,23 @@ class Giardia(NBSdriver):
             
         self.CheckState()
         self.CheckCountry()
-        self.CheckPhone()
+        # self.CheckPhone()
         self.CheckRace()
         self.CheckEthnicity()
 
         self.go_to_tab_two()
         self.CheckCaseStatus()
 
-        self.go_to_tab_five()
+        self.missing_lab_report = True
+        self.earliest_date_received = None
+        self.latest_date_received = None
+        self.lab_specimen_collection_date = None
+        missing_tab = self.go_to_tab_five()
         print("lab=rep")
-        self.CheckLabReports()
-        if not self.returned_by_link:
-            self.go_to_tab_two()
+        if not missing_tab:
+            self.CheckLabReports()
+            if not self.returned_by_link:
+                self.go_to_tab_two()
 
         self.CheckJurisdiction()
         self.CheckProgramArea()
@@ -256,6 +261,7 @@ class Giardia(NBSdriver):
                 self.latest_date_received = None
                 self.lab_specimen_collection_date = None
                 return
+            self.missing_lab_report = False
             self.earliest_date_received = pd.to_datetime(self.Lab_report_table["Date Received"], format="%m/%d/%Y %I:%M %p").min().date()
             self.latest_date_received = pd.to_datetime(self.Lab_report_table["Date Received"], format="%m/%d/%Y %I:%M %p").max().date()
             self.lab_specimen_collection_date = pd.to_datetime(self.Lab_report_table["Date Collected"], format="%m/%d/%Y").max().date()
