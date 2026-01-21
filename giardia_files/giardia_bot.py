@@ -216,10 +216,9 @@ def start_giardia(username, passcode):
                     reason.append("Approved")
                     print("approved", "current_iteration:", loop.n)
                     NBS.ApproveNotification()
-                    NBS.SendGiardiaEmail("Hey, please don't change anything at all and just click CN", inv_id)
-                    
-                NBS.ReturnApprovalQueue()
-                print("returning to approval queue..", "current_iteration:", loop.n)
+                    # NBS.SendGiardiaEmail("Hey, please don't change anything at all and just click CN", inv_id)
+                    NBS.ReturnApprovalQueue()
+                    print("returning to approval queue..", "current_iteration:", loop.n)
 
                 if NBS.queue_loaded:
                     NBS.queue_loaded = None
