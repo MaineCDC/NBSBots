@@ -73,6 +73,8 @@ class Giardia(NBSdriver):
             self.CheckLabReports()
             if not self.returned_by_link:
                 self.go_to_tab_two()
+        else:
+            print("[INFO] Lab tab not present for this case, lab checks skipped.")
 
         self.CheckJurisdiction()
         self.CheckProgramArea()

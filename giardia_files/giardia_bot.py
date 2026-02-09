@@ -168,7 +168,7 @@ def start_giardia(username, passcode):
             NBS.SortQueue(paths)
             print(f"sorting queue...: {NBS.queue_loaded}", "current_iteration:", loop.n)
 
-            if NBS.queue_loaded:
+            if NBS.queue_loaded == False:
                 NBS.queue_loaded = None
                 if gone_home > NBS.num_attempts and loop.n >= limit:
                     print("No case in approval queue, ending...")
@@ -176,7 +176,7 @@ def start_giardia(username, passcode):
                 print("failed to go to home, skipping to approval queue...")
                 gone_home += 1
                 continue
-            elif NBS.queue_loaded == False:
+            elif NBS.queue_loaded:
                 NBS.queue_loaded = None
                 print("failed to go to home, approval queue didn't load, breaking....")
                 break
@@ -186,8 +186,8 @@ def start_giardia(username, passcode):
             
             if NBS.condition == 'Giardiasis':
                 NBS.GoToNCaseInApprovalQueue(n)
-                print("navigated to first case in queue", "current_iteration:", loop.n)
-                if NBS.queue_loaded:
+                print(f"navigated to first case in queue - {n}", "current_iteration:", loop.n)
+                if NBS.queue_loaded == False:
                     NBS.queue_loaded = None
                     if gone_home > NBS.num_attempts and loop.n >= limit:
                         print("No case in approval queue, ending...")
@@ -197,7 +197,7 @@ def start_giardia(username, passcode):
                     continue
 
                 inv_id = NBS.find_element(By.XPATH,'//*[@id="bd"]/table[3]/tbody/tr[2]/td[1]/span[2]').text 
-                print(f"present, {inv_id}", "current_iteration:", loop.n)
+                print(f"present, {inv_id}-{n}", "current_iteration:", loop.n)
                 
                 if inv_id in patients_to_skip:
                     print(f"skipping, {inv_id}", "current_iteration:", loop.n)
@@ -208,7 +208,7 @@ def start_giardia(username, passcode):
                     continue
                 
                 NBS.StandardChecks()
-                print("running standard checks", "current_iteration:", loop.n)
+                print("finished running standard checks", "current_iteration:", loop.n)
                 
                 if not NBS.issues:
                     reviewed_ids.append(inv_id)
@@ -217,8 +217,11 @@ def start_giardia(username, passcode):
                     print("approved", "current_iteration:", loop.n)
                     NBS.ApproveNotification()
                     # NBS.SendGiardiaEmail("Hey, please don't change anything at all and just click CN", inv_id)
-                    NBS.ReturnApprovalQueue()
-                    print("returning to approval queue..", "current_iteration:", loop.n)
+                    # NBS.ReturnApprovalQueue()
+                    # print("returning to approval queue..", "current_iteration:", loop.n)
+
+                NBS.ReturnApprovalQueue()
+                print("returning to approval queue..", "ending_iteration:", loop.n)
 
                 if NBS.queue_loaded:
                     NBS.queue_loaded = None
@@ -231,15 +234,15 @@ def start_giardia(username, passcode):
 
                 if len(NBS.issues) > 0:
                     NBS.SortQueue(paths)
-                    print("sorting queue...", "current_iteration:", loop.n)
+                    print("sorting queue to correlate issues...", "current_iteration:", loop.n)
 
-                    if NBS.queue_loaded:
+                    if NBS.queue_loaded == False:
                         NBS.queue_loaded = None
                         print("failed to go to home, skipping to approval queue....", "current_iteration:", loop.n)
                         continue
 
                     NBS.CheckFirstCase(n)
-                    print("check for matching first case", "current_iteration:", loop.n)
+                    print(f"check for matching first case - {n}", "current_iteration:", loop.n)
 
                     NBS.final_name = NBS.patient_name
                     

@@ -264,7 +264,7 @@ class NBSdriver(webdriver.Chrome):
             self.find_element(By.XPATH, path).click()
             return missing_tab
         except (TimeoutException, NoSuchElementException) as e:
-            print(f"can't find element 5tab, {str(e)}")
+            print(f"[INFO] Lab tab (5tab) not found, skipping lab checks. Details: {str(e)}")
             missing_tab = True
             return missing_tab
 
@@ -716,6 +716,7 @@ class NBSdriver(webdriver.Chrome):
     def CheckFirstCase(self, n: int = 1):
         """Ensure that case at row n is set and save case's name for later use."""
         try:
+            time.sleep(4)
             self.condition = self.find_element(
                 By.XPATH, f'//*[@id="parent"]/tbody/tr[{n}]/td[8]/a'
             ).get_attribute("innerText")
@@ -1258,15 +1259,15 @@ class NBSdriver(webdriver.Chrome):
             self.issues.append("MMWR Week is blank.")
 
     def CheckMmwrYear(self):
-        """MMWR year must be provided and match specimen collection year."""
+        """MMWR year must be provided and match specimen collection ISO week year (handles 53-week years)."""
         mmwr_year = self.ReadText('//*[@id="INV166"]')
         if not mmwr_year:
             self.issues.append("MMWR Year is blank.")
-        elif self.collection_date and int(mmwr_year) != self.collection_date.year:
+        elif self.collection_date and int(mmwr_year) != self.collection_date.isocalendar().year:
             self.issues.append(
-                "MMWR Year does not match specimen collection date year."
+                f"MMWR Year does not match specimen collection ISO week year ({self.collection_date.isocalendar().year})."
             )
-            print(f"mmwr_year: {mmwr_year}, collection_date: {self.collection_date}")
+            print(f"mmwr_year: {mmwr_year}, collection_date: {self.collection_date}, isocalendar_year: {self.collection_date.isocalendar().year}")
 
     ############### Performing Lab Check Methods ##################################
 
