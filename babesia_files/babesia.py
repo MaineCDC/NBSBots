@@ -22,7 +22,7 @@ from email.message import EmailMessage
 
 
 
-class Anaplasma(NBSdriver):
+class Babesia(NBSdriver):
     """ A class inherits all basic NBS functionality from NBSdriver and adds
     methods for reviewing COVID case investigations for data accuracy and completeness. """
     def __init__(self, production=False):
@@ -30,6 +30,8 @@ class Anaplasma(NBSdriver):
         self.num_approved = 0
         self.num_rejected = 0
         self.num_fail = 0
+        self.CPS = ['Confirmed', 'Suspect', 'Probable']
+        self.CorP = ['Confirmed', 'Probable']
 
     def StandardChecks(self):
         self.Reset()
@@ -57,63 +59,50 @@ class Anaplasma(NBSdriver):
         self.CheckEthnicity()
         self.CheckRaceAna()
         # self.CheckDeceased()
-        self.GoToSupplemental()
-        self.CheckLabReports()
-        if self.returned_by_link:
-            self.GoToTickBorne()
-        self.CheckEPI()
-        self.CheckJurisdiction()              #new code
-        self.CheckInvestigationStartDate()#removed Ana
-        self.CheckDateClosed()
-        self.CheckAge()
+        self.GoToBabesiosis()
+        self.CheckJurisdiction()  
+        self.CheckInvestigationStartDate()
+        self.CheckInvestigationStatus()
+        self.CheckSharedIndicator(True)
+        self.CheckInvestigatorAna()
+        self.CheckInvestigatorAssignDate()
         self.CheckReportDate()
         self.CheckCountyStateReportDate()
-        self.CheckInvestigationStatus()
-        self.CheckInvestigatorAna()
-        self.CheckInvestigatorAssignDateAna()
-        self.CheckCulture()
-        # self.CheckMmwrWeekAna()
-        self.CheckMmwrYearAna()
         self.CheckReportingSourceType()
         self.CheckReportingOrganization()
-        self.CheckConfirmationDate()
-        # self.CheckAdmissionDate() #new code to get admission date and compare to discharge
-        self.CheckDischargeDate()                                   #new code, added this from covidcase review. modified method logic
-        self.CheckDiagnosisDate()
-        self.CheckIllnessDurationUnits()
-        self.CheckHospitalization()
-        # self.CheckPregnancyStatus()
-        ###Anaplasma Specific Checks###
-        self.CheckImmunosupressed()
-        #Check lab name, spelling is wrong but that is how it is defined in the legacy code
-        self.CheckPerformingLaboratory()
-        # self.CheckTickBite()
-        self.CheckPhysicianVisit()                                   #new code
-        self.CheckOtherDiagnosticTest()                                 #new code
+        self.CheckConfirmatoryLabWork()
+
+        #check for case status and verify elow checks
+        self.CheckCaseStatus()
+        self.CheckLaboratoryName()
         self.CheckDateSpecimenCollected()
-        self.CheckSerology()
-        if self.pcr_positive == "Yes" or (self.titer_value and self.titer_value > 64) or (not self.titer_value and self.reporting_organization == "MDLAB"):
-            self.CheckDeath()                         #removed '77' after parenthesis
-            self.CheckLifeThreatening()
-        # if self.reporting_organization != 'MDLAB' and self.titer_value and self.titer_value > 64:
-        #     self.CheckDeath()                         #removed '77' after parenthesis
-        #     self.CheckLifeThreatening()
-        self.CheckFourFoldChange()                                   #new code
-        self.CheckOutbreak()
-        self.CheckSymptoms()#removed Ana
-        self.CheckTravelInfo()
-        self.CheckWhereDisease() 
-        self.CheckClinicallyCompatible()
+        self.CheckIgGValues()
+        self.CheckTiterValues(),
+        self.CheckIgGImmunoblot()
+        self.CheckBabesiaSpecies()
+        self.CheckDiagnosisDate()
         self.CheckIllnessLength()
-        self.CheckAcuteOrConvalscent()                              #new code
-        #self.CheckDetectionMethod() #new code                           #new code reject if not detectionmethod
-        self.CheckConfirmationMethodAna() #removed Ana
+        self.CheckSymptoms()
+        self.CheckWasSymptomatic()
+        self.CheckHospitalization()
+        self.CheckDeath()
+        self.CheckPregnancyStatus()
+        self.CheckPatientTreated()
+        self.CheckUnderlyingConditions()
+        self.CheckBloodDonation()
+        self.CheckOrganDonation()
+        # self.CheckExposure doesn't exist ?
+        # self.GoToSupplemental()
+        self.CheckDetectionMethod()
+        self.CheckConfirmationMethodBabesia()
+        self.CheckConfirmationDate()
+        self.CheckDateClosed()
+        self.VerifyCaseStatus()
+        self.CheckMmwrWeek()
+        self.CheckMmwrYear()
+        
+        self.CheckTravelInfo()
         self.CheckLTF()
-        # if self.serology_test_type and str(self.serology_test_type).endswith("IgM"):
-        #     self.issues.append('IgM lab info entered into serology section, but should not be')
-        #     print("Issues with serology test type of IgM")
-        # else:
-        self.CheckCaseAna()
 
     ####################### Patient Demographics Check Methods ############################
     def CheckAge(self):
@@ -172,9 +161,6 @@ class Anaplasma(NBSdriver):
             if (answer in self.race) and (self.race != answer) and (self.race == 'Native Hawaiian or Other Pacific Islander'):
                 self.issues.append('"'+ answer + '"' + ' selected in addition to other options for race.')
                 print(f"race: {self.race}")
-    
-    def CheckDeceased(self):
-        self.is_deceased = self.ReadText('//*[@id="DEM127"]')
 
     def CheckPhone(self):
         """ If a phone number is provided make sure it is ten digits. """
@@ -221,14 +207,18 @@ class Anaplasma(NBSdriver):
 
     def CheckMortality(self):
         mortality_as_of_date = self.ReadText('//*[@id="NBS097"]')
+        death_date = self.ReadDate('//*[@id="INV146"]')
         self.is_deceased = self.ReadText('//*[@id="DEM127"]')
+
+        if self.is_deceased == "Yes" and not death_date:
+            self.issues.append("Patient is deceased but Deceased Date is blank")
 
         # if not mortality_as_of_date and not self.is_deceased: 
         #     self.issues.append("Answers to mortality questions missing.")
         
     ####################### Investigator Check Methods ############################
     
-    def GoToTickBorne(self):
+    def GoToBabesiosis(self):
         Tickborne_path = '//*[@id="tabs0head1"]'
         WebDriverWait(self,self.wait_before_timeout).until(EC.element_to_be_clickable((By.XPATH, Tickborne_path)))
         self.find_element(By.XPATH, Tickborne_path).click()
@@ -292,12 +282,17 @@ class Anaplasma(NBSdriver):
             self.issues.append("Date closed cannot be before investigation start date.")
 
     ####################### Patient Status Check Methods ############################
+
     def CheckDeath(self):
         """If died from illness is yes or no, need a death date """
         self.death_indicator =  self.ReadText('//*[@id="INV145"]') #,'Died from illness must be yes or no.'
         print(f"death: {self.death_indicator}")
-        # if self.death_indicator in ['Yes', 'No'] and not self.discharge_date:
-        #     self.issues.append('Death indicator should be unknown if no discharge date.')
+        if not self.death_indicator and self.CaseStatus in self.CPS:
+            self.issues.append('Did the patient die from this illness is blank.')
+        
+        if self.admission_date and not self.discharge_date and self.death_indicator != "Unknown":
+                self.issues.append("Did the patient die from this illness should be Unknown.")
+
         if self.death_indicator == "Yes":
             """ Death date must be present."""
             death_date = self.ReadDate('//*[@id="INV146"]')
@@ -310,12 +305,6 @@ class Anaplasma(NBSdriver):
             elif death_date > self.now:
                 self.issues.append('Date of death date cannot be in the future.')
                 print(f"death: {self.death_indicator}")
-        # elif self.death_indicator not in ['Yes', 'No', 'Unknown']:
-        #     self.issues.append('Death indicator cannot be blank')
-        #     print(f"death: {self.death_indicator}")
-        
-        # if self.hospitalization_indicator == "Yes" and not self.discharge_date and (self.death_indicator and self.death_indicator != "Unknown"):
-        #     self.issues.append('"Did the patient die from this illness?" should be Unknown when Hospitalized is Yes and Discharge Date is blank.')
 
     def CheckCulture(self):
         self.culture_done = self.ReadText('//*[@id="ME24178"]')
@@ -326,20 +315,28 @@ class Anaplasma(NBSdriver):
     def CheckHospitalization(self):
         """ Read hospitalization status. If yes need date and hospital """
         self.hospitalization_indicator = self.ReadText('//*[@id="INV128"]')
+        self.admission_date = self.ReadDate('//*[@id="INV132"]')
+        self.discharge_date = self.ReadDate('//*[@id="INV133"]')
+
+        if self.CaseStatus in self.CPS and not self.hospitalization_indicator:
+            self.issues.append("Hospitalization is blank.")
+
         if self.hospitalization_indicator == "Yes":
             hospital_name = self.ReadText('//*[@id="INV184"]')
             if not hospital_name:
-                self.issues.append('Hospital name missing.')
+                self.issues.append('Hospital name is blank.')
                 print(f"hospitalization, hospital_name: {hospital_name}")
-            self.admission_date = self.ReadDate('//*[@id="INV132"]')
-            # if not self.admission_date:
-            #     self.issues.append('Admission date is missing.')
-            #     print(f"hospitalization, admission_date: {self.admission_date}")
+            
+            if not self.admission_date:
+                self.issues.append('Admission date is missing.')
+                print(f"hospitalization, admission_date: {self.admission_date}")
             if self.admission_date and self.admission_date > self.now:
                 self.issues.append('Admission date cannot be in the future.')
                 print(f"hospitalization, admission_date: {self.admission_date}")
-        # elif self.hospitalization_indicator not in ['Yes', 'No']: 
-        #     self.issues.append("Patient hospitalization status not indicated.")
+        
+        total_duration = self.ReadText('//*[@id="INV134"]')
+        if self.admission_date and self.discharge_date and not total_duration:
+            self.issues.append("Total duration of stay in the hospital is blank.")
             
     def CheckIllnessDurationUnits(self):
         """ Read Illness duration units, should be either Day, Month, or Year """
@@ -352,8 +349,12 @@ class Anaplasma(NBSdriver):
     def CheckPregnancyStatus(self):
         """ Check that pregnancy status isn't blank."""
         pregnant_status = self.ReadText('//*[@id="INV178"]')
-        if pregnant_status not in ['Yes', 'No', 'Unknown'] and self.patient_sex != "Male":
-            self.issues.append('Pregnant status is blank.')
+        pregnancy_due_date = self.ReadDate('//*[@id="ME8170"]')
+        if self.CaseStatus in self.CPS and self.patient_sex == "Female" and self.age > 15 and pregnant_status not in ['Yes', 'No', 'Unknown']:
+            self.issues.append('Is the patient pregnant is blank.')
+        
+        if pregnant_status == "Yes" and not pregnancy_due_date:
+            self.issues.append('Pregnancy Due Date is blank.')
 
     ################# Anaplasma Specific Check Methods ###############################
     def CheckTickBite(self):
@@ -536,13 +537,13 @@ class Anaplasma(NBSdriver):
             
     def CheckDateSpecimenCollected(self):
         """ Check for follow-up tests """
-        date_specimen_collected = self.ReadDate('//*[@id="ME8117"]')
-        # if not date_specimen_collected and self.case_status == "Confirmed":
+        self.date_specimen_collected = self.ReadDate('//*[@id="ME8117"]')
+        # if not self.date_specimen_collected and self.case_status == "Confirmed":
         #     self.issues.append("date specimen collected cannot be blank when Case status is confirmed.")
         # else:
-        if self.lab_specimen_collection_date and date_specimen_collected and self.lab_specimen_collection_date != date_specimen_collected:
-            self.issues.append(f"Specimen collection dates {self.lab_specimen_collection_date} do not match dates on lab report {date_specimen_collected}.")
-        print(f"{self.lab_specimen_collection_date} date specimen collected: {date_specimen_collected}")
+        if self.CaseStatus in self.CPS and not self.date_specimen_collected:
+            self.issues.append(f"Date Specimen Collected is blank.")
+        print(f"date specimen collected: {self.date_specimen_collected}")
 
     def CheckSerology(self):
         """ If patient has reported positive serology the serology section needs to be filled out. """
@@ -551,38 +552,18 @@ class Anaplasma(NBSdriver):
         soup = BeautifulSoup(html, 'html.parser')
         self.Sero_table = pd.read_html(StringIO(str(soup)))[0]
         
-        if not self.Sero_table.empty and self.pcr_positive != "Yes":
-            row = 0
-            values = self.Sero_table["Serology Test Type"].dropna().values
-            if len(values) > 0:
-                if str(values[0]).endswith("IgM") and len(values) > 1:
-                    self.serology_test_type = values[1]
-                    row = 1
-                else:
-                    self.serology_test_type = values[0]
-            else:
-                self.serology_test_type = None
-
-            # first = self.Sero_table["Serology Test Type"].values[0]
-            # row = 1 if first and str(first).endswith("IgM") else 0
-            # self.serology_test_type = self.Sero_table["Serology Test Type"].values[row]
+        if len(self.Sero_table) > 0 and self.pcr_positive != "Yes":
+            first = self.Sero_table["Serology Test Type"].values[0]
+            row = 1 if first and str(first).endswith("IgM") else 0
+            self.serology_test_type = self.Sero_table["Serology Test Type"].values[row]
             if any(pd.isnull(self.Sero_table["Serology Collection Date"].values)):
                 self.issues.append('Patient has a reported serology test, but the collection date is not listed.')
                 print(f"serology_collection_date: {self.Sero_table["Serology Collection Date"].values}")
             else:
-                values = self.Sero_table["Serology Collection Date"].dropna().values
-                if len(values) > 0:
-                    if str(values[0]) == "No Date" and len(values) > 1:
-                        collectionDate = values[0]
-                    else:
-                        collectionDate = values[0]
-                else:
-                    collectionDate = None
-
-                # collectionDate = self.Sero_table["Serology Collection Date"].values[0] if self.Sero_table["Serology Collection Date"].values[0] != "No Date" else self.Sero_table["Serology Collection Date"].values[1]
+                collectionDate = self.Sero_table["Serology Collection Date"].values[0] if self.Sero_table["Serology Collection Date"].values[0] != "No Date" else self.Sero_table["Serology Collection Date"].values[1]
                 self.serology_collection_date = pd.to_datetime(collectionDate).date() or None
                 if self.collection_date and self.collection_date != "No Date" and self.collection_date != self.serology_collection_date:
-                    self.issues.append(f"lab collection date on supplemental info tab {self.collection_date} doesn't match serology collection date in repeating block {self.serology_collection_date}")
+                    self.issues.append(f"lab collection date {self.collection_date} doesn't match serology collection date{self.serology_collection_date}")
             if any(pd.isnull(self.Sero_table["Serology Test Type"].values)):
                 self.issues.append('Patient has a reported serology test, but the test type is not listed.')
                 print(f"serology_test_type: {self.Sero_table["Serology Test Type"].values}")
@@ -730,18 +711,18 @@ class Anaplasma(NBSdriver):
         self.IllnessOnset = self.ReadDate('//*[@id="INV137"]')
         self.IllnessEnd = self.ReadDate('//*[@id="INV138"]')
         print(f"Illness_length: {self.IllnessOnset}")
-        if self.IllnessOnset and self.IllnessEnd  and self.IllnessEnd < self.IllnessOnset:
-            self.issues.append('Illness end date cannot precede illness onset date.')
-            print(f"Illness_length: {self.IllnessOnset}")
-
-        if any(symptom in ['Yes', 'Unknown'] for symptom in self.symptoms_list) or self.ClinicCompIndicator in ['Unknown', 'Yes']:
-            if not self.IllnessOnset and self.CaseStatus != "Suspect" and self.ClinicCompIndicator != "Unknown":
-                self.issues.append('“Illness onset date” should not be blank.')
-                print(f"Illness_onset: {self.IllnessOnset}")
-        
-        # if not self.IllnessEnd and self.discharge_date:
-        #     self.issues.append("Discharge date present but no Illness end date.")
-
+        if not self.IllnessOnset:
+            if self.CaseStatus not in ["Suspect", "Probable"]:
+                self.issues.append("Illness Onset Date is blank.")
+        else:
+            if self.date_specimen_collected < self.IllnessOnset:
+                self.issues.append('Date Specimen Collected cannot be before Illness Onset Date.')
+                print(f"Illness_length: {self.IllnessOnset}")
+            
+            if self.IllnessEnd < self.IllnessOnset:
+                self.issues.append('Illness End Date cannot be before Illness Onset Date.')
+                print(f"Illness_end_date: {self.IllnessEnd}")
+                
     def CheckTravelInfo(self):
         travel_outside_us = self.ReadText('//*[@id="TRAVEL10"]')
         travel_outside_maine_but_usa = self.ReadText('//*[@id="ME10116"]')
@@ -755,244 +736,34 @@ class Anaplasma(NBSdriver):
             self.issues.append("Missing travel information.")
 
     def CheckSymptoms(self):
-        """ Check patient symptoms, Patient needs one if they have a DNA test or two if there have an antibody test. """
-        self.ClinicCompIndicator = self.ReadText('//*[@id="ME12174"]')
-        # if self.ClinicCompIndicator == 'Unknown':                                                                    #new code, this exits early without performing symptom checks if the indicator is unknown
-        #     return                                                                                                      #new code
+        """ Check patient symptoms, Patient needs one if they have a DNA test or two if there have an antibody test. """                                                                                                #new code
+        
         self.Fever = self.ReadText('//*[@id="ME14101"]') #,'Fever should not be left blank.'
-        #self.Rash = self.ReadText('//*[@id="ME23100"]')
+        if not self.Fever and self.CaseStatus in self.CorP:
+            self.issues.append("Fever is blank.")
         self.Headache = self.ReadText('//*[@id="ME23101"]') #,'Headache should not be left blank.'
+        if not self.Headache and self.CaseStatus in self.CorP:
+            self.issues.append("Headache is blank.")
         self.Myalgia = self.ReadText('//*[@id="ME23102"]') #,'Myalgia should not be left blank.'
+        if not self.Myalgia and self.CaseStatus in self.CorP:
+            self.issues.append("Myalgia is blank.")
         self.Anemia = self.ReadText('//*[@id="ME24118"]') #,'Anemia should not be left blank.'
-        self.Leukopenia = self.ReadText('//*[@id="ME24119"]') #,'Leukopenia should not be left blank.'
+        if not self.Anemia and self.CaseStatus in self.CorP:
+            self.issues.append("Anemia is blank.")
         self.Thrombocytopenia = self.ReadText('//*[@id="ME24120"]') #,'Thrombocytopenia should not be left blank.'
-        self.ElevatedHepaticTransaminase =  self.ReadText('//*[@id="ME24121"]') #,'Elevated Heaptic Transaminases should not be left blank.'
-        #self.Eschar = self.ReadText('//*[@id="ME24125"]') #,'Eschar should not be left blank.'
+        if not self.Thrombocytopenia and self.CaseStatus in self.CorP:
+            self.issues.append("Thrombocytopenia is blank.")
         self.Chills =  self.ReadText('//*[@id="ME24126"]') #,'Sweats/Chills should not be left blank.'
-        #self.Sweats = self.ReadText('//*[@id="ME24127"]')
-        self.FatigueMalaise = self.ReadText('//*[@id="ME18116"]') #,'Fatigue/Malaise should not be left blank.'
-        #self.ElevatedCRP = self.ReadText('//*[@id="NBS729"]') #,'CRP Interpretation should not be left blank.'
-        self.ElevatedCRP = self.ReadText('//*[@id="NBS729"]')
-        self.symptoms_list = [self.Fever, self.Chills, self.Headache, self.Myalgia, self.FatigueMalaise, self.Anemia, self.Leukopenia, self.Thrombocytopenia, self.ElevatedHepaticTransaminase, self.ElevatedCRP]
-        if self.ClinicCompIndicator == "Yes" and all(symptom != 'Yes' and symptom != "High" for symptom in self.symptoms_list):
-            self.issues.append("Clinically compatible illness is 'Yes' but no symptom is 'Yes'.")
-            print(f"symptoms__clinically_compatible: {self.ClinicCompIndicator}")
-        elif self.ClinicCompIndicator not in ["Yes", "No", "Unknown"] and all(symptom not in ['Yes', 'No', 'Uknown', 'High'] for symptom in self.symptoms_list):
-            self.issues.append("Clinically compatible illness is blank and all symptoms are blank")
-            print(f"symptoms__clinically_compatible: {self.ClinicCompIndicator}")
-            
-
-    def CheckCaseIGM(self):
-        """ Check if a patient's case status matches the case definition using test type and symptoms. """
-        self.CaseStatus = self.ReadText('//*[@id="INV163"]')
-        self.DNATest = self.ReadText('//*[@id="ME24175"]')
-        self.DNAResult = self.ReadText('//*[@id="ME24149"]')
-        self.AntibodyTest = self.ReadText('//*[@id="ME24115"]')
-        has_any_symptom = any(symptom in ['Yes', 'High'] for symptom in self.symptoms_list)
-        has_no_symptom = all(symptom not in ['Yes', 'High'] for symptom in self.symptoms_list)
+        if not self.Chills and self.CaseStatus in self.CorP:
+            self.issues.append("Chills is blank.")
+        self.Sweats = self.ReadText('//*[@id="ME24127"]')
+        if not self.Sweats and self.CaseStatus in self.CorP:
+            self.issues.append("Sweats is blank.")
+        self.Arthralgia = self.ReadText('//*[@id="ME23103"]') #,'Arthralgia should not be left blank.'
+        if not self.Arthralgia and self.CaseStatus in self.CorP:
+            self.issues.append("Arthralgia is blank.")
+        self.symptoms_list = [self.Fever, self.Sweats, self.Chills, self.Headache, self.Myalgia, self.FatigueMalaise, self.Anemia, self.Thrombocytopenia, self.Arthralgia]
         
-        titer_value = None
-        # if re.search(r"NaN", str(self.Sero_table["Titer Value"])):
-        #     print(f"titer: {str(self.Sero_table["Titer Value"])}")
-        #     titer_value = 0
-        try:
-            if re.search(r":", str(self.Sero_table["Titer Value"])):
-                print(f"titer1: {self.Sero_table["Titer Value"]} {self.Sero_table["Titer Value"].first()} {self.Sero_table["Titer Value"].values}")
-                val = str(self.Sero_table["Titer Value"]).split("    ")[1].split(":")
-                print(f"titer2: {val}")
-                titer_value = Fraction(int(val[0].replace("\nName", "")), int(val[1].replace("\nName", "")))
-                print(f"titer3: {titer_value}")
-            else:
-                titer_value = int(self.Sero_table["Titer Value"])
-        except Exception as e:
-            print(f"error titer_value: {str(self.Sero_table["Titer Value"])}: {str(e)}")
-            titer_value = None
-
-        if titer_value and float(titer_value) < 128:
-            if self.CaseStatus != "Not a Case":
-                self.issues.append("Does not meet the 'Not a Case' definition, but does not have Not a Case status.")
-                self.CorrectCaseStatus = "Not a Case"
-                print(f"case_status: {self.CaseStatus}")
-            
-        # elif self.CaseStatus == "Not a Case":
-        #     print(f"case_status: {self.CaseStatus}")
-        #     return
-        
-        elif has_any_symptom and self.CaseStatus != "Confirmed":
-            self.issues.append("Meets case definition for a confirmed case but is not a confirmed case.")
-            self.CorrectCaseStatus = "Confirmed"
-            print(f"case_status: {self.CaseStatus}")
-        
-        elif self.ClinicCompIndicator == 'unknown' and self.CaseStatus != 'probable':
-            self.issues.append("Clinically compatible is unknown but case status isn't probable")
-            self.CorrectCaseStatus = "Probable"
-            print(f"case_status: {self.CaseStatus}")
-
-        elif (self.Fever == "Yes" and self.Headache == "Yes") or self.Myalgia == "Yes" or self.FatigueMalaise == "Yes" or self.Anemia == "Yes" or self.Leukopenia == "Yes" or self.Thrombocytopenia == "Yes" or self.ElevatedHepaticTransaminase == "Yes" or self.ElevatedCRP == "Yes":
-            if self.CaseStatus != "Probable":
-                self.issues.append("Meets case definition for a probable case but is not a probable case.")
-                self.CorrectCaseStatus = "Probable"
-                print(f"case_status: {self.CaseStatus}")
-      
-        elif self.DNAResult == "Yes" and self.DNATest == "Yes":
-            if has_any_symptom and self.CaseStatus != "Confirmed":
-                self.issues.append("Meets case definition for a confirmed case but is not a confirmed case.")
-                self.CorrectCaseStatus = "Confirmed"
-                print(f"case_status: {self.CaseStatus}")
-
-            elif has_no_symptom and self.CaseStatus != "Not a Case" and self.CaseStatus != "Suspect":                                                                             #new code. changed from 'or' to 'and' statement
-                self.issues.append("Does not meet the case definition, but does not have Not a Case or Suspect status.")
-                self.CorrectCaseStatus = "Not a Case or  Suspect"
-                print(f"case_status: {self.CaseStatus}")
-                
-        elif any(self.Sero_table["Serology Positive?"] == "Yes"):
-            if has_no_symptom and self.CaseStatus != "Suspect":
-                    self.issues.append("Does not meet the case definition, but does not have Suspect status.")
-                    self.CorrectCaseStatus = "Suspect"
-                    print(f"case_status: {self.CaseStatus}")
-            elif self.Fever == "Yes":
-                #fever should be no when seorlogy is positive ?
-                if has_any_symptom and self.CaseStatus != "Probable":
-                        self.issues.append("Meets case definition for a probable case but is not a probable case.")
-                        self.CorrectCaseStatus = "Probable"
-                        print(f"case_status: {self.CaseStatus}")
-                elif has_no_symptom and self.CaseStatus != "Not a Case":
-                        self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                        self.CorrectCaseStatus = "Not a Case"
-                        print(f"case_status: {self.CaseStatus}")
-            else:
-                if self.Chills == "Yes":
-                    if has_any_symptom and self.CaseStatus != "Probable":
-                            self.issues.append("Meets case definition for a probable case but is not a probable case.")
-                            self.CorrectCaseStatus = "Probable"
-                            print(f"case_status: {self.CaseStatus}")
-                    else:
-                        if (self.Headache == "Yes" and self.Myalgia == "Yes") or (self.Headache == "Yes" and self.FatigueMalaise == "Yes") or (self.FatigueMalaise == "Yes" and self.Myalgia == "Yes"):
-                            if self.CaseStatus != "Probable":
-                                self.issues.append("Meets case definition for a probable case but is not a probable case.")
-                                self.CorrectCaseStatus = "Probable"
-                                print(f"case_status: {self.CaseStatus}")
-                        else:
-                            if self.CaseStatus != "Not a Case":
-                                self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                                self.CorrectCaseStatus = "Not a Case"
-                                print(f"case_status: {self.CaseStatus}")
-                elif self.Chills != "Yes":
-                    if self.CaseStatus != "Not a Case":
-                        self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                        self.CorrectCaseStatus = "Not a Case"
-                        print(f"case_status: {self.CaseStatus}")
-        else:
-            if self.CaseStatus != "Not a Case":
-                self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                self.CorrectCaseStatus = "Not a Case"
-
-    def CheckCaseIGG(self):
-        """ Check if a patient's case status matches the case definition using test type and symptoms. """
-        self.CaseStatus = self.ReadText('//*[@id="INV163"]')
-        self.DNATest = self.ReadText('//*[@id="ME24175"]')
-        self.DNAResult = self.ReadText('//*[@id="ME24149"]')
-        self.AntibodyTest = self.ReadText('//*[@id="ME24115"]')
-        has_any_symptom = any(symptom in ['Yes', 'High'] for symptom in self.symptoms_list)
-        has_no_symptom = all(symptom not in ['Yes', 'High'] for symptom in self.symptoms_list)
-        
-        titer_value = None
-        # if re.search(r"NaN", str(self.Sero_table["Titer Value"])):
-        #     print(f"titer: {str(self.Sero_table["Titer Value"])}")
-        #     titer_value = 0
-        # try:
-        #     if re.search(r":", str(self.Sero_table["Titer Value"])):
-        #         print(f"titer1: {self.Sero_table["Titer Value"]} {self.Sero_table["Titer Value"].first()} {self.Sero_table["Titer Value"].values}")
-        #         val = str(self.Sero_table["Titer Value"]).split("    ")[1].split(":")
-        #         print(f"titer2: {val}")
-        #         titer_value = Fraction(int(val[0].replace("\nName", "")), int(val[1].replace("\nName", "")))
-        #         print(f"titer3: {titer_value}")
-        #     else:
-        #         titer_value = int(self.Sero_table["Titer Value"])
-        # except Exception as e:
-        #     print(f"error titer_value: {str(self.Sero_table["Titer Value"])}: {str(e)}")
-        #     titer_value = None
-        # if re.search(r":", str(self.Sero_table["Titer Value"])):
-
-        if any(self.Sero_table["Titer Value"].apply(lambda x: float(x.split(":")[1]) if ":" in str(x) else float(str(x).replace("<", "").replace(">", ""))) < 128): 
-        # any(self.Sero_table["Titer Value"].astype(float) < 128):
-            if self.CaseStatus != "Not a Case":
-                self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                self.CorrectCaseStatus = "Not a Case"
-                print(f"case_status: {self.CaseStatus}")
-            
-        # elif self.CaseStatus == "Not a Case":
-        #     print(f"case_status: {self.CaseStatus}")
-        #     return
-        
-        elif has_any_symptom and self.CaseStatus != "Probable":
-            self.issues.append("Meets case definition for a probable case but is not a probable case.")
-            self.CorrectCaseStatus = "Probable"
-            print(f"case_status: {self.CaseStatus}")
-        
-        elif self.ClinicCompIndicator == 'unknown' and self.CaseStatus != 'probable':
-            self.issues.append("Clinically compatible is unknown but case status isn't probable")
-            self.CorrectCaseStatus = "Probable"
-            print(f"case_status: {self.CaseStatus}")
-
-        elif (self.Fever == "Yes" and self.Headache == "Yes") or self.Myalgia == "Yes" or self.FatigueMalaise == "Yes" or self.Anemia == "Yes" or self.Leukopenia == "Yes" or self.Thrombocytopenia == "Yes" or self.ElevatedHepaticTransaminase == "Yes" or self.ElevatedCRP == "Yes":
-            if self.CaseStatus != "Confirmed":
-                self.issues.append("Meets case definition for a confirmed case but is not a confirmed case.")
-                self.CorrectCaseStatus = "Confirmed"
-                print(f"case_status: {self.CaseStatus}")
-      
-        elif self.DNAResult == "Yes" and self.DNATest == "Yes":
-            if has_any_symptom and self.CaseStatus != "Probable":
-                self.issues.append("Meets case definition for a probable case but is not a probable case.")
-                self.CorrectCaseStatus = "Probable"
-                print(f"case_status: {self.CaseStatus}")
-
-            elif has_no_symptom and self.CaseStatus != "Not a Case" and self.CaseStatus != "Suspect":                                                                             #new code. changed from 'or' to 'and' statement
-                self.issues.append("Does not meet the case definition, but does not have Not a Case or Suspect status.")
-                self.CorrectCaseStatus = "Not a Case or  Suspect"
-                print(f"case_status: {self.CaseStatus}")
-                
-        elif any(self.Sero_table["Serology Positive?"] == "Yes"):
-            if has_no_symptom and self.CaseStatus != "Suspect":
-                    self.issues.append("Does not meet the case definition, but does not have Suspect status.")
-                    self.CorrectCaseStatus = "Suspect"
-                    print(f"case_status: {self.CaseStatus}")
-            elif self.Fever == "Yes":
-                if has_any_symptom and self.CaseStatus != "Confirmed":
-                        self.issues.append("Meets case definition for a confirmed case but is not a confirmed case.")
-                        self.CorrectCaseStatus = "Confirmed"
-                        print(f"case_status: {self.CaseStatus}")
-                elif has_no_symptom and self.CaseStatus != "Not a Case":
-                        self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                        self.CorrectCaseStatus = "Not a Case"
-                        print(f"case_status: {self.CaseStatus} ??")
-            else:
-                if self.Chills == "Yes":
-                    if has_any_symptom and self.CaseStatus != "Confirmed":
-                            self.issues.append("Meets case definition for a confirmed case but is not a confirmed case.")
-                            self.CorrectCaseStatus = "Confirmed"
-                            print(f"case_status: {self.CaseStatus}")
-                    else:
-                        if (self.Headache == "Yes" and self.Myalgia == "Yes") or (self.Headache == "Yes" and self.FatigueMalaise == "Yes") or (self.FatigueMalaise == "Yes" and self.Myalgia == "Yes"):
-                            if self.CaseStatus != "Confirmed":
-                                self.issues.append("Meets case definition for a confirmed case but is not a confirmed case.")
-                                self.CorrectCaseStatus = "Confirmed"
-                                print(f"case_status: {self.CaseStatus}")
-                        else:
-                            if self.CaseStatus != "Not a Case":
-                                self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                                self.CorrectCaseStatus = "Not a Case"
-                                print(f"case_status: {self.CaseStatus}")
-                elif self.Chills != "Yes":
-                    if self.CaseStatus != "Not a Case":
-                        self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                        self.CorrectCaseStatus = "Not a Case"
-                        print(f"case_status: {self.CaseStatus}")
-        else:
-            if self.CaseStatus != "Not a Case":
-                self.issues.append("Does not meet the case definition, but does not have Not a Case status.")
-                self.CorrectCaseStatus = "Not a Case"
-
     def CheckLTF(self):
         patient_ltf = self.ReadText('//*[@id="ME64100"]')
         if patient_ltf == "No" and any(info is None for info in self.travel_info ):
@@ -1005,42 +776,6 @@ class Anaplasma(NBSdriver):
 
         if patient_ltf == "Unknown" and self.CaseStatus in ["Confirmed", "Probable", "Not a Case", "Suspect"]:
             self.issues.append(f"LTF is unknown when case status is {self.CaseStatus}.")
-
-
-    # def RejectNotification(self, n=1):
-    #     """ Reject notification on first case in notification queue.
-    #     To be used when issues were encountered during review of the case."""
-    #     print("issues seen in reject:", self.issues)
-    #     reject_path = f'//*[@id="parent"]/tbody/tr[{n}]/td[2]/img'
-    #     main_window_handle = self.current_window_handle
-    #     WebDriverWait(self,self.wait_before_timeout).until(EC.element_to_be_clickable((By.XPATH, reject_path)))
-    #     self.find_element(By.XPATH,reject_path).click()
-    #     rejection_comment_window = None
-    #     for handle in self.window_handles:
-    #         if handle != main_window_handle:
-    #             rejection_comment_window = handle
-    #             break
-    #     if rejection_comment_window:
-    #         self.switch_to.window(rejection_comment_window)
-    #         timestamp = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-    #         self.issues.append('-nbsbot ' + timestamp)
-    #         self.find_element(By.XPATH,'//*[@id="rejectComments"]').send_keys(' '.join(self.issues))
-    #         self.find_element(By.XPATH,'/html/body/form/table/tbody/tr[3]/td/input[1]').click()
-    #         self.switch_to.window(main_window_handle)
-    #         self.num_rejected += 1
-            
-    # def ApproveNotification(self):
-    #     """ Approve notification on first case in notification queue. """
-    #     main_window_handle = self.current_window_handle
-    #     self.find_element(By.XPATH,'//*[@id="createNoti"]').click()
-    #     for handle in self.window_handles:
-    #         if handle != main_window_handle:
-    #             approval_comment_window = handle
-    #             break
-    #     self.switch_to.window(approval_comment_window)
-    #     self.find_element(By.XPATH,'//*[@id="botcreatenotId"]/input[1]').click()
-    #     self.switch_to.window(main_window_handle)
-    #     self.num_approved += 1
     
     def SendAnaplasmaEmail(self, body, inv_id, email=None):
         message = EmailMessage()
@@ -1071,3 +806,228 @@ class Anaplasma(NBSdriver):
         self.investigator_name = self.ReadText('//*[@id="headerCurrentInvestigator"]')
     #     self.epi = self.ReadText('(//tr[contains(@class, "cellColor")][2]/td[3]/span[2])')
         # '(/tr[contains(@class, "cellColor")][2]/td[2]/span[1])'
+
+    def CheckCaseStatus(self):
+        self.CaseStatus = self.ReadText('//*[@id="INV163"]')
+
+    def CheckLaboratoryName(self):
+        """Ensure that performing laboratory is not empty."""
+        lab_name = self.ReadText('//*[@id="ME6105"]')
+        if self.CaseStatus in self.CPS and not lab_name:
+            self.issues.append("Laboratory name is blank.")
+    
+    def CheckConfirmatoryLabWork(self):
+        self.confirm_lab_work = self.ReadText('//*[@id="ME24129"]')
+        if self.CaseStatus == "Confirmed" and not self.confirm_lab_work:
+            self.issues.append("Confirmatory Lab Work is blank.")
+        if self.CaseStatus == "Probable" and self.confirm_lab_work:
+            self.issues.append("Case Status should be Confirmed.")
+
+    def CheckIgGValues(self):
+        self.igG_value = self.ReadText('//*[@id="ME24130"]')
+
+        if self.CaseStatus == "Probable" and not self.igG_value:
+            self.issues.append("IgG Titer is blank.")
+        
+        if self.CaseStatus == "Probable" and self.igG_value == "No":
+            self.issues.append("IgG Titer should be Yes.")
+        
+    def CheckTiterValues(self):
+        self.titer_value = self.ReadText('//*[@id="ME23133"]')
+        self.babesia_species = self.ReadText('//*[@id="ME24134"]')
+
+        if self.igG_value == "Yes" and not self.titer_value:
+            self.issues.append("Titer Value is blank.")
+            return
+        
+        if self.babesia_species == "B.microti" and self.titer_value < 256:
+            self.issues.append("Titer Value too low. Case Status should be Not a Case.")
+        if self.babesia_species == "B.duncani" and self.titer_value < 512:
+            self.issues.append("Titer Value too low. Case Status should be Not a Case.")
+        if self.babesia_species == "B.divergens" and self.titer_value < 256:
+            self.issues.append("Titer Value too low. Case Status should be Not a Case.")
+    
+    def CheckIgGImmunoblot(self):
+        immunoBlot = self.ReadText('//*[@id="ME24133"]')
+        if immunoBlot:
+            self.issues.append(f"IgG immunoblot was marked as {immunoBlot}")
+
+    def CheckBabesiaSpecies(self):
+        
+        if not self.babesia_species:
+            self.issues.append(f"Babesia Species is blank.")
+
+        if self.babesia_species == "B.duncani" and not self.confirm_lab_work and self.CaseStatus != "Suspect":
+            self.issues.append("Case Status should be Suspect.")
+        if self.babesia_species == "B.divergens" and not self.confirm_lab_work and self.CaseStatus != "Suspect":
+            self.issues.append("Case Status should be Suspect.")
+
+    def CheckWasSymptomatic(self):
+        was_symptomatic = self.ReadText('//*[@id="ME12174"]')
+        if self.CaseStatus in ["Confirmed", "Probable"]:
+            if not was_symptomatic:
+                self.issues.append(f"Patient symptomatic is blank.")
+            
+            if was_symptomatic != "Yes":
+                self.issues.append(f"Patient symptomatic should be Yes.")
+            else:
+                if all([symp is None for symp in [self.Fever, self.Thrombocytopenia, self.Anemia, self.Myalgia, self.Arthralgia]]):
+                    self.issues.append("Patient symptomatic marked as Yes, but no symptoms selected.")
+
+    
+    def CheckPatientTreated(self):
+        """ If patient has reported positive serology the serology section needs to be filled out. """
+        #Serology info is only displayed if you click on the button next to the lab report. There could be more than one.
+        html = self.find_element(By.XPATH, '//*[@id="ME24171"]/tbody/tr[1]/td/table/tbody/tr/td[2]/table').get_attribute('outerHTML')
+        soup = BeautifulSoup(html, 'html.parser')
+        self.PT_table = pd.read_html(StringIO(str(soup)))[0]
+        
+        if len(self.PT_table) > 0:
+            patient_treated = self.PT_table['Patient Treated'].values[0]
+            treatment_name = self.PT_table['Treatment Name'].values[0]
+            treatment_start_date = pd.to_datetime(self.PT_table['Treatment Start Date'].values[0]).date() or None
+            if not patient_treated:
+                if self.CaseStatus in self.CPS:
+                    self.issues.append('Patient Treated is blank.')
+                    print(f"patient_treated: {patient_treated}")
+
+            else:
+                if patient_treated == "Yes" and not treatment_name:
+                    self.issues.append('Treatment Name is blank.')
+                    print(f"treatment_name: {treatment_name}")
+                
+                if patient_treated == "Yes" and not treatment_start_date:
+                    self.issues.append('Treatment Start Date is blank.')
+                    print(f"treatment_start_date: {treatment_start_date}")
+    
+    def CheckUnderlyingConditions(self):
+        immuno_compromised = self.ReadText('//*[@id="ME3129"]')
+        immuno_condition = self.ReadText('//*[@id="ME17101"]')
+        other_immuno_condition = self.ReadText('//*[@id="ME15113"]')
+        splenectomy_date = self.ReadText('//*[@id="ME24132"]')
+        asplenic = self.ReadText('//*[@id="ME24131"]')
+        co_infection = self.ReadText('//*[@id="ME11173"]')
+        co_infection_condition = self.ReadText('//*[@id="ME1114"]')
+
+        if not immuno_compromised:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Immunocompromised is blank.")
+        else:
+            if not immuno_condition:
+                if immuno_compromised == "Yes":
+                    self.issues.append("Immunocompromised Condition is blank.")
+            else:
+                if immuno_compromised in ["organ transplant (specify)", "other prior illness (specify)"] and not other_immuno_condition:
+                    self.issues.append("Other Immunocompromised Condition is blank.")
+
+        if not asplenic:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Asplenic is blank.")
+        else:
+            if asplenic == "yes" and not splenectomy_date:
+                self.issues.append("Splenectomy Date is blank.")
+        
+        if not co_infection:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Co-infection is blank.")
+        else:
+            if co_infection == "yes" and not co_infection_condition:
+                self.issues.append("Co-infection Condition is blank.")
+
+    def CheckBloodDonation(self):
+        donated_blood_12_months = self.ReadText('//*[@id="ME24136"]')
+        date_of_donation = self.ReadDate('//*[@id="ME17101"]')
+        donation_org = self.ReadText('//*[@id="ME15113"]')
+        received_last_12_months = self.ReadText('//*[@id="ARB106"]')
+        transfusion_date = self.ReadDate('//*[@id="ME24131"]')
+        transfusion_org = self.ReadText('//*[@id="ME11173"]')
+        transfusion_product = self.ReadText('//*[@id="ME1114"]')
+
+        if self.reporting_organization in ["ARC", "American Red Cross"] and donated_blood_12_months !="Yes":
+            self.issues.append("Donated blood in last 12 months should be Yes.")
+
+        if not donated_blood_12_months:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Donated blood in last 12 months is blank.")
+        else:
+            if donated_blood_12_months == "yes" and not date_of_donation:
+                self.issues.append("Date of Donation is blank.")
+            if donated_blood_12_months == "yes" and not donation_org:
+                self.issues.append("Blood Donation Organization is blank.")
+
+        if not received_last_12_months:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Received blood transfussion in last 12 months is blank.")
+        else:
+            if received_last_12_months == "yes" and not transfusion_date:
+                self.issues.append("Blood Transfussion Date is blank.")
+            if received_last_12_months == "yes" and not transfusion_org:
+                self.issues.append("Blood Transfusion Organization is blank.")
+            if received_last_12_months == "yes" and not transfusion_product:
+                self.issues.append("Blood Transfussion Product Received is blank.")
+
+
+    def CheckOrganDonation(self):
+        donated_organ_12_months = self.ReadText('//*[@id="ARB107"]')
+        date_of_donation = self.ReadDate('//*[@id="ARB104"]')
+        donation_org = self.ReadText('//*[@id="ME24137L"]')
+        organ_donated = self.ReadText('//*[@id="ME1114"]')
+
+        received_last_12_months = self.ReadText('//*[@id="INV311"]')
+        transplant_date = self.ReadDate('//*[@id="ME24131"]')
+        transplant_org = self.ReadText('//*[@id="ME11173"]')
+        organ_received = self.ReadText('//*[@id="ME1114"]')
+
+        if not donated_organ_12_months:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Donated an organ in last 12 months is blank.")
+        else:
+            if donated_organ_12_months == "yes" and not date_of_donation:
+                self.issues.append("Organ Donation Date is blank.")
+            if donated_organ_12_months == "yes" and not donation_org:
+                self.issues.append("Organ Donation Organization is blank.")
+            if donated_organ_12_months == "yes" and not organ_donated:
+                self.issues.append("Organ Donated is blank.")
+
+        if not received_last_12_months:
+            if self.CaseStatus in self.CPS:
+                self.issues.append("Received organ in last 12 months is blank.")
+        else:
+            if received_last_12_months == "yes" and not transplant_date:
+                self.issues.append("Date of Transplant is blank.")
+            if received_last_12_months == "yes" and not transplant_org:
+                self.issues.append("Organ Transplant Organization is blank.")
+            if received_last_12_months == "yes" and not organ_received:
+                self.issues.append("Organ Received is blank.")
+
+
+    def CheckConfirmationMethodBabesia(self):
+        confirmation_method = self.CheckForValue('//*[@id="INV161"]', 'Confirmation Method is blank.')
+        if self.CaseStatus == "Confirmed" and confirmation_method != "Laboratory Confirmed":
+            self.issues.append("")
+        if self.CaseStatus == "Probable" and confirmation_method != "Laboratory Report":
+            self.issues.append("")
+
+    def VerifyCaseStatus(self):
+        if not self.CaseStatus:
+            self.issues.append("Case Status is blank.")
+
+        if self.CaseStatus == "Unknown":
+            self.issues.append("Case Status cannot be Unknown.")
+
+        if self.state != "Maine" or self.jurisdiction == "Out of State" and self.CaseStatus != "Not a Case":
+            self.issues.append("Case Status should be Not a Case for out of state residents.")
+        
+        if self.CaseStatus == "Confirmed" and all(symptom not in ["Yes", "No", "Unknown"] for symptom in self.symptoms_list):
+            self.issues.append("Case Status is listed as Confirmed but symptoms are blank.")
+        
+        if self.CaseStatus == "Confirmed" and self.confirm_lab_work and any(symptom == "Yes" for symptom in self.symptoms_list):
+            self.issues.append("Case Status is listed as Confirmed but either Confirmatory Lab Work or Symptoms are missing.")
+        
+        if self.CaseStatus == "Probable" and self.confirm_lab_work and any(symptom == "Yes" for symptom in self.symptoms_list):
+            self.issues.append("Case Status should be Confirmed.")
+        
+        # if self.CaseStatus == "Probable" and self.igG_value == "Yes" and self.titer_value >= 256 and any(symptom == "Yes" for symptom in [self.Fever, self.Anemia, self.Thrombocytopenia]):
+        #     self.issues.append("Case Status should be Confirmed.")
+        # if self.CaseStatus == "Suspect" and self.igG_value == "Yes" and self.titer_value >= 512 and self.babesia_species in ["B.divergens", "B.duncani"]:
+        #     self.issues.append("Case Status should be Confirmed.")

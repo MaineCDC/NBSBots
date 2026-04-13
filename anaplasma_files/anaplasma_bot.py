@@ -121,54 +121,19 @@ def start_anaplasma(username, passcode):
     page = 1
     loop = tqdm(generator())
     
-    def save_and_print_results(file_suffix=""):
-        """Helper function to save results to Excel - appends if file exists"""
-        if len(reviewed_ids) > 0:
-            print(f"Saving results: {reviewed_ids}, {what_do}, {reason}, {epi}")
-            new_data = pd.DataFrame(
-                {
-                'Inv ID': reviewed_ids,
-                'Action': what_do,
-                'Reason': reason,
-                'Epi': epi
-                })
-            
-            filename = f"saved/anaplasma/Anaplasma_bot_activity_{file_suffix}_{datetime.now().date().strftime('%m_%d_%Y')}.xlsx"
-            
-            # Check if file already exists
-            if os.path.exists(filename):
-                try:
-                    # Read existing data
-                    existing_data = pd.read_excel(filename, index_col=0)
-                    # Append new data to existing data
-                    combined_data = pd.concat([existing_data, new_data], ignore_index=True)
-                    
-                    # Remove duplicates based on 'Inv ID' to avoid processing same case multiple times
-                    # Keep the last occurrence (most recent) in case of duplicates
-                    combined_data = combined_data.drop_duplicates(subset=['Inv ID'], keep='last')
-                    
-                    print(f"Appending {len(new_data)} new records to existing file with {len(existing_data)} records")
-                    print(f"After removing duplicates: {len(combined_data)} total records")
-                except Exception as e:
-                    print(f"Error reading existing file, creating new one: {str(e)}")
-                    combined_data = new_data
-            else:
-                combined_data = new_data
-                print(f"Creating new file with {len(new_data)} records")
-            
-            # Save the combined data
-            combined_data.to_excel(filename)
-            print(f"Results saved to {filename} (Total records: {len(combined_data)})")
-            return True
-        return False
-    
     for _ in loop:
         print(f"current limit: {limit}", "starting_iteration:", loop.n)
         
         #check if the bot has gone through the set limit of reviews
         if loop.n !=0 and loop.n % printAt == 0: 
             print(f"printing set {printNo}", reviewed_ids, reason)
-            save_and_print_results(f"{printNo}r")
+            NBS.save_and_print_results("Anaplasma",
+                {
+                    'Inv ID': reviewed_ids,
+                    'Action': what_do,
+                    'Reason': reason,
+                    'Epi': epi
+                }, f"{printNo}r")
             printNo += 1
             reviewed_ids = []
             what_do = []
@@ -184,7 +149,13 @@ def start_anaplasma(username, passcode):
             
             # Save any remaining results
             if len(reviewed_ids) > 0:
-                save_and_print_results("final")
+                NBS.save_and_print_results("Anaplasma", 
+                    {
+                        'Inv ID': reviewed_ids,
+                        'Action': what_do,
+                        'Reason': reason,
+                        'Epi': epi
+                    }, "final")
             else:
                 print("No cases processed in final batch.")
             break
@@ -308,7 +279,13 @@ def start_anaplasma(username, passcode):
     
     # Final save of any remaining results
     if len(reviewed_ids) > 0:
-        save_and_print_results("final")
+        NBS.save_and_print_results("Anaplasma", 
+            {
+                'Inv ID': reviewed_ids,
+                'Action': what_do,
+                'Reason': reason,
+                'Epi': epi
+            }, "final")
     else:
         print("No final results to save.")
     

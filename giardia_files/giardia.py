@@ -38,14 +38,14 @@ class Giardia(NBSdriver):
         self.Reset()
         self.initial_name = self.patient_name
         
-        self.CheckFirstName
-        self.CheckLastName
-        self.CheckDOB
-        self.CheckAge
-        self.CheckAgeType
-        self.CheckCurrentSex
-        self.CheckMortality
-        self.CheckStAddr
+        self.CheckFirstName()
+        self.CheckLastName()
+        self.CheckDOB()
+        self.CheckAge()
+        self.CheckAgeType()
+        self.CheckCurrentSex()
+        self.CheckMortality()
+        self.CheckStAddr()
         # street_address = self.ReadText( '//*[@id="DEM159"]') #, 'Street address is blank.'
         if any(x in self.street_address for x in ["HOMELESS", "NO ADDRESS", "NO FIXED ADDRESS", "UNSHELTERED"]):
             pass

@@ -23,13 +23,7 @@ from dateutil.relativedelta import relativedelta
 from bs4 import BeautifulSoup
 
 import pandas as pd
-import sys
-import re
-import time
-import json
-import configparser
-import smtplib
-import getpass
+import os, sys, re, time, json, configparser, smtplib, getpass
 
 from email.message import EmailMessage
 from pathlib import Path
@@ -54,6 +48,7 @@ class NBSdriver(webdriver.Chrome):
             self.site = "https://nbs.iphis.maine.gov/"
         else:
             self.site = "https://nbstest.state.me.us/"
+        # "https://auth.inductivehealth.com/auth/realms/inductivehealth/protocol/openid-connect/auth?response_type=code&client_id=me_nbs_test&redirect_uri=https%3A%2F%2Fmenbstest.inductivehealth.com%2Fnbs%2FHomePage.do?method%3DloadHomePage&state=16d4d198-575e-4a0a-bf2a-b8de634605bb&login=true&scope=openid"
 
         # Core flags / queues
         self.not_a_case_log: list[str] = []
@@ -225,6 +220,23 @@ class NBSdriver(webdriver.Chrome):
         self.find_element(
             By.XPATH, '//*[@id="bea-portal-window-content-4"]/tr/td/h2[4]/font/a'
         ).click()
+    
+    def log_in_v2(self):
+        """Log in to MENBS."""
+        self.get(self.site)
+        print("passed")
+        partial_link = "Maine NBS Only, ESSENCE use above sign-in"
+        # WebDriverWait(self, self.wait_before_timeout).until(
+        #     EC.element_to_be_clickable((By.ID, "social-mesaml"))
+        # )
+        # self.find_element(By.ID, "social-mesaml").click()
+        WebDriverWait(self, self.wait_before_timeout).until(
+            EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, partial_link))
+        )
+        print('found')
+        self.find_element(By.PARTIAL_LINK_TEXT, partial_link).click()
+        print(self.page_source)
+        time.sleep(3)
 
     def go_to_tab_one(self):
         path = '//*[@id="tabs0head0"]'
@@ -1046,11 +1058,14 @@ class NBSdriver(webdriver.Chrome):
         if not case_id:
             self.issues.append("State Case ID is blank.")
 
-    def CheckSharedIndicator(self):
-        """Ensure shared indicator is yes."""
-        shared_indicator = self.ReadText('//*[@id="NBS_UI_19"]/tbody/tr[5]/td[2]')
-        if shared_indicator != "Yes":
-            self.issues.append("Shared indicator not selected.")
+    def CheckSharedIndicator(self, blank=False):
+        """Ensure shared indicator is yes or not blank."""
+        if blank:
+            shared_indicator = self.CheckForValue('//*[@id="NBS_UI_19"]/tbody/tr[5]/td[2]', 'Shared Indicator is blank')    
+        else:
+            shared_indicator = self.ReadText('//*[@id="NBS_UI_19"]/tbody/tr[5]/td[2]')
+            if shared_indicator != "Yes":
+                self.issues.append("Shared indicator not selected.")
 
     ################### Reporting Organization Check Methods #######################
 
@@ -1091,6 +1106,28 @@ class NBSdriver(webdriver.Chrome):
         transmission_method = self.ReadText('//*[@id="INV157"]')
         if transmission_method not in ("", "Airborne"):
             self.issues.append("Transmission mode should be blank or airborne.")
+
+    def CheckConfirmationMethodAna(self):
+        """Confirmation Method must be blank or consistent with correct case status."""
+        self.confirmation_method = self.ReadText('//*[@id="INV161"]')
+        # if self.confirmation_method:
+        #     if (self.status == "C") and ("Laboratory confirmed" not in self.confirmation_method):
+        #         self.issues.append(
+        #             'Since correct case status is confirmed confirmation method should include "Laboratory confirmed".'
+        #         )
+        #     elif (self.status == "P") and ("Laboratory report" not in self.confirmation_method):
+        #         self.issues.append(
+        #             'Since correct case status is probable confirmation method should include "Laboratory report".'
+        #         )
+        #     elif (self.status == "S") and (
+        #         "Clinical diagnosis (non-laboratory confirmed)" not in self.confirmation_method
+        #     ):
+        #         self.issues.append(
+        #             'Since correct case status is suspect confirmation method should include "Clinical diagnosis (non-laboratory confirmed)".'
+        #         )
+        # else:
+        #     self.issues.append("Confirmation method is missing")
+        #     print(f"confirmation_method: {self.confirmation_method}")
 
     def CheckConfirmationMethod(self):
         """Confirmation Method must be blank or consistent with correct case status."""
@@ -1551,6 +1588,80 @@ class NBSdriver(webdriver.Chrome):
                     f"Made {self.num_attempts} unsuccessful attempts to load Home page. A persistent issue with NBS was encountered."
                 )
             )
+    
+    def save_and_print_results(self, 
+            bot: str,
+            data_frame: dict,
+            file_suffix=""
+        ):
+        """Helper function to save results to Excel - appends if file exists"""
+        try: 
+            if len(data_frame['Inv ID']) > 0:
+                print(f"Saving results: {', '.join([str(v) for k, v in data_frame.items()])}")
+                new_data = pd.DataFrame(
+                data_frame)
+                
+                filename = f"saved/{bot}/{bot}_bot_activity_{file_suffix}_{datetime.now().date().strftime('%m_%d_%Y')}.xlsx"
+                
+                # Check if file already exists
+                if os.path.exists(filename):
+                    try:
+                        # Read existing data
+                        existing_data = pd.read_excel(filename, index_col=0)
+                        # Append new data to existing data
+                        combined_data = pd.concat([existing_data, new_data], ignore_index=True)
+                        
+                        # Remove duplicates based on 'Inv ID' to avoid processing same case multiple times
+                        # Keep the last occurrence (most recent) in case of duplicates
+                        combined_data = combined_data.drop_duplicates(subset=['Inv ID'], keep='last')
+                        
+                        print(f"Appending {len(new_data)} new records to existing file with {len(existing_data)} records")
+                        print(f"After removing duplicates: {len(combined_data)} total records")
+                    except Exception as e:
+                        print(f"Error reading existing file, creating new one: {str(e)}")
+                        combined_data = new_data
+                else:
+                    combined_data = new_data
+                    print(f"Creating new file with {len(new_data)} records")
+                
+                # Save the combined data
+                combined_data.to_excel(filename)
+                print(f"Results saved to {filename} (Total records: {len(combined_data)})")
+                return True
+            return False
+        except Exception as e:
+            print(f"an error occured: {str(e)}")
+            return False
+    
+    def disease_case_count(self, bot, default_count):
+        try:
+            # Get the case count element using the provided XPath
+            case_count_element = self.find_element(By.XPATH, '//*[@id="bd"]/table[2]/tbody/tr/td/span[2]/b')
+            case_count_text = case_count_element.text.strip()
+            print(f"Case count text found: '{case_count_text}'")
+            
+            # Parse the count - Format: "Results 1 to 1 of 1" or "Results 1 to 16 of 45"
+            match = re.search(r'Results\s+\d+\s+to\s+\d+\s+of\s+(\d+)', case_count_text)
+            if match:
+                disease_case_count = int(match.group(1))
+                print(f"Total {bot} cases in queue: {disease_case_count}")
+            else:
+                raise ValueError(f"Could not parse count from: '{case_count_text}'")
+            
+        except Exception as e:
+            print(f"Error getting case count: {e}")
+            # Fallback: count table rows
+            try:
+                case_rows = self.find_elements(By.XPATH, '/html/body/div[2]/form/div/table[2]/tbody/tr/td/table/tbody/tr')
+                disease_case_count = len(case_rows)
+                print(f"Fallback: Found {disease_case_count} case rows in table")
+            except:
+                # Ultimate fallback
+                disease_case_count = default_count
+                print(f"Could not determine case count, using default value of {default_count}")
+        finally:
+            return disease_case_count
+
 
     ################# Notification & Comments ############
 
