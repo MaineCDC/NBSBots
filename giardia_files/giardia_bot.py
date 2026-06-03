@@ -18,6 +18,7 @@ import pandas as pd
 from datetime import datetime
 import smtplib, ssl
 from email.message import EmailMessage
+from threading import Event
 import re
 
 from dotenv import load_dotenv
@@ -36,7 +37,7 @@ is_in_production = os.getenv('ENVIRONMENT', 'production') != 'development'
 
 # ['CAS11048177ME01', 'CAS11048461ME01'] ['acute, not convalescent. Confirmation method is missing', 'acute, not convalescent.']
 @error_handle
-def start_giardia(username, passcode):
+def start_giardia(username, passcode, login_complete: Event=None, is_logged_in=False):
     
     from .giardia import Giardia
     
@@ -46,7 +47,8 @@ def start_giardia(username, passcode):
     
     NBS = Giardia(production=True)
     NBS.set_credentials(username, passcode)
-    NBS.log_in()
+    NBS.log_in(is_logged_in)
+    login_complete.set()
     # NBS.log_in_v2()
     NBS.GoToApprovalQueue()
 

@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -n '18900,18915p' logfile.txt)",
+      "Bash(sed -n '44055,44070p' logfile.txt)",
+      "Bash(sed -n '53210,53225p' logfile.txt)",
+      "Bash(awk '$1>=4{print}')",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('anaplasma_files/anaplasma_bot.py'\\).read\\(\\)\\); print\\('SYNTAX OK'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import anaplasma_files.anaplasma_bot as m; print\\('IMPORT OK; log_skip present:', hasattr\\(m,'log_skip'\\)\\)\")",
+      "Bash(python -c \"import anaplasma_files.anaplasma_bot as m; print\\('IMPORT OK'\\)\")",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('base.py'\\).read\\(\\)\\); print\\('base.py SYNTAX OK'\\)\")",
+      "Bash(python -c \"import ast,io; ast.parse\\(io.open\\('base.py',encoding='utf-8'\\).read\\(\\)\\); print\\('base.py SYNTAX OK'\\)\")",
+      "Bash(python -X utf8 -c \"import py_compile; py_compile.compile\\('base.py', doraise=True\\); print\\('COMPILE OK'\\)\")",
+      "Bash(python -c \"from selenium.webdriver.support import expected_conditions as EC; print\\('frame helper present:', hasattr\\(EC,'frame_to_be_available_and_switch_to_it'\\)\\); import selenium; print\\('selenium', selenium.__version__\\)\")",
+      "Bash(grep -a -v \"^$\")",
+      "Bash(grep -a -n \"$\\(date +%m_%d_%Y\\)\\\\|anaplasma\")",
+      "Bash(sed -n '12684,12740p')",
+      "Bash(sed -n '66,80p' anaplasma_files/anaplasma_bot.py)",
+      "Bash(./env/Scripts/python.exe inspect_login.py)",
+      "Bash(python -X utf8 -c \"import py_compile; py_compile.compile\\('base.py', doraise=True\\); print\\('base.py COMPILE OK'\\)\")",
+      "Bash(./env/Scripts/python.exe login_probe.py)",
+      "Bash(awk '/07:56:27/{f=1} f{print} /TimeoutException|ApprovalQueue|GoToApprovalQueue|login/{if\\(f\\)c++} f&&/^$/{n++; if\\(n>2\\)exit}')",
+      "Bash(powershell -NoProfile -Command 'Get-CimInstance Win32_Process -Filter \"name='\\\\''chrome.exe'\\\\''\" | Where-Object { $_.CommandLine -like '\\\\''*chrome-bot-profile*'\\\\'' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }; \\(Get-CimInstance Win32_Process -Filter \"name='\\\\''chrome.exe'\\\\''\" | Where-Object { $_.CommandLine -like '\\\\''*chrome-bot-profile*'\\\\'' }\\).Count')",
+      "Bash(powershell -NoProfile -Command '\\(Get-CimInstance Win32_Process -Filter \"name='\\\\''chrome.exe'\\\\''\" | Where-Object { $_.CommandLine -like '\\\\''*chrome-bot-profile*'\\\\'' }\\).Count')",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('anaplasma_files/anaplasma_bot.py'\\).read\\(\\)\\); print\\('anaplasma_bot.py SYNTAX OK'\\)\")"
+    ]
+  }
+}

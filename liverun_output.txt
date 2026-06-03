@@ -1,0 +1,163 @@
+waking bots...
+**select bots**
+1. athena
+2. audrey
+3. anaplasma
+4. giardiasis
+5. strep
+Enter selections as space-separated numbers..: selected: anaplasma
+Enter your SOM username ("first_name.last_name"):Enter your RSA passcode:Launching: C:\Program Files\Google\Chrome\Application\chrome.exe
+starting...: 0
+entered?
+current-handle-title:  New Tab
+Handle ID: D104190AFE82649422614CDDBA050128 | Title: New Tab | URL: chrome://new-tab-page/
+handles: ['D104190AFE82649422614CDDBA050128']
+logging in...
+Login did not reach the portal (attempt 1/3); reloading login page and retrying...
+Sorting queue to filter for Anaplasma cases...
+sleep count 0
+Counting Anaplasma cases in queue...
+Error getting case count: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="bd"]/table[2]/tbody/tr/td/span[1]/b"}
+  (Session info: chrome=148.0.7778.179); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1ea0]
+	chromedriver!(No symbol) [0xcfb28a]
+	chromedriver!(No symbol) [0xcfb52b]
+	chromedriver!(No symbol) [0xd3d052]
+	chromedriver!(No symbol) [0xd1d7c4]
+	chromedriver!(No symbol) [0xd3a936]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+Fallback: Found 5 case rows in table
+NO_CASE_LIMIT set: ignoring iteration cap; will process the whole queue.
+Set limit to None and printAt to 5
+0it [00:00, ?it/s]1it [00:49, 49.15s/it]2it [01:19, 38.22s/it]3it [01:49, 34.37s/it]4it [02:18, 32.40s/it]5it [02:47, 31.01s/it]current limit: None starting_iteration: 0
+sleep count 0
+sorting queue...: None current_iteration: 0
+checked first case current_iteration: 0
+navigated to 1 case in queue current_iteration: 0
+present, CAS11052312ME01 current_iteration: 0
+lab specimen collection date 2026-05-24 report date 2026-05-24
+jurisdiction: Cumberland
+Other diagnostic test: Yes
+2026-05-24 date specimen collected: 2026-05-23
+death: No
+ffchange:  No
+Illness_length: 2026-05-09
+cstat Confirmed
+running standard checks current_iteration: 0
+returning to approval queue.. ending_iteration: 0
+sleep count 0
+sorting queue to check case at the top... current_iteration: 0
+check for matching first case current_iteration: 0
+issues seen on append: ['Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23.'] current_iteration: 0
+issues seen in reject: ['Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23.']
+rejection windows:  ['D104190AFE82649422614CDDBA050128', '2E64C233FC2ED0F720127C5A8AD8C199'] current_window:  D104190AFE82649422614CDDBA050128
+Approval Queue for Initial Notifications
+Reject Message
+current iteration was rejected current_iteration: 0
+returning approval queue....: None ending_iteration: 0
+current limit: None starting_iteration: 1
+sleep count 0
+sorting queue...: None current_iteration: 1
+checked first case current_iteration: 1
+navigated to 1 case in queue current_iteration: 1
+present, CAS11052369ME01 current_iteration: 1
+initial 128.0
+lab specimen collection date 2026-05-23 report date 2026-05-26
+jurisdiction: Oxford
+Other diagnostic test: Yes
+2026-05-23 date specimen collected: 2026-05-23
+death: No
+ffchange:  No
+Illness_length: 2026-05-20
+cstat Confirmed
+running standard checks current_iteration: 1
+NBS Page Management
+NBS: Create Notification
+sent email CAS11052369ME01
+current run approved current_iteration: 1
+returning to approval queue.. ending_iteration: 1
+current limit: None starting_iteration: 2
+sleep count 0
+sorting queue...: None current_iteration: 2
+checked first case current_iteration: 2
+navigated to 1 case in queue current_iteration: 2
+present, CAS11052648ME01 current_iteration: 2
+lab specimen collection date 2026-06-01 report date 2026-06-02
+jurisdiction: Cumberland
+Other diagnostic test: Yes
+2026-06-01 date specimen collected: 2026-06-01
+death: No
+ffchange:  No
+Illness_length: 2026-05-29
+cstat Confirmed
+running standard checks current_iteration: 2
+NBS Page Management
+NBS: Create Notification
+sent email CAS11052648ME01
+current run approved current_iteration: 2
+returning to approval queue.. ending_iteration: 2
+current limit: None starting_iteration: 3
+sleep count 0
+sorting queue...: None current_iteration: 3
+checked first case current_iteration: 3
+navigated to 1 case in queue current_iteration: 3
+present, CAS11052652ME01 current_iteration: 3
+lab specimen collection date 2026-06-01 report date 2026-06-02
+jurisdiction: Lincoln
+Other diagnostic test: Yes
+2026-06-01 date specimen collected: 2026-06-01
+death: No
+ffchange:  No
+Illness_length: 2026-05-29
+cstat Confirmed
+running standard checks current_iteration: 3
+NBS Page Management
+NBS: Create Notification
+sent email CAS11052652ME01
+current run approved current_iteration: 3
+returning to approval queue.. ending_iteration: 3
+current limit: None starting_iteration: 4
+sleep count 0
+sorting queue...: None current_iteration: 4
+checked first case current_iteration: 4
+navigated to 1 case in queue current_iteration: 4
+present, CAS11052663ME01 current_iteration: 4
+lab specimen collection date 2026-05-28 report date 2026-06-02
+jurisdiction: Kennebec
+Other diagnostic test: Yes
+2026-05-28 date specimen collected: 2026-05-28
+death: No
+ffchange:  No
+Illness_length: 2026-05-27
+cstat Confirmed
+running standard checks current_iteration: 4
+NBS Page Management
+NBS: Create Notification
+sent email CAS11052663ME01
+current run approved current_iteration: 4
+returning to approval queue.. ending_iteration: 4
+current limit: None starting_iteration: 5
+printing set 1 ['CAS11052312ME01', 'CAS11052369ME01', 'CAS11052648ME01', 'CAS11052652ME01', 'CAS11052663ME01'] ['Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23. -nbsbot 06/03/2026, 08:15:52', 'Approved', 'Approved', 'Approved', 'Approved']
+Saving results: ['CAS11052312ME01', 'CAS11052369ME01', 'CAS11052648ME01', 'CAS11052652ME01', 'CAS11052663ME01'], ['Reject Notification', 'Approve Notification', 'Approve Notification', 'Approve Notification', 'Approve Notification'], ['Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23. -nbsbot 06/03/2026, 08:15:52', 'Approved', 'Approved', 'Approved', 'Approved'], ['Tiffany Giasson', 'Tiffany Giasson', 'Jill Lalime', 'Jill Lalime', 'Tiffany Giasson']
+Appending 5 new records to existing file with 5 records
+After removing duplicates: 5 total records
+Results saved to saved/Anaplasma/Anaplasma_bot_activity_1r_06_03_2026.xlsx (Total records: 5)
+sleeping for 2s after run 1
+Sleeping for: 55:00Sleeping for: 54:59Sleeping for: 54:58Sleeping for: 54:57Sleeping for: 54:56Sleeping for: 54:55Sleeping for: 54:54Sleeping for: 54:53Sleeping for: 54:52Sleeping for: 54:51Sleeping for: 54:50Sleeping for: 54:49Sleeping for: 54:48Sleeping for: 54:47Sleeping for: 54:46Sleeping for: 54:45Sleeping for: 54:44Sleeping for: 54:43Sleeping for: 54:42Sleeping for: 54:41Sleeping for: 54:40Sleeping for: 54:39Sleeping for: 54:38Sleeping for: 54:37Sleeping for: 54:36Sleeping for: 54:35Sleeping for: 54:34Sleeping for: 54:33Sleeping for: 54:32Sleeping for: 54:31Sleeping for: 54:30Sleeping for: 54:29Sleeping for: 54:28Sleeping for: 54:27Sleeping for: 54:26Sleeping for: 54:25Sleeping for: 54:24Sleeping for: 54:23Sleeping for: 54:22Sleeping for: 54:21Sleeping for: 54:20Sleeping for: 54:19Sleeping for: 54:18Sleeping for: 54:17Sleeping for: 54:16Sleeping for: 54:15Sleeping for: 54:14Sleeping for: 54:13Sleeping for: 54:12Sleeping for: 54:11Sleeping for: 54:10Sleeping for: 54:09Sleeping for: 54:08Sleeping for: 54:07Sleeping for: 54:06Sleeping for: 54:05Sleeping for: 54:04Sleeping for: 54:03Sleeping for: 54:02Sleeping for: 54:01Sleeping for: 54:00Sleeping for: 53:59Sleeping for: 53:58Sleeping for: 53:57Sleeping for: 53:56Sleeping for: 53:55Sleeping for: 53:54Sleeping for: 53:53Sleeping for: 53:52Sleeping for: 53:51Sleeping for: 53:50Sleeping for: 53:49Sleeping for: 53:48Sleeping for: 53:47Sleeping for: 53:46Sleeping for: 53:45Sleeping for: 53:44Sleeping for: 53:43Sleeping for: 53:42Sleeping for: 53:41Sleeping for: 53:40Sleeping for: 53:39Sleeping for: 53:38Sleeping for: 53:37Sleeping for: 53:36Sleeping for: 53:35Sleeping for: 53:34Sleeping for: 53:33Sleeping for: 53:32Sleeping for: 53:31Sleeping for: 53:30Sleeping for: 53:29Sleeping for: 53:28Sleeping for: 53:27Sleeping for: 53:26Sleeping for: 53:25Sleeping for: 53:24Sleeping for: 53:23Sleeping for: 53:22Sleeping for: 53:21Sleeping for: 53:20Sleeping for: 53:19Sleeping for: 53:18Sleeping for: 53:17Sleeping for: 53:16Sleeping for: 53:15Sleeping for: 53:14Sleeping for: 53:13Sleeping for: 53:12Sleeping for: 53:11Sleeping for: 53:10Sleeping for: 53:09Sleeping for: 53:08Sleeping for: 53:07Sleeping for: 53:06Sleeping for: 53:05Sleeping for: 53:04Sleeping for: 53:03Sleeping for: 53:02Sleeping for: 53:01Sleeping for: 53:00Sleeping for: 52:59Sleeping for: 52:58Sleeping for: 52:57Sleeping for: 52:56Sleeping for: 52:55Sleeping for: 52:54Sleeping for: 52:53Sleeping for: 52:52Sleeping for: 52:51Sleeping for: 52:50Sleeping for: 52:49Sleeping for: 52:48Sleeping for: 52:47Sleeping for: 52:46Sleeping for: 52:45Sleeping for: 52:44Sleeping for: 52:43Sleeping for: 52:42Sleeping for: 52:41Sleeping for: 52:40Sleeping for: 52:39Sleeping for: 52:38Sleeping for: 52:37Sleeping for: 52:36Sleeping for: 52:35Sleeping for: 52:34Sleeping for: 52:33Sleeping for: 52:32Sleeping for: 52:31Sleeping for: 52:30Sleeping for: 52:29Sleeping for: 52:28Sleeping for: 52:27Sleeping for: 52:26Sleeping for: 52:25Sleeping for: 52:24Sleeping for: 52:23Sleeping for: 52:22Sleeping for: 52:21Sleeping for: 52:20Sleeping for: 52:19Sleeping for: 52:18Sleeping for: 52:17Sleeping for: 52:16Sleeping for: 52:15Sleeping for: 52:14Sleeping for: 52:13Sleeping for: 52:12Sleeping for: 52:11Sleeping for: 52:10Sleeping for: 52:09Sleeping for: 52:08Sleeping for: 52:07Sleeping for: 52:06Sleeping for: 52:05Sleeping for: 52:04Sleeping for: 52:03Sleeping for: 52:02Sleeping for: 52:01Sleeping for: 52:00Sleeping for: 51:59Sleeping for: 51:58Sleeping for: 51:57Sleeping for: 51:56Sleeping for: 51:55Sleeping for: 51:54Sleeping for: 51:53Sleeping for: 51:52Sleeping for: 51:51Sleeping for: 51:50Sleeping for: 51:49Sleeping for: 51:48Sleeping for: 51:47Sleeping for: 51:46Sleeping for: 51:45Sleeping for: 51:44Sleeping for: 51:43Sleeping for: 51:42Sleeping for: 51:41Sleeping for: 51:40Sleeping for: 51:39Sleeping for: 51:38Sleeping for: 51:37Sleeping for: 51:36Sleeping for: 51:35Sleeping for: 51:34Sleeping for: 51:33Sleeping for: 51:32Sleeping for: 51:31Sleeping for: 51:30Sleeping for: 51:29Sleeping for: 51:28Sleeping for: 51:27Sleeping for: 51:26Sleeping for: 51:25Sleeping for: 51:24Sleeping for: 51:23Sleeping for: 51:22Sleeping for: 51:21Sleeping for: 51:20Sleeping for: 51:19Sleeping for: 51:18Sleeping for: 51:17Sleeping for: 51:16Sleeping for: 51:15Sleeping for: 51:14Sleeping for: 51:13Sleeping for: 51:12Sleeping for: 51:11Sleeping for: 51:10Sleeping for: 51:09Sleeping for: 51:08Sleeping for: 51:07Sleeping for: 51:06Sleeping for: 51:05Sleeping for: 51:04Sleeping for: 51:03Sleeping for: 51:02Sleeping for: 51:01Sleeping for: 51:00Sleeping for: 50:59Sleeping for: 50:58Sleeping for: 50:57Sleeping for: 50:56Sleeping for: 50:55Sleeping for: 50:54Sleeping for: 50:53Sleeping for: 50:52Sleeping for: 50:51Sleeping for: 50:50Sleeping for: 50:49Sleeping for: 50:48Sleeping for: 50:47Sleeping for: 50:46Sleeping for: 50:45Sleeping for: 50:44Sleeping for: 50:43Sleeping for: 50:42Sleeping for: 50:41Sleeping for: 50:40Sleeping for: 50:39Sleeping for: 50:38Sleeping for: 50:37Sleeping for: 50:36Sleeping for: 50:35Sleeping for: 50:34Sleeping for: 50:33Sleeping for: 50:32Sleeping for: 50:31Sleeping for: 50:30Sleeping for: 50:29Sleeping for: 50:28Sleeping for: 50:27Sleeping for: 50:26Sleeping for: 50:25Sleeping for: 50:24Sleeping for: 50:23Sleeping for: 50:22Sleeping for: 50:21Sleeping for: 50:20Sleeping for: 50:19Sleeping for: 50:18Sleeping for: 50:17Sleeping for: 50:16Sleeping for: 50:15Sleeping for: 50:14Sleeping for: 50:13Sleeping for: 50:12Sleeping for: 50:11Sleeping for: 50:10Sleeping for: 50:09Sleeping for: 50:08Sleeping for: 50:07Sleeping for: 50:06Sleeping for: 50:05Sleeping for: 50:04Sleeping for: 50:03Sleeping for: 50:02Sleeping for: 50:01Sleeping for: 50:00Sleeping for: 49:59Sleeping for: 49:58Sleeping for: 49:57Sleeping for: 49:56Sleeping for: 49:55Sleeping for: 49:54Sleeping for: 49:53Sleeping for: 49:52Sleeping for: 49:51Sleeping for: 49:50Sleeping for: 49:49Sleeping for: 49:48Sleeping for: 49:47Sleeping for: 49:46Sleeping for: 49:45Sleeping for: 49:44Sleeping for: 49:43Sleeping for: 49:42Sleeping for: 49:41Sleeping for: 49:40Sleeping for: 49:39Sleeping for: 49:38Sleeping for: 49:37Sleeping for: 49:36Sleeping for: 49:35Sleeping for: 49:34Sleeping for: 49:33Sleeping for: 49:32Sleeping for: 49:31Sleeping for: 49:30Sleeping for: 49:29Sleeping for: 49:28Sleeping for: 49:27Sleeping for: 49:26Sleeping for: 49:25Sleeping for: 49:24Sleeping for: 49:23Sleeping for: 49:22Sleeping for: 49:21Sleeping for: 49:20Sleeping for: 49:19Sleeping for: 49:18Sleeping for: 49:17Sleeping for: 49:16Sleeping for: 49:15Sleeping for: 49:14Sleeping for: 49:13Sleeping for: 49:12Sleeping for: 49:11Sleeping for: 49:10Sleeping for: 49:09Sleeping for: 49:08Sleeping for: 49:07Sleeping for: 49:06Sleeping for: 49:05Sleeping for: 49:04Sleeping for: 49:03Sleeping for: 49:02Sleeping for: 49:01Sleeping for: 49:00Sleeping for: 48:59Sleeping for: 48:58Sleeping for: 48:57Sleeping for: 48:56Sleeping for: 48:55Sleeping for: 48:54Sleeping for: 48:53Sleeping for: 48:52Sleeping for: 48:51Sleeping for: 48:50Sleeping for: 48:49Sleeping for: 48:48Sleeping for: 48:47Sleeping for: 48:46Sleeping for: 48:45Sleeping for: 48:44Sleeping for: 48:43Sleeping for: 48:42Sleeping for: 48:41Sleeping for: 48:40Sleeping for: 48:39Sleeping for: 48:38Sleeping for: 48:37Sleeping for: 48:36Sleeping for: 48:35Sleeping for: 48:34Sleeping for: 48:33Sleeping for: 48:32Sleeping for: 48:31Sleeping for: 48:30Sleeping for: 48:29Sleeping for: 48:28Sleeping for: 48:27Sleeping for: 48:26Sleeping for: 48:25Sleeping for: 48:24Sleeping for: 48:23Sleeping for: 48:22Sleeping for: 48:21Sleeping for: 48:20Sleeping for: 48:19Sleeping for: 48:18Sleeping for: 48:17Sleeping for: 48:16Sleeping for: 48:15Sleeping for: 48:14Sleeping for: 48:13Sleeping for: 48:12Sleeping for: 48:11Sleeping for: 48:10Sleeping for: 48:09Sleeping for: 48:08Sleeping for: 48:07Sleeping for: 48:06Sleeping for: 48:05Sleeping for: 48:04Sleeping for: 48:03Sleeping for: 48:02Sleeping for: 48:01Sleeping for: 48:00Sleeping for: 47:59Sleeping for: 47:58Sleeping for: 47:57Sleeping for: 47:56Sleeping for: 47:55Sleeping for: 47:54Sleeping for: 47:53Sleeping for: 47:52Sleeping for: 47:51Sleeping for: 47:50Sleeping for: 47:49Sleeping for: 47:48Sleeping for: 47:47Sleeping for: 47:46Sleeping for: 47:45Sleeping for: 47:44Sleeping for: 47:43Sleeping for: 47:42Sleeping for: 47:41Sleeping for: 47:40Sleeping for: 47:39Sleeping for: 47:38Sleeping for: 47:37Sleeping for: 47:36Sleeping for: 47:35Sleeping for: 47:34Sleeping for: 47:33Sleeping for: 47:32Sleeping for: 47:31Sleeping for: 47:30Sleeping for: 47:29Sleeping for: 47:28Sleeping for: 47:27Sleeping for: 47:26Sleeping for: 47:25Sleeping for: 47:24Sleeping for: 47:23Sleeping for: 47:22Sleeping for: 47:21Sleeping for: 47:20Sleeping for: 47:19Sleeping for: 47:18Sleeping for: 47:17Sleeping for: 47:16Sleeping for: 47:15Sleeping for: 47:14Sleeping for: 47:13Sleeping for: 47:12Sleeping for: 47:11Sleeping for: 47:10Sleeping for: 47:09Sleeping for: 47:08Sleeping for: 47:07Sleeping for: 47:06Sleeping for: 47:05Sleeping for: 47:04Sleeping for: 47:03Sleeping for: 47:02Sleeping for: 47:01Sleeping for: 47:00Sleeping for: 46:59Sleeping for: 46:58Sleeping for: 46:57Sleeping for: 46:56Sleeping for: 46:55Sleeping for: 46:54Sleeping for: 46:53Sleeping for: 46:52Sleeping for: 46:51Sleeping for: 46:50Sleeping for: 46:49Sleeping for: 46:48Sleeping for: 46:47Sleeping for: 46:46Sleeping for: 46:45Sleeping for: 46:44Sleeping for: 46:43Sleeping for: 46:42Sleeping for: 46:41Sleeping for: 46:40Sleeping for: 46:39Sleeping for: 46:38Sleeping for: 46:37Sleeping for: 46:36Sleeping for: 46:35Sleeping for: 46:34Sleeping for: 46:33Sleeping for: 46:32Sleeping for: 46:31Sleeping for: 46:30Sleeping for: 46:29Sleeping for: 46:28Sleeping for: 46:27Sleeping for: 46:26Sleeping for: 46:25Sleeping for: 46:24Sleeping for: 46:23Sleeping for: 46:22Sleeping for: 46:21Sleeping for: 46:20Sleeping for: 46:19Sleeping for: 46:18Sleeping for: 46:17Sleeping for: 46:16Sleeping for: 46:15Sleeping for: 46:14Sleeping for: 46:13Sleeping for: 46:12Sleeping for: 46:11Sleeping for: 46:10Sleeping for: 46:09Sleeping for: 46:08Sleeping for: 46:07Sleeping for: 46:06Sleeping for: 46:05Sleeping for: 46:04Sleeping for: 46:03Sleeping for: 46:02

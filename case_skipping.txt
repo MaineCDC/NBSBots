@@ -1,0 +1,120 @@
+==============================================================================
+ANAPLASMA BOT — WHY CASES ARE BEING SKIPPED
+==============================================================================
+Generated: 2026-06-03
+Source of evidence: logfile.txt (recorded output of the last several real runs)
+                    + control-flow analysis of anaplasma_files/anaplasma_bot.py
+                    and base.py (RejectNotification / ApproveNotification).
+
+NOTE: This was derived from your existing run logs, not a fresh live run — a
+live run requires logging into PRODUCTION NBS with an RSA passcode, which must
+be driven by you. The logfile IS the output of past runs, so the findings are
+real, not hypothetical.
+
+------------------------------------------------------------------------------
+THE CORE REASON CASES GET SKIPPED  (one sentence)
+------------------------------------------------------------------------------
+When the bot reviews a case it CANNOT cleanly act on, that case stays at the
+TOP of the approval queue. The bot always re-reads from the top row, so it
+re-reviews the SAME stuck case over and over, burning its per-run iteration
+budget (`limit`) — and every case sitting BEHIND the stuck case never gets
+reached. Those behind-it cases are the ones being "skipped."
+
+------------------------------------------------------------------------------
+EVIDENCE — CASES THAT BLOCKED THE QUEUE (re-reviewed instead of advancing)
+------------------------------------------------------------------------------
+Each line = how many times that single Inv ID was opened ("present, ...") in
+the logs. A healthy case is opened ~1-2 times (review once, plus one re-sort
+verification). Anything higher means the bot got STUCK on it:
+
+   15x   CAS11035419ME01   <-- stuck; blocked everything behind it
+   14x   CAS11043329ME01   <-- stuck
+   14x   CAS11037260ME01   <-- stuck
+   13x   CAS11048774ME01   <-- stuck
+   13x   CAS11037240ME01   <-- stuck
+    7x   CAS11050382ME01   <-- stuck
+    4x   CAS11050710ME01   <-- stuck
+
+These 7 cases correspond exactly to the 7 occurrences of this log line:
+   "Case at top of queue changed. No action was taken on the reviewed case."
+
+------------------------------------------------------------------------------
+WHY EACH OF THOSE CASES TOOK "NO ACTION" (the exact code path)
+------------------------------------------------------------------------------
+In anaplasma_bot.py, after a case is found to have issues, the bot does NOT
+reject immediately. It returns to the queue, RE-SORTS, re-reads the top row,
+and only rejects if the top-row patient name still matches:
+
+    if NBS.final_name == NBS.initial_name and "Out of state..." not in issues:
+        NBS.RejectNotification(n)          # <-- the ONLY way the case leaves
+    elif NBS.final_name != NBS.initial_name:
+        print("Case at top of queue changed. No action was taken...")
+        NBS.num_fail += 1                  # <-- case stays at top -> STUCK
+
+So a case is left stuck (and re-reviewed forever) whenever:
+  1. It has issues (so it is not approved), AND
+  2. After returning + re-sorting, the name read at the top row does not match
+     what the bot just reviewed (final_name != initial_name).
+
+(2) happens for several real reasons:
+  - The re-read happens before the re-sorted queue has settled (timing).
+  - Another issue-laden case is now ahead of it, so the names differ.
+  - RejectNotification itself throws (e.g. the rejection-comment window is not
+    handles[2]/handles[1] as assumed in base.py:1730) and is swallowed by the
+    outer try/except, so the case is never actually rejected and reappears.
+
+A stuck case is NEVER added to patients_to_skip.txt, so nothing prevents the
+bot from picking it up again on the very next iteration.
+
+------------------------------------------------------------------------------
+SECONDARY REASON — THE WHOLE RUN ENDS EARLY (mass skip)
+------------------------------------------------------------------------------
+anaplasma_bot.py sets:
+    max_consecutive_no_case_attempts = 1
+
+and ends the entire run the first time CheckFirstCase does NOT return exactly
+"Anaplasma phagocytophilum". Seen in the logs as:
+    "No Anaplasma case found. Consecutive attempts: 1/1"
+    "No more valid cases found after 1 consecutive attempts. Ending run."
+(3 separate runs ended this way.)
+
+This triggers not only on a genuinely empty queue, but ALSO on a single
+transient mis-read of the condition cell (td[8]) — CheckFirstCase catches
+NoSuchElementException and sets condition = None, which counts as "no case."
+One flaky read => the run quits => all remaining cases skipped.
+
+------------------------------------------------------------------------------
+SUMMARY OF SKIP CAUSES
+------------------------------------------------------------------------------
+[A] Queue-head blocking: an un-actionable case stays at row 1 and is reviewed
+    repeatedly; everything behind it is skipped.        (PRIMARY, 7 cases above)
+[B] Reject gated on a fragile name re-match after re-sort; mismatch => no
+    action => stuck.                                    (drives [A])
+[C] RejectNotification window-handle assumption can throw and be swallowed =>
+    case never leaves queue => stuck.                   (drives [A])
+[D] Stuck cases are never recorded in patients_to_skip.txt => re-picked forever.
+[E] max_consecutive_no_case_attempts = 1 ends the entire run on the first
+    non-match or flaky condition read => remaining queue skipped wholesale.
+
+------------------------------------------------------------------------------
+RECOMMENDED FIXES (not yet applied)
+------------------------------------------------------------------------------
+1. After reviewing a case, advance past it deterministically instead of always
+   re-reading row 1 — e.g. add stuck Inv IDs to patients_to_skip for the run,
+   or page by row index that increments on no-action.
+2. Decouple rejection from the post-re-sort name re-match (reject the case you
+   actually reviewed, by its Inv ID, not by "whatever is at the top now").
+3. Make RejectNotification locate the comment window by title/URL rather than
+   handles[2]/handles[1], and let failures surface instead of being swallowed.
+4. Raise max_consecutive_no_case_attempts (or only count TRUE empty-queue
+   results, not flaky reads) so one bad read doesn't end the run.
+5. Add live per-case skip logging that appends to this file during runs (so it
+   is populated automatically with Inv ID + concrete reason each run).
+==============================================================================
+2026-06-03 08:02:15  === RUN START === - mode=DRY-RUN; 5 Anaplasma case(s) in queue; limit=5
+2026-06-03 08:02:47  CAS11052312ME01 - [DRY-RUN] WOULD REJECT. Issues: Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23.
+2026-06-03 08:03:17  CAS11052369ME01 - [DRY-RUN] WOULD APPROVE (no issues)
+2026-06-03 08:03:48  CAS11052648ME01 - [DRY-RUN] WOULD APPROVE (no issues)
+2026-06-03 08:04:19  CAS11052652ME01 - [DRY-RUN] WOULD APPROVE (no issues)
+2026-06-03 08:04:52  CAS11052663ME01 - [DRY-RUN] WOULD APPROVE (no issues)
+2026-06-03 08:15:06  === RUN START === - mode=LIVE; cap=NONE; 5 Anaplasma case(s) in queue

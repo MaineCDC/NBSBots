@@ -1,0 +1,139 @@
+waking bots...
+**select bots**
+1. athena
+2. audrey
+3. anaplasma
+4. giardiasis
+5. strep
+Enter selections as space-separated numbers..: selected: anaplasma
+Enter your SOM username ("first_name.last_name"):Enter your RSA passcode:Launching: C:\Program Files\Google\Chrome\Application\chrome.exe
+starting...: 0
+entered?
+current-handle-title:  New Tab
+Handle ID: E923699CE8A51B8F3B9F7246D5BD7C00 | Title: New Tab | URL: chrome://new-tab-page/
+handles: ['E923699CE8A51B8F3B9F7246D5BD7C00']
+logging in...
+Login did not reach the portal (attempt 1/3); reloading login page and retrying...
+Sorting queue to filter for Anaplasma cases...
+sleep count 0
+Counting Anaplasma cases in queue...
+Error getting case count: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="bd"]/table[2]/tbody/tr/td/span[1]/b"}
+  (Session info: chrome=148.0.7778.179); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1ea0]
+	chromedriver!(No symbol) [0xcfb28a]
+	chromedriver!(No symbol) [0xcfb52b]
+	chromedriver!(No symbol) [0xd3d052]
+	chromedriver!(No symbol) [0xd1d7c4]
+	chromedriver!(No symbol) [0xd3a936]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+Fallback: Found 5 case rows in table
+Set limit to 5 and printAt to 5
+0it [00:00, ?it/s]1it [00:32, 32.48s/it]2it [01:01, 30.73s/it]3it [01:33, 30.90s/it]4it [02:04, 31.01s/it]5it [02:37, 31.86s/it]5it [02:40, 32.10s/it]
+current limit: 5 starting_iteration: 0
+sleep count 0
+sorting queue...: None current_iteration: 0
+checked first case current_iteration: 0
+navigated to 1 case in queue current_iteration: 0
+present, CAS11052312ME01 current_iteration: 0
+lab specimen collection date 2026-05-24 report date 2026-05-24
+jurisdiction: Cumberland
+Other diagnostic test: Yes
+2026-05-24 date specimen collected: 2026-05-23
+death: No
+ffchange:  No
+Illness_length: 2026-05-09
+cstat Confirmed
+running standard checks current_iteration: 0
+[DRY-RUN] CAS11052312ME01: WOULD REJECT. Issues: Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23. current_iteration: 0
+current limit: 5 starting_iteration: 1
+sleep count 0
+sorting queue...: None current_iteration: 1
+checked first case current_iteration: 1
+navigated to 2 case in queue current_iteration: 1
+present, CAS11052369ME01 current_iteration: 1
+initial 128.0
+lab specimen collection date 2026-05-23 report date 2026-05-26
+jurisdiction: Oxford
+Other diagnostic test: Yes
+2026-05-23 date specimen collected: 2026-05-23
+death: No
+ffchange:  No
+Illness_length: 2026-05-20
+cstat Confirmed
+running standard checks current_iteration: 1
+[DRY-RUN] CAS11052369ME01: WOULD APPROVE (no issues) current_iteration: 1
+current limit: 5 starting_iteration: 2
+sleep count 0
+sorting queue...: None current_iteration: 2
+checked first case current_iteration: 2
+navigated to 3 case in queue current_iteration: 2
+present, CAS11052648ME01 current_iteration: 2
+lab specimen collection date 2026-06-01 report date 2026-06-02
+jurisdiction: Cumberland
+Other diagnostic test: Yes
+2026-06-01 date specimen collected: 2026-06-01
+death: No
+ffchange:  No
+Illness_length: 2026-05-29
+cstat Confirmed
+running standard checks current_iteration: 2
+[DRY-RUN] CAS11052648ME01: WOULD APPROVE (no issues) current_iteration: 2
+current limit: 5 starting_iteration: 3
+sleep count 0
+sorting queue...: None current_iteration: 3
+checked first case current_iteration: 3
+navigated to 4 case in queue current_iteration: 3
+present, CAS11052652ME01 current_iteration: 3
+lab specimen collection date 2026-06-01 report date 2026-06-02
+jurisdiction: Lincoln
+Other diagnostic test: Yes
+2026-06-01 date specimen collected: 2026-06-01
+death: No
+ffchange:  No
+Illness_length: 2026-05-29
+cstat Confirmed
+running standard checks current_iteration: 3
+[DRY-RUN] CAS11052652ME01: WOULD APPROVE (no issues) current_iteration: 3
+current limit: 5 starting_iteration: 4
+sleep count 0
+sorting queue...: None current_iteration: 4
+checked first case current_iteration: 4
+navigated to 5 case in queue current_iteration: 4
+present, CAS11052663ME01 current_iteration: 4
+lab specimen collection date 2026-05-28 report date 2026-06-02
+jurisdiction: Kennebec
+Other diagnostic test: Yes
+2026-05-28 date specimen collected: 2026-05-28
+death: No
+ffchange:  No
+Illness_length: 2026-05-27
+cstat Confirmed
+running standard checks current_iteration: 4
+[DRY-RUN] CAS11052663ME01: WOULD APPROVE (no issues) current_iteration: 4
+current limit: 5 starting_iteration: 5
+printing set 1 ['CAS11052312ME01', 'CAS11052369ME01', 'CAS11052648ME01', 'CAS11052652ME01', 'CAS11052663ME01'] ['WOULD REJECT. Issues: Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23.', 'WOULD APPROVE (no issues)', 'WOULD APPROVE (no issues)', 'WOULD APPROVE (no issues)', 'WOULD APPROVE (no issues)']
+Saving results: ['CAS11052312ME01', 'CAS11052369ME01', 'CAS11052648ME01', 'CAS11052652ME01', 'CAS11052663ME01'], ['DRY-RUN Reject', 'DRY-RUN Approve', 'DRY-RUN Approve', 'DRY-RUN Approve', 'DRY-RUN Approve'], ['WOULD REJECT. Issues: Specimen collection dates 2026-05-24 do not match dates on lab report 2026-05-23.', 'WOULD APPROVE (no issues)', 'WOULD APPROVE (no issues)', 'WOULD APPROVE (no issues)', 'WOULD APPROVE (no issues)'], ['Tiffany Giasson', 'Tiffany Giasson', 'Jill Lalime', 'Jill Lalime', 'Tiffany Giasson']
+Creating new file with 5 records
+Results saved to saved/Anaplasma/Anaplasma_bot_activity_1r_06_03_2026.xlsx (Total records: 5)
+sleeping for 2s after run 1
+No cases processed in final batch.
+ending, printing, saving current_iteration: 5
+No final results to save.
+putting bots to sleep...

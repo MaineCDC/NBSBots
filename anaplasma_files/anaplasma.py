@@ -61,7 +61,7 @@ class Anaplasma(NBSdriver):
         self.CheckLabReports()
         if self.returned_by_link:
             self.GoToTickBorne()
-        self.CheckEPI()
+        self.CheckEPICaseStatus()
         self.CheckJurisdiction()              #new code
         self.CheckInvestigationStartDate()#removed Ana
         self.CheckDateClosed()
@@ -310,9 +310,9 @@ class Anaplasma(NBSdriver):
             elif death_date > self.now:
                 self.issues.append('Date of death date cannot be in the future.')
                 print(f"death: {self.death_indicator}")
-        # elif self.death_indicator not in ['Yes', 'No', 'Unknown']:
-        #     self.issues.append('Death indicator cannot be blank')
-        #     print(f"death: {self.death_indicator}")
+        elif self.death_indicator not in ['Yes', 'No', 'Unknown'] and self.CaseStatus != "Not a Case":
+            self.issues.append("'did the patient die' should not be blank")
+            print(f"death: {self.death_indicator}")
         
         # if self.hospitalization_indicator == "Yes" and not self.discharge_date and (self.death_indicator and self.death_indicator != "Unknown"):
         #     self.issues.append('"Did the patient die from this illness?" should be Unknown when Hospitalized is Yes and Discharge Date is blank.')
@@ -1067,7 +1067,8 @@ class Anaplasma(NBSdriver):
                 self.CorrectCaseStatus = "Not a Case"
                 print(f"case_status: {self.CaseStatus} - Out of State jurisdiction")
 
-    def CheckEPI(self):
+    def CheckEPICaseStatus(self):
         self.investigator_name = self.ReadText('//*[@id="headerCurrentInvestigator"]')
+        self.CaseStatus = self.ReadText('//*[@id="INV163"]')
     #     self.epi = self.ReadText('(//tr[contains(@class, "cellColor")][2]/td[3]/span[2])')
         # '(/tr[contains(@class, "cellColor")][2]/td[2]/span[1])'

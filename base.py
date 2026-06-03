@@ -39,6 +39,7 @@ class NBSdriver(webdriver.Chrome):
     """A class to provide basic functionality in NBS via Selenium."""
 
     def __init__(self, production: bool = False, chrome_path: str | None = None):
+
         self.production = production
         self.read_config()
         self.get_email_info()
@@ -65,12 +66,31 @@ class NBSdriver(webdriver.Chrome):
         self.queue_loaded: bool | None = None
         self.wait_before_timeout = 30
         self.sleep_duration = 3300  # adjust if needed
+        
 
         # Build driver (inherit from Chrome)
         options = webdriver.ChromeOptions()
         options.add_argument("log-level=3")
         options.add_argument("--ignore-ssl-errors=yes")
         options.add_argument("--ignore-certificate-errors")
+        options.add_argument('--hide-crash-restore-bubble')
+        options.add_argument('--disable-session-crashed-bubble')
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9223")
+        prefs = {
+            'NewTabPage.FooterVisible': False,
+            "credentials_enable_service": False,
+            'profile': {
+                'password_manager_enabled': False
+            },
+            # "profile.password_manager_enabled": False,
+            # 2. Prevent Restore Window Pop-up
+            "profile.exit_type": "Normal",
+            "profile.default_content_setting_values.automatic_downloads": 1,
+            # "profile.exit_type": "None",
+            "profile.exited_cleanly": True
+        }
+        
+        options.add_experimental_option("prefs", prefs)
         # options.add_argument("--headless")
 
         if chrome_path:
@@ -80,6 +100,17 @@ class NBSdriver(webdriver.Chrome):
             driver_path = ChromeDriverManager().install()
             service = Service(driver_path)
             super().__init__(service=service, options=options)
+
+        handles = self.window_handles
+        print("current-handle-title: ", self.title)
+        for handle in handles:
+            self.switch_to.window(handle) 
+            print(f"Handle ID: {handle} | Title: {self.title} | URL: {self.current_url}")
+            if self.title == "New Tab" or self.title == "RSA SecurID PASSCODE":
+                break
+        print("handles:", handles)
+        # if len(handles) > 1:
+        #     self.switch_to.window(handles[0])
 
         self.Reset()
         self.GetObInvNames()
@@ -199,27 +230,83 @@ class NBSdriver(webdriver.Chrome):
         self.username = username
         self.passcode = passcode
 
-    def log_in(self):
+    def _submit_login_form(self):
+        """Fill the RSA SecurID login form and click Log In.
+
+        The form lives inside 'contentFrame', whose inner document reloads a
+        moment after the frame first appears (anti-framing JS blanks/reloads the
+        body). A blind 100s sleep used to hide this race. Instead we fill-and-
+        verify: type the username and confirm it actually stuck; if a reload
+        wiped it, retry. Only once the value persists is the form stable, at
+        which point we enter the passcode and submit. Returns True if submitted.
+        """
+        login_load_timeout = 120
+        login_button_xpath = "//input[@value='Log In']"
+        for attempt in range(6):
+            try:
+                self.switch_to.default_content()
+                WebDriverWait(self, login_load_timeout).until(
+                    EC.frame_to_be_available_and_switch_to_it("contentFrame")
+                )
+                WebDriverWait(self, login_load_timeout).until(
+                    EC.element_to_be_clickable((By.XPATH, login_button_xpath))
+                )
+                user_field = self.find_element(By.ID, "username")
+                user_field.clear()
+                user_field.send_keys(self.username)
+                time.sleep(1)  # let any pending frame reload fire
+                if self.find_element(By.ID, "username").get_attribute("value") != self.username:
+                    print(f"Login form reloaded and cleared the username, retry {attempt}...")
+                    time.sleep(2)
+                    continue
+                # Form is stable now -- enter passcode and submit immediately.
+                self.find_element(By.ID, "passcode").send_keys(self.passcode)
+                self.find_element(By.XPATH, login_button_xpath).click()
+                self.switch_to.default_content()
+                return True
+            except (StaleElementReferenceException, TimeoutException) as e:
+                print(f"Login form not stable yet, retry {attempt}: {e}")
+                time.sleep(2)
+        self.switch_to.default_content()
+        return False
+
+    def log_in(self, is_logged_in=False):
         """Log in to NBS."""
+        portal_link_xpath = '//*[@id="bea-portal-window-content-4"]/tr/td/h2[4]/font/a'
         self.get(self.site)
-        print("passed")
-        self.switch_to.frame("contentFrame")
-        self.find_element(By.ID, "username").send_keys(self.username)
-        self.find_element(By.ID, "passcode").send_keys(self.passcode)
+
+        if not is_logged_in:
+            print("logging in...")
+            # Submit the login form, then confirm we actually reached the portal
+            # page. If a submit does not land on the portal (failed/late
+            # passcode, a broken form load, etc.) reload the login page and try
+            # the whole thing again rather than giving up. Capped to limit RSA
+            # lockout risk from repeated bad submissions.
+            max_login_attempts = 3
+            for login_attempt in range(max_login_attempts):
+                self._submit_login_form()
+                time.sleep(3)
+                try:
+                    WebDriverWait(self, self.wait_before_timeout).until(
+                        EC.element_to_be_clickable((By.XPATH, portal_link_xpath))
+                    )
+                    self.find_element(By.XPATH, portal_link_xpath).click()
+                    return  # logged in and portal reached
+                except TimeoutException:
+                    print(
+                        f"Login did not reach the portal (attempt {login_attempt + 1}/"
+                        f"{max_login_attempts}); reloading login page and retrying..."
+                    )
+                    self.get(self.site)
+                    time.sleep(2)
+            print("WARNING: login failed after reload retries; portal page not reached.")
+            return
+
+        # Already authenticated (session reuse): just open the portal link.
         WebDriverWait(self, self.wait_before_timeout).until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/p[2]/input[1]"))
+            EC.element_to_be_clickable((By.XPATH, portal_link_xpath))
         )
-        self.find_element(By.XPATH, "/html/body/div[2]/p[2]/input[1]").click()
-        time.sleep(3)
-        print(self.page_source)
-        WebDriverWait(self, self.wait_before_timeout).until(
-            EC.element_to_be_clickable(
-                (By.XPATH, '//*[@id="bea-portal-window-content-4"]/tr/td/h2[4]/font/a')
-            )
-        )
-        self.find_element(
-            By.XPATH, '//*[@id="bea-portal-window-content-4"]/tr/td/h2[4]/font/a'
-        ).click()
+        self.find_element(By.XPATH, portal_link_xpath).click()
     
     def log_in_v2(self):
         """Log in to MENBS."""
@@ -1683,10 +1770,16 @@ class NBSdriver(webdriver.Chrome):
         )
         self.find_element(By.XPATH, reject_path).click()
         rejection_comment_window = None
-        for handle in self.window_handles:
-            if handle != main_window_handle:
-                rejection_comment_window = handle
-                break
+        print("rejection windows: ", self.window_handles, "current_window: ", main_window_handle)
+        handles = self.window_handles
+        
+        for handle in handles:
+            self.switch_to.window(handle)
+            print(self.title)
+            # if handle != main_window_handle:
+            #     rejection_comment_window = handle
+            #     break
+        rejection_comment_window = handles[2] if len(handles) > 2 else handles[1]
         if rejection_comment_window:
             self.switch_to.window(rejection_comment_window)
             timestamp = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
@@ -1705,10 +1798,16 @@ class NBSdriver(webdriver.Chrome):
         main_window_handle = self.current_window_handle
         self.find_element(By.XPATH, '//*[@id="createNoti"]').click()
         approval_comment_window = None
-        for handle in self.window_handles:
-            if handle != main_window_handle:
-                approval_comment_window = handle
-                break
+        handles = self.window_handles
+        for handle in handles:
+            self.switch_to.window(handle)
+            print(self.title)
+
+        approval_comment_window = handles[2] if len(handles) > 2 else handles[1]
+        # for handle in self.window_handles:
+        #     if handle != main_window_handle:
+        #         approval_comment_window = handle
+        #         break
         if approval_comment_window:
             self.switch_to.window(approval_comment_window)
             self.find_element(By.XPATH, '//*[@id="botcreatenotId"]/input[1]').click()

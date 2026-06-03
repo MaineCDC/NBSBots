@@ -1,0 +1,73 @@
+.sastyle_link_moreinfo {
+	font-size:11px;
+	font-family:verdana;
+}
+
+.sastyle_link_upsell {
+	font-size:11px;
+	font-family:verdana;
+}
+
+.sastyle_text_contentclass {
+	font-size:11px;
+	font-family:arial;
+}
+
+.sastyle_link_submittest {
+	font-size:11px;
+	font-family:verdana;
+}
+
+.sastyle_div_headline {
+	font-family:verdana;
+	font-size:11px;
+	height:20px;
+	font-weight:bold;
+}
+
+.sastyle_text_domainname {
+	font-family:verdana;
+	font-size:11px;
+}
+
+.sastyle_text_overallrec {
+	font-weight:bold;
+	font-size:11px;
+	font-family:arial;
+}
+
+.sastyle_text_facetrec {
+	font-family:arial;
+	font-size:11px;
+}
+
+.sastyle_disclosure_body {
+	font-family:verdana;
+	font-size:8pt;
+}
+
+.sastyle_disclosure_title {
+	font-family:verdana;
+	font-size:8pt;
+	font-weight:bold;
+}
+
+.sastyle_header_submitted {
+	font-family:verdana;
+	font-size:12pt;
+}
+
+.sastyle_about_title {
+	font-family:verdana;
+	font-size:12pt;
+	font-weight:bold;
+}
+
+.sastyle_about_body {
+	font-family:verdana;
+	font-size:10pt;
+}
+
+.sastyle_about_link {
+	text-decoration:underline;
+}
