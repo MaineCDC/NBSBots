@@ -8,3 +8,6 @@ env/
 # Large runtime log/output files (exceed GitHub's 100MB limit)
 logfile.txt
 liverun_output.txt
+
+# Chrome user-data dir — runtime-generated browser state, recreated on launch
+chrome-bot-profile/
