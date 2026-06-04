@@ -44,7 +44,9 @@ def start_babesia(username, passcode):
     reason = []
     epi = []
 
-    NBS = Babesia(production=True)
+    # Babesia is still in testing -> run against the NBS test site (InductiveHealth
+    # / Maine DHHS SSO). Flip to production=True when promoting to production.
+    NBS = Babesia(production=False)
     NBS.set_credentials(username, passcode)
     NBS.log_in()
     NBS.GoToApprovalQueue()

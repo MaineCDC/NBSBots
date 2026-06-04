@@ -48,8 +48,10 @@ class NBSdriver(webdriver.Chrome):
         if self.production:
             self.site = "https://nbs.iphis.maine.gov/"
         else:
-            self.site = "https://nbstest.state.me.us/"
-        # "https://auth.inductivehealth.com/auth/realms/inductivehealth/protocol/openid-connect/auth?response_type=code&client_id=me_nbs_test&redirect_uri=https%3A%2F%2Fmenbstest.inductivehealth.com%2Fnbs%2FHomePage.do?method%3DloadHomePage&state=16d4d198-575e-4a0a-bf2a-b8de634605bb&login=true&scope=openid"
+            # New NBS test site (migrated off the retired nbstest.state.me.us).
+            # Hitting HomePage.do redirects to the InductiveHealth/Keycloak login
+            # when there is no session; login is handled by _log_in_inductive.
+            self.site = "https://menbstest.inductivehealth.com/nbs/HomePage.do?method=loadHomePage"
 
         # Core flags / queues
         self.not_a_case_log: list[str] = []
@@ -64,6 +66,9 @@ class NBSdriver(webdriver.Chrome):
 
         self.num_attempts = 3
         self.queue_loaded: bool | None = None
+        # Number of target-condition options SortQueue matched in the queue filter;
+        # 0 means the disease has no cases in the queue. None until SortQueue runs.
+        self.condition_filter_matches: int | None = None
         self.wait_before_timeout = 30
         self.sleep_duration = 3300  # adjust if needed
         
@@ -270,8 +275,79 @@ class NBSdriver(webdriver.Chrome):
         self.switch_to.default_content()
         return False
 
+    def _on_nbs_dashboard(self, timeout=10):
+        """Return True if the NBS home dashboard has loaded (logged in).
+
+        The dashboard's patient-search Last Name field (id DEM102) is unique to
+        the home page, so its presence is a reliable 'we are authenticated' signal
+        that works on both the old and new (InductiveHealth) sites.
+        """
+        try:
+            WebDriverWait(self, timeout).until(
+                EC.presence_of_element_located((By.ID, "DEM102"))
+            )
+            return True
+        except TimeoutException:
+            return False
+
+    def _log_in_inductive(self, is_logged_in=False):
+        """Log in to the new InductiveHealth NBS test site via Maine DHHS SSO.
+
+        Flow: open the site. If a session is already warm we land straight on the
+        dashboard. Otherwise we land on the InductiveHealth/Keycloak sign-in page;
+        clicking 'Maine DHHS Users' (#social-mesaml) hands off to the State of
+        Maine SSO, which authenticates silently over the user's VPN session and
+        bounces back to the dashboard. If that silent SSO does not complete (no
+        VPN / expired session surfacing a real credential prompt), we pause and
+        let the user finish the login by hand, then continue once the dashboard
+        appears. If it never appears, raise so the caller can report login failed.
+        """
+        self.get(self.site)
+
+        # Warm session: already on the dashboard, nothing to do.
+        if self._on_nbs_dashboard(timeout=12):
+            print("Already authenticated on NBS test site.")
+            return
+
+        # Otherwise we expect the Keycloak sign-in page. Choose Maine DHHS SSO.
+        try:
+            WebDriverWait(self, 20).until(
+                EC.element_to_be_clickable((By.ID, "social-mesaml"))
+            )
+            print("Clicking 'Maine DHHS Users' for SSO login...")
+            self.find_element(By.ID, "social-mesaml").click()
+        except TimeoutException:
+            print("Did not find the 'Maine DHHS Users' SSO option on the login page.")
+
+        # Silent VPN/SSO round-trip should land us on the dashboard quickly.
+        if self._on_nbs_dashboard(timeout=45):
+            print("Logged in to NBS test site via Maine DHHS SSO.")
+            return
+
+        # Fallback: a real credential page is up (no VPN / expired session).
+        # Give the user a window to complete it manually, then continue.
+        print(
+            "\n*** LOGIN NEEDS ATTENTION ***\n"
+            "The Maine DHHS SSO did not log in automatically. Please complete the\n"
+            "login in the Chrome window now. Waiting up to 5 minutes for the NBS\n"
+            "dashboard to appear...\n"
+        )
+        if self._on_nbs_dashboard(timeout=300):
+            print("Manual login completed; continuing.")
+            return
+
+        raise Exception(
+            "Login to NBS test site failed: dashboard never loaded. "
+            "Check the VPN/SSO session and the Chrome window."
+        )
+
     def log_in(self, is_logged_in=False):
         """Log in to NBS."""
+        # The test site migrated to InductiveHealth/Keycloak with Maine DHHS SSO,
+        # a different login flow from the production RSA SecurID form below.
+        if not self.production:
+            return self._log_in_inductive(is_logged_in)
+
         portal_link_xpath = '//*[@id="bea-portal-window-content-4"]/tr/td/h2[4]/font/a'
         self.get(self.site)
 
@@ -613,6 +689,20 @@ class NBSdriver(webdriver.Chrome):
 
     def GoToApprovalQueue(self):
         """Navigate to approval queue from Home page."""
+        # On the new test site the home-page worklist link's click is intercepted
+        # by a JS handler and never navigates, so go straight to the worklist URL.
+        # Production keeps the original click-the-link behavior.
+        if not self.production:
+            base = self.site.split("HomePage.do")[0]
+            self.get(base + "MyTaskList1.do?ContextAction=NNDApproval&initLoad=true")
+            try:
+                WebDriverWait(self, self.wait_before_timeout).until(
+                    EC.presence_of_element_located((By.XPATH, '//*[@id="removeFilters"]'))
+                )
+            except TimeoutException:
+                self.HandleBadQueueReturn()
+            return
+
         partial_link = "Approval Queue for Initial Notifications"
         try:
             WebDriverWait(self, self.wait_before_timeout).until(
@@ -660,7 +750,12 @@ class NBSdriver(webdriver.Chrome):
             self.find_element(By.XPATH, paths["clear_checkbox_path"]).click()
             time.sleep(1)
 
-            # Select all tests
+            # Select all tests. The Condition filter lists only the conditions
+            # actually present in the queue, so if none of the target tests have a
+            # matching option there are zero such cases. Track how many we matched
+            # so disease_case_count can report 0 instead of falling back to the
+            # unfiltered queue size (selecting nothing makes NBS show everything).
+            self.condition_filter_matches = 0
             for test in paths["tests"]:
                 try:
                     results = self.find_elements(
@@ -668,6 +763,7 @@ class NBSdriver(webdriver.Chrome):
                     )
                     for result in results:
                         result.click()
+                        self.condition_filter_matches += 1
                 except (NoSuchElementException, ElementNotInteractableException):
                     pass
             time.sleep(1)
@@ -1728,6 +1824,12 @@ class NBSdriver(webdriver.Chrome):
             return False
     
     def disease_case_count(self, bot, default_count):
+        # If SortQueue found no matching condition option, the queue could not be
+        # filtered to this disease, so NBS is showing every case. The true count
+        # for this disease is 0 -- don't misread the unfiltered total as cases.
+        if getattr(self, "condition_filter_matches", None) == 0:
+            print(f"No '{bot}' condition option in the queue filter; 0 cases.")
+            return 0
         try:
             # Get the case count element using the provided XPath
             case_count_element = self.find_element(By.XPATH, '//*[@id="bd"]/table[2]/tbody/tr/td/span[2]/b')
