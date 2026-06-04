@@ -118,3 +118,5 @@ RECOMMENDED FIXES (not yet applied)
 2026-06-03 08:04:19  CAS11052652ME01 - [DRY-RUN] WOULD APPROVE (no issues)
 2026-06-03 08:04:52  CAS11052663ME01 - [DRY-RUN] WOULD APPROVE (no issues)
 2026-06-03 08:15:06  === RUN START === - mode=LIVE; cap=NONE; 5 Anaplasma case(s) in queue
+2026-06-04 09:49:10  === RUN START === - mode=LIVE; cap=21; 21 Anaplasma case(s) in queue
+2026-06-04 10:01:39  === RUN END === - reviewed 13 case(s); results written to saved/Anaplasma/Anaplasma_bot_activity_final_<date>.xlsx

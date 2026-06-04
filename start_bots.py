@@ -1,4 +1,4 @@
-from threading import Thread, Event
+from threading import Event
 from datetime import datetime
 import time, os
 # import the three bots into this file
@@ -149,8 +149,6 @@ def selection():
 
 
 def run_bots():
-    # targets = []
-    threads = []
     print("**select bots**")
     print("1. athena")
     print("2. audrey")
@@ -164,37 +162,24 @@ def run_bots():
     try:
         for target in targets:
             print(f"selected: {target.__name__.replace('start_', '') }")
-        
-        codes = []
+
         username = input('Enter your SOM username ("first_name.last_name"):')
         passcode = input('Enter your RSA passcode:')
-        codes.append(passcode)
         chrome_process = launch_chrome()
-        # for _ in range(len(targets) - 1):
-        #     passcode = input('Enter your RSA passcode for the next bot:')    
-        #     codes.append(passcode)
 
-        is_logged_in = False
+        # Run the selected bots SEQUENTIALLY, sharing one Chrome session: each bot
+        # runs to completion (it ends itself once its queue has no more cases) and
+        # only then does the next bot in the list start. The first bot performs the
+        # login; the rest reuse the established session (is_logged_in=True). The
+        # @error_handle decorator on each start_* already catches and logs per-bot
+        # exceptions, so a bot that fails won't stop the chain -- we still move on
+        # to the next one.
         for i, target in enumerate(targets):
-            is_logged_in = i > 0  # first bot logs in, rest reuse session
-            # use the credentials and pass it as a param into each both
-            # make sure the bots are triggered each using a thread
-            # thread = Thread(target=target, args=(username, codes[i]))
-            thread = Thread(target=targets[i], args=(username, passcode, login_complete, is_logged_in))
-            threads.append(thread)
-            print("starting...:", i)
-            thread.start()
-
-            if i == 0:
-            #     # wait for first bot to finish login before starting others
-                login_complete.wait(timeout=120)
-
-            time.sleep(30)
-            # log the errors into a file
-            # [01/08/2025]
-            # BOTname - error information
-        for thread in threads:
-            thread.join()
+            is_logged_in = i > 0  # first bot logs in, rest reuse the session
+            name = target.__name__.replace('start_', '')
+            print(f"starting bot {i + 1}/{len(targets)}: {name}")
+            target(username, passcode, login_complete, is_logged_in)
+            print(f"finished bot {name}; moving to the next bot...")
 
     except Exception as e:
         with open("error_log.txt", "a") as log:

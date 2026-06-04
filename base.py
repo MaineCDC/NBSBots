@@ -277,28 +277,35 @@ class NBSdriver(webdriver.Chrome):
 
         if not is_logged_in:
             print("logging in...")
-            # Submit the login form, then confirm we actually reached the portal
-            # page. If a submit does not land on the portal (failed/late
-            # passcode, a broken form load, etc.) reload the login page and try
-            # the whole thing again rather than giving up. Capped to limit RSA
-            # lockout risk from repeated bad submissions.
+            # Submit the login form, then give authentication a short window to
+            # land on the portal page. If the submit does not authenticate within
+            # auth_wait_seconds (failed/late passcode, a broken form load, etc.)
+            # reload the login page, re-enter the credentials, and try the whole
+            # thing again rather than giving up. Capped to limit RSA lockout risk
+            # from repeated bad submissions.
             max_login_attempts = 3
+            auth_wait_seconds = 5
             for login_attempt in range(max_login_attempts):
+                # _submit_login_form re-enters username + passcode each pass, so
+                # after a reload below the credentials are typed in fresh.
                 self._submit_login_form()
-                time.sleep(3)
                 try:
-                    WebDriverWait(self, self.wait_before_timeout).until(
+                    # Short wait: a successful auth surfaces the portal link almost
+                    # immediately. Don't block the full timeout here so a failed
+                    # submit reloads and re-enters credentials quickly.
+                    WebDriverWait(self, auth_wait_seconds).until(
                         EC.element_to_be_clickable((By.XPATH, portal_link_xpath))
                     )
                     self.find_element(By.XPATH, portal_link_xpath).click()
                     return  # logged in and portal reached
                 except TimeoutException:
                     print(
-                        f"Login did not reach the portal (attempt {login_attempt + 1}/"
-                        f"{max_login_attempts}); reloading login page and retrying..."
+                        f"Authentication did not complete within {auth_wait_seconds}s "
+                        f"(attempt {login_attempt + 1}/{max_login_attempts}); reloading "
+                        f"login page and re-entering credentials..."
                     )
                     self.get(self.site)
-                    time.sleep(2)
+                    time.sleep(2)  # let the reloaded login page settle before re-entry
             print("WARNING: login failed after reload retries; portal page not reached.")
             return
 

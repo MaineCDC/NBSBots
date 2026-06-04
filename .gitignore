@@ -4,3 +4,7 @@ env
 env/
 *.xlsx
 *.csv
+
+# Large runtime log/output files (exceed GitHub's 100MB limit)
+logfile.txt
+liverun_output.txt

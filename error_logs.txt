@@ -12753,3 +12753,270 @@ Stacktrace:
 	ntdll!RtlClearBits [0x7717c49f+bf]
 
 
+saved/06_03_2026 - 09:55:13.167808 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 611, in GoToApprovalQueue
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1ea0]
+	chromedriver!(No symbol) [0xcfb28a]
+	chromedriver!(No symbol) [0xcfb52b]
+	chromedriver!(No symbol) [0xd3d052]
+	chromedriver!(No symbol) [0xd1d7c4]
+	chromedriver!(No symbol) [0xd3a936]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 53, in start_giardia
+    NBS.GoToApprovalQueue()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 616, in GoToApprovalQueue
+    self.HandleBadQueueReturn()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 794, in HandleBadQueueReturn
+    self.go_to_home()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 589, in go_to_home
+    WebDriverWait(self, timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 84, in _predicate
+    return driver.find_element(*locator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 770, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1cde]
+	chromedriver!(No symbol) [0xca1da3]
+	chromedriver!(No symbol) [0xca0f7d]
+	chromedriver!(No symbol) [0xcbf98e]
+	chromedriver!(No symbol) [0xd23cdc]
+	chromedriver!(No symbol) [0xd3a2a9]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+
+saved/06_04_2026 - 08:12:12.110549 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 618, in GoToApprovalQueue
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1ea0]
+	chromedriver!(No symbol) [0xcfb28a]
+	chromedriver!(No symbol) [0xcfb52b]
+	chromedriver!(No symbol) [0xd3d052]
+	chromedriver!(No symbol) [0xd1d7c4]
+	chromedriver!(No symbol) [0xd3a936]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 88, in start_anaplasma
+    NBS.GoToApprovalQueue()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 623, in GoToApprovalQueue
+    self.HandleBadQueueReturn()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 801, in HandleBadQueueReturn
+    self.go_to_home()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 596, in go_to_home
+    WebDriverWait(self, timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 96, in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 84, in _predicate
+    return driver.find_element(*locator)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 770, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=148.0.7778.179)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1ea0]
+	chromedriver!(No symbol) [0xca0dbe]
+	chromedriver!(No symbol) [0xcbf98e]
+	chromedriver!(No symbol) [0xd23cdc]
+	chromedriver!(No symbol) [0xd3a2a9]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+
+saved/06_04_2026 - 08:13:18.220905 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 48, in start_giardia
+    NBS = Giardia(production=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia.py", line 31, in __init__
+    super().__init__(production)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 102, in __init__
+    super().__init__(service=service, options=options)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 241, in __init__
+    self.start_session(capabilities)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 329, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:9223
+from chrome not reachable
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1cde]
+	chromedriver!(No symbol) [0xca5478]
+	chromedriver!(No symbol) [0xcecb32]
+	chromedriver!(No symbol) [0xce2e25]
+	chromedriver!(No symbol) [0xce2c46]
+	chromedriver!(No symbol) [0xd2947f]
+	chromedriver!(No symbol) [0xd28c97]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+
+saved/06_04_2026 - 10:01:40.701017 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 410, in start_anaplasma
+    raise Exception(error_list)
+Exception: ['list index out of range']
+
+saved/06_04_2026 - 10:02:15.064001 | giardia - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\giardia_files\giardia_bot.py", line 50, in start_giardia
+    NBS.log_in(is_logged_in)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 313, in log_in
+    WebDriverWait(self, self.wait_before_timeout).until(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\support\wait.py", line 105, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0xeab593+105d3]
+	chromedriver!GetHandleVerifier [0xeab6c4+10704]
+	chromedriver!(No symbol) [0xcb1ea0]
+	chromedriver!(No symbol) [0xcfb28a]
+	chromedriver!(No symbol) [0xcfb52b]
+	chromedriver!(No symbol) [0xd3d052]
+	chromedriver!(No symbol) [0xd1d7c4]
+	chromedriver!(No symbol) [0xd3a936]
+	chromedriver!(No symbol) [0xd1d516]
+	chromedriver!(No symbol) [0xcf08e9]
+	chromedriver!(No symbol) [0xcf16a4]
+	chromedriver!GetHandleVerifier [0x1133014+298054]
+	chromedriver!GetHandleVerifier [0x112e603+293643]
+	chromedriver!GetHandleVerifier [0x114ea05+2b3a45]
+	chromedriver!GetHandleVerifier [0xec54e8+2a528]
+	chromedriver!GetHandleVerifier [0xeccd1d+31d5d]
+	chromedriver!GetHandleVerifier [0xeb3e68+18ea8]
+	chromedriver!GetHandleVerifier [0xeb4015+19055]
+	chromedriver!GetHandleVerifier [0xe9d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76617ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x7717c51b+6b]
+	ntdll!RtlClearBits [0x7717c49f+bf]
+
+
