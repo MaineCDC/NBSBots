@@ -33,76 +33,143 @@ class Babesia(NBSdriver):
         self.CPS = ['Confirmed', 'Suspect', 'Probable']
         self.CorP = ['Confirmed', 'Probable']
 
+    def _field(self, dev_id, prod_id):
+        """Build the xpath for a field whose NBS element id differs between the
+        test (dev) and prod forms.
+
+        The dev ids below were verified against the live NBS *test* Babesiosis
+        form. The historical prod ids are unverified (babesia is not yet in
+        prod), so prod keeps them until they can be confirmed on the prod form.
+        Selection follows self.production.
+        """
+        return f'//*[@id="{prod_id if self.production else dev_id}"]'
+
+    def _safe(self, fn, *args, label=None):
+        """Run a single check defensively.
+
+        Babesia is still in testing and several check methods reference NBS form
+        fields whose xpaths don't yet match the live investigation form. In a
+        record-only validation run we don't want one missing field to abort the
+        whole case analysis, so each check runs in isolation and any failure is
+        recorded in self.check_errors (surfaced to the spreadsheet) instead of
+        propagating. Checks that succeed still populate self.issues normally.
+        """
+        name = label or getattr(fn, "__name__", str(fn))
+        try:
+            fn(*args)
+        except Exception as e:
+            self.check_errors.append(f"{name}: {e}")
+            print(f"[check error] {name}: {e}")
+
     def StandardChecks(self):
         self.Reset()
         self.initial_name = self.patient_name
-        
-        self.CheckFirstName()
-        self.CheckLastName()
-        self.CheckDOB()
-        
-        self.CheckAgeType()
-        self.CheckCurrentSex()#removed Ana
-        self.CheckMortality()
-        #self.CheckStAddr()
-        street_address = self.ReadText( '//*[@id="DEM159"]') #, 'Street address is blank.'
-        if any(x in street_address for x in ["HOMELESS", "NO ADDRESS", "NO FIXED ADDRESS", "UNSHELTERED"]):
-            pass
-        else: 
-            self.CheckCity()
-            self.CheckZip()
-            self.CheckCounty()
-            #self.CheckCityCountyMatch()
-        self.CheckStateANA()
-        self.CheckCountry()
-        self.CheckPhone()
-        self.CheckEthnicity()
-        self.CheckRaceAna()
-        # self.CheckDeceased()
-        self.GoToBabesiosis()
-        self.CheckJurisdiction()  
-        self.CheckInvestigationStartDate()
-        self.CheckInvestigationStatus()
-        self.CheckSharedIndicator(True)
-        self.CheckInvestigatorAna()
-        self.CheckInvestigatorAssignDate()
-        self.CheckReportDate()
-        self.CheckCountyStateReportDate()
-        self.CheckReportingSourceType()
-        self.CheckReportingOrganization()
-        self.CheckConfirmatoryLabWork()
+        self.check_errors = []
 
-        #check for case status and verify elow checks
-        self.CheckCaseStatus()
-        self.CheckLaboratoryName()
-        self.CheckDateSpecimenCollected()
-        self.CheckIgGValues()
-        self.CheckTiterValues(),
-        self.CheckIgGImmunoblot()
-        self.CheckBabesiaSpecies()
-        self.CheckDiagnosisDate()
-        self.CheckIllnessLength()
-        self.CheckSymptoms()
-        self.CheckWasSymptomatic()
-        self.CheckHospitalization()
-        self.CheckDeath()
-        self.CheckPregnancyStatus()
-        self.CheckPatientTreated()
-        self.CheckUnderlyingConditions()
-        self.CheckBloodDonation()
-        self.CheckOrganDonation()
-        # self.CheckExposure doesn't exist ?
-        # self.GoToSupplemental()
-        self.CheckDetectionMethod()
-        self.CheckConfirmationMethodBabesia()
-        self.CheckConfirmationDate()
-        self.CheckDateClosed()
-        self.VerifyCaseStatus()
-        self.CheckMmwrWeek()
-        self.CheckMmwrYear()
-        
-        self.CheckTravelInfo()
-        self.CheckLTF()
+        # Missing form fields shouldn't each burn the full escalating retry
+        # budget (3 attempts -> 10+20+30s). Temporarily trim retries so a
+        # record-only pass over a form with unmapped fields stays quick; restore
+        # afterward so queue/no-case detection is unaffected.
+        saved_attempts = self.num_attempts
+        self.num_attempts = 1
+        try:
+            self._safe(self.CheckFirstName)
+            self._safe(self.CheckLastName)
+            self._safe(self.CheckDOB)
+
+            self._safe(self.CheckAgeType)
+            self._safe(self.CheckCurrentSex)  # removed Ana
+            self._safe(self.CheckMortality)
+
+            def _address():
+                # Street address must not be blank (spec: "Address is blank"),
+                # except when the patient is recorded as homeless/no fixed
+                # address -- in which case the address/city/zip/county fields are
+                # legitimately left unmapped.
+                street_address = self.ReadText('//*[@id="DEM159"]') or ""
+                if any(x in street_address for x in ["HOMELESS", "NO ADDRESS", "NO FIXED ADDRESS", "UNSHELTERED"]):
+                    pass
+                else:
+                    if not street_address:
+                        self.issues.append("Address is blank.")
+                    self.CheckCity()
+                    self.CheckZip()
+                    self.CheckCounty()
+                    # self.CheckCityCountyMatch()
+            self._safe(_address, label="CheckAddress")
+
+            self._safe(self.CheckStateANA)
+            self._safe(self.CheckCountry)
+            self._safe(self.CheckPhone)
+            self._safe(self.CheckEthnicity)
+            self._safe(self.CheckRaceAna)
+
+            # Open the Babesiosis (tick-borne/clinical) tab for the case-info and
+            # clinical reads below.
+            self._safe(self.GoToBabesiosis)
+            # Supplemental Info tab: associated lab report dates. Sets the
+            # received-date markers used by the report-date checks and enforces
+            # the spec rule that each lab's Date Collected matches the
+            # investigation's Date Specimen Collected. Reads straight from the
+            # DOM (no drill-in click / tab switch needed).
+            self._safe(self.CheckLabReportDates)
+
+            self._safe(self.CheckJurisdiction)
+            self._safe(self.CheckProgramArea)
+            self._safe(self.CheckInvestigationStartDate)
+            self._safe(self.CheckInvestigationStatus)
+            self._safe(self.CheckSharedIndicator, True)
+            self._safe(self.CheckInvestigatorAna)
+            self._safe(self.CheckInvestigatorAssignDate)
+            self._safe(self.CheckReportDate)
+            self._safe(self.CheckCountyStateReportDate)
+            self._safe(self.CheckReportingSourceType)
+            self._safe(self.CheckReportingOrganization)
+            self._safe(self.CheckConfirmatoryLabWork)
+
+            # check for case status and verify below checks
+            self._safe(self.CheckCaseStatus)
+            self._safe(self.CheckLaboratoryName)
+            self._safe(self.CheckDateSpecimenCollected)
+            self._safe(self.CheckIgGValues)
+            self._safe(self.CheckTiterValues)
+            self._safe(self.CheckIgGImmunoblot)
+            self._safe(self.CheckBabesiaSpecies)
+            self._safe(self.CheckDiagnosisDate)
+            self._safe(self.CheckIllnessLength)
+            self._safe(self.CheckSymptoms)
+            self._safe(self.CheckWasSymptomatic)
+            self._safe(self.CheckHospitalization)
+            self._safe(self.CheckDeath)
+            self._safe(self.CheckPregnancyStatus)
+            self._safe(self.CheckPatientTreated)
+            self._safe(self.CheckUnderlyingConditions)
+            self._safe(self.CheckBloodDonation)
+            self._safe(self.CheckOrganDonation)
+            self._safe(self.CheckDetectionMethod)
+            self._safe(self.CheckConfirmationMethodBabesia)
+            self._safe(self.CheckConfirmationDate)
+            self._safe(self.CheckDateClosed)
+            self._safe(self.VerifyCaseStatus)
+            self._safe(self.CheckMmwrWeek)
+            self._safe(self.CheckMmwrYear)
+
+            self._safe(self.CheckTravelInfo)
+            self._safe(self.CheckLTF)
+        finally:
+            self.num_attempts = saved_attempts
+            # Collapse duplicate and empty issue messages (order-preserving) so
+            # the recorded rejection reason reads cleanly -- this also removes the
+            # stray blank entries some checks append on a non-match.
+            seen = set()
+            deduped = []
+            for issue in self.issues:
+                msg = str(issue).strip()
+                if not msg or msg in seen:
+                    continue
+                seen.add(msg)
+                deduped.append(msg)
+            self.issues = deduped
 
     ####################### Patient Demographics Check Methods ############################
     def CheckAge(self):
@@ -138,7 +205,9 @@ class Babesia(NBSdriver):
         
     def CheckRaceAna(self):
         """ Must provide race and selection must make sense. """
-        self.race = self.ReadText('//*[@id="patientRacesViewContainer"]') #,'Race is blank.'
+        self.race = self.ReadText('//*[@id="patientRacesViewContainer"]') or ""
+        if not self.race:
+            self.issues.append("Race is blank.")
         if self.ethnicity == 'Unknown' or not self.ethnicity and self.race:
             self.issues.append('Ethnicity is unknown but race is filled out')
             print(f"race: {self.race}; ethnic: {self.ethnicity}")
@@ -206,15 +275,21 @@ class Babesia(NBSdriver):
                 self.issues.append('Patient sex is Unknown without a note.')
 
     def CheckMortality(self):
+        # Patient-tab mortality fields must be mapped (spec: "Mortality fields on
+        # patient page should not be blank"). Deceased Date lives on the patient
+        # tab (DEM128), distinct from the case-tab "Date of death" (INV146).
         mortality_as_of_date = self.ReadText('//*[@id="NBS097"]')
-        death_date = self.ReadDate('//*[@id="INV146"]')
         self.is_deceased = self.ReadText('//*[@id="DEM127"]')
+        deceased_date = self.ReadDate(self._field("DEM128", "INV146"))
 
-        if self.is_deceased == "Yes" and not death_date:
+        if not mortality_as_of_date:
+            self.issues.append("Mortality Information As Of Date is blank.")
+
+        if not self.is_deceased:
+            self.issues.append("Is the patient deceased is blank.")
+
+        if self.is_deceased == "Yes" and not deceased_date:
             self.issues.append("Patient is deceased but Deceased Date is blank")
-
-        # if not mortality_as_of_date and not self.is_deceased: 
-        #     self.issues.append("Answers to mortality questions missing.")
         
     ####################### Investigator Check Methods ############################
     
@@ -594,6 +669,56 @@ class Babesia(NBSdriver):
         elif self.lab_is_serology and len(self.Sero_table) < 1:
             self.issues.append("serology information not entered in investigation.")
 
+    def CheckLabReportDates(self):
+        """Supplemental Info tab — associated lab reports.
+
+        Parses the associated lab report table directly (no drill-in click,
+        which is not interactable on the Babesiosis form) and:
+          * records received-date markers (earliest/latest/received) used by the
+            report-date checks, and
+          * enforces the SME rule that each lab report's "Date Collected" matches
+            the investigation's Date Specimen Collected (ME8117). Per the spec,
+            the comparison is skipped when the specimen collection date is blank.
+        """
+        try:
+            html = self.find_element(By.XPATH, '//*[@id="eventLabReport"]').get_attribute('outerHTML')
+        except Exception:
+            self.issues.append("No associated lab report found.")
+            return
+
+        soup = BeautifulSoup(html, 'html.parser')
+        tables = pd.read_html(StringIO(str(soup)))
+        if not tables or len(tables[0]) == 0 or str(tables[0].iloc[0, 0]).startswith("Nothing found"):
+            self.issues.append("No associated lab report found.")
+            return
+        lab = tables[0]
+
+        # Received-date markers consumed by CheckReportDate / CheckCountyState
+        # ReportDate / CheckConfirmationDate.
+        if "Date Received" in lab.columns:
+            received = pd.to_datetime(lab["Date Received"], errors="coerce").dropna()
+            if len(received):
+                self.earliest_date_received = received.min().date()
+                self.latest_date_received = received.max().date()
+                self.received_date = self.earliest_date_received
+
+        specimen_date = self.ReadDate('//*[@id="ME8117"]')
+        if "Date Collected" in lab.columns:
+            collected_dates = []
+            for raw in lab["Date Collected"]:
+                token = str(raw).strip()
+                if token in ("", "No Date", "nan", "NaT", "None"):
+                    continue  # skip rows without a collected date
+                parsed = pd.to_datetime(token, errors="coerce")
+                if pd.isna(parsed):
+                    continue
+                collected_dates.append(parsed.date())
+            if collected_dates:
+                self.collection_date = min(collected_dates)
+            # Spec: skip the match when the specimen collection date is blank.
+            if specimen_date and any(d != specimen_date for d in collected_dates):
+                self.issues.append("Specimen collection dates do not match dates on lab.")
+
     def CheckOtherDiagnosticTest(self):
         """ Check for follow-up tests """
         self.other_diagnostic_test = self.ReadText('//*[@id="ME24148"]')
@@ -762,7 +887,9 @@ class Babesia(NBSdriver):
         self.Arthralgia = self.ReadText('//*[@id="ME23103"]') #,'Arthralgia should not be left blank.'
         if not self.Arthralgia and self.CaseStatus in self.CorP:
             self.issues.append("Arthralgia is blank.")
-        self.symptoms_list = [self.Fever, self.Sweats, self.Chills, self.Headache, self.Myalgia, self.FatigueMalaise, self.Anemia, self.Thrombocytopenia, self.Arthralgia]
+        # Fatigue/Malaise is not collected on the Babesiosis form (it's an
+        # Anaplasma symptom), so it is intentionally excluded from the symptom set.
+        self.symptoms_list = [self.Fever, self.Sweats, self.Chills, self.Headache, self.Myalgia, self.Anemia, self.Thrombocytopenia, self.Arthralgia]
         
     def CheckLTF(self):
         patient_ltf = self.ReadText('//*[@id="ME64100"]')
@@ -801,6 +928,19 @@ class Babesia(NBSdriver):
                 self.issues.append("Out of state cases should always be 'Not a Case' for Anaplasma.")
                 self.CorrectCaseStatus = "Not a Case"
                 print(f"case_status: {self.CaseStatus} - Out of State jurisdiction")
+
+    def CheckProgramArea(self):
+        """Program Area must be present and disease-specific.
+
+        Babesiosis is a vectorborne (tick-borne) disease, so its NBS Program
+        Area is "Vectorborne Diseases" (verified on the test form). Anything
+        else means the investigation is mis-categorized.
+        """
+        program_area = self.ReadText('//*[@id="INV108"]')
+        if not program_area:
+            self.issues.append("Program Area is blank.")
+        elif "Vectorborne" not in program_area:
+            self.issues.append(f"Program Area should be Vectorborne Diseases (found '{program_area}').")
 
     def CheckEPI(self):
         self.investigator_name = self.ReadText('//*[@id="headerCurrentInvestigator"]')
@@ -907,7 +1047,7 @@ class Babesia(NBSdriver):
         splenectomy_date = self.ReadText('//*[@id="ME24132"]')
         asplenic = self.ReadText('//*[@id="ME24131"]')
         co_infection = self.ReadText('//*[@id="ME11173"]')
-        co_infection_condition = self.ReadText('//*[@id="ME1114"]')
+        co_infection_condition = self.ReadText(self._field("ME11174", "ME1114"))
 
         if not immuno_compromised:
             if self.CaseStatus in self.CPS:
@@ -936,12 +1076,12 @@ class Babesia(NBSdriver):
 
     def CheckBloodDonation(self):
         donated_blood_12_months = self.ReadText('//*[@id="ME24136"]')
-        date_of_donation = self.ReadDate('//*[@id="ME17101"]')
-        donation_org = self.ReadText('//*[@id="ME15113"]')
-        received_last_12_months = self.ReadText('//*[@id="ARB106"]')
-        transfusion_date = self.ReadDate('//*[@id="ME24131"]')
-        transfusion_org = self.ReadText('//*[@id="ME11173"]')
-        transfusion_product = self.ReadText('//*[@id="ME1114"]')
+        date_of_donation = self.ReadDate(self._field("ARB014", "ME17101"))
+        donation_org = self.ReadText(self._field("ME24137", "ME15113"))
+        received_last_12_months = self.ReadText(self._field("ARB006", "ARB106"))
+        transfusion_date = self.ReadDate(self._field("ME24138", "ME24131"))
+        transfusion_org = self.ReadText(self._field("ME24139", "ME11173"))
+        transfusion_product = self.ReadText(self._field("ME24141", "ME1114"))
 
         if self.reporting_organization in ["ARC", "American Red Cross"] and donated_blood_12_months !="Yes":
             self.issues.append("Donated blood in last 12 months should be Yes.")
@@ -968,15 +1108,15 @@ class Babesia(NBSdriver):
 
 
     def CheckOrganDonation(self):
-        donated_organ_12_months = self.ReadText('//*[@id="ARB107"]')
-        date_of_donation = self.ReadDate('//*[@id="ARB104"]')
-        donation_org = self.ReadText('//*[@id="ME24137L"]')
-        organ_donated = self.ReadText('//*[@id="ME1114"]')
+        donated_organ_12_months = self.ReadText(self._field("ARB007", "ARB107"))
+        date_of_donation = self.ReadDate(self._field("ME24146", "ARB104"))
+        donation_org = self.ReadText(self._field("ME24145", "ME24137L"))
+        organ_donated = self.ReadText(self._field("ME24144", "ME1114"))
 
         received_last_12_months = self.ReadText('//*[@id="INV311"]')
-        transplant_date = self.ReadDate('//*[@id="ME24131"]')
-        transplant_org = self.ReadText('//*[@id="ME11173"]')
-        organ_received = self.ReadText('//*[@id="ME1114"]')
+        transplant_date = self.ReadDate(self._field("INV312", "ME24131"))
+        transplant_org = self.ReadText(self._field("ME24147", "ME11173"))
+        organ_received = self.ReadText(self._field("ME25101", "ME1114"))
 
         if not donated_organ_12_months:
             if self.CaseStatus in self.CPS:

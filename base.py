@@ -290,6 +290,22 @@ class NBSdriver(webdriver.Chrome):
         except TimeoutException:
             return False
 
+    def _on_nbs_portal(self, portal_link_xpath, timeout=10):
+        """Return True if the production NBS portal link is present (logged in).
+
+        A persisted RSA session can skip the SecurID login form entirely and
+        land us straight on the portal page. The portal link is the first
+        element shown once authenticated, so its presence is a reliable
+        'we are already logged in' signal.
+        """
+        try:
+            WebDriverWait(self, timeout).until(
+                EC.element_to_be_clickable((By.XPATH, portal_link_xpath))
+            )
+            return True
+        except TimeoutException:
+            return False
+
     def _log_in_inductive(self, is_logged_in=False):
         """Log in to the new InductiveHealth NBS test site via Maine DHHS SSO.
 
@@ -350,6 +366,15 @@ class NBSdriver(webdriver.Chrome):
 
         portal_link_xpath = '//*[@id="bea-portal-window-content-4"]/tr/td/h2[4]/font/a'
         self.get(self.site)
+
+        # A persisted session can skip the RSA login form entirely and land us
+        # straight on the portal page. Check for the portal link first; if it is
+        # already present we are authenticated, so just open it instead of
+        # trying (and failing) to fill a login form that isn't there.
+        if self._on_nbs_portal(portal_link_xpath, timeout=10):
+            print("Already authenticated on NBS; skipping login form.")
+            self.find_element(By.XPATH, portal_link_xpath).click()
+            return
 
         if not is_logged_in:
             print("logging in...")
@@ -767,6 +792,14 @@ class NBSdriver(webdriver.Chrome):
                 except (NoSuchElementException, ElementNotInteractableException):
                     pass
             time.sleep(1)
+
+            # Nothing matched the target condition -> there are no such cases in
+            # the queue. Skip the OK/sort dance: with no checkbox selected the OK
+            # control isn't reliably clickable (and sorting is pointless). The
+            # disease_case_count 0-case guard reports 0 from condition_filter_matches.
+            if self.condition_filter_matches == 0:
+                print("No matching condition option in filter; skipping sort (0 cases).")
+                return
 
             # Click ok
             try:
@@ -1792,7 +1825,11 @@ class NBSdriver(webdriver.Chrome):
                 data_frame)
                 
                 filename = f"saved/{bot}/{bot}_bot_activity_{file_suffix}_{datetime.now().date().strftime('%m_%d_%Y')}.xlsx"
-                
+
+                # Ensure the per-bot output directory exists (e.g. a new bot like
+                # Babesia whose saved/ folder hasn't been created yet).
+                os.makedirs(os.path.dirname(filename), exist_ok=True)
+
                 # Check if file already exists
                 if os.path.exists(filename):
                     try:

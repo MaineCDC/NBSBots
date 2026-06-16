@@ -80,8 +80,12 @@ def start_anaplasma(username, passcode, login_complete: Event = None, is_logged_
     all_reason = []
     all_epi = []
 
+    # Environment is driven by .env (ENVIRONMENT=development -> test site).
+    # Computed here, after load_dotenv() above, so it reflects .env rather than
+    # only a shell variable. Defaults to production when ENVIRONMENT is unset.
+    is_in_production = os.getenv('ENVIRONMENT', 'production') != 'development'
     print("entered?")
-    NBS = Anaplasma(production=True)
+    NBS = Anaplasma(production=is_in_production)
     NBS.set_credentials(username, passcode)
     NBS.log_in(is_logged_in)
     login_complete.set()
@@ -144,6 +148,14 @@ def start_anaplasma(username, passcode, login_complete: Event = None, is_logged_
             anaplasma_case_count = 16
             print("Could not determine case count, using default value of 16")
     
+    # If SortQueue matched no Anaplasma condition option, the queue could not be
+    # filtered to Anaplasma (the filter lists only conditions present), so NBS is
+    # showing every case. The true Anaplasma count is 0 -- don't treat the
+    # unfiltered total above as Anaplasma cases.
+    if getattr(NBS, "condition_filter_matches", None) == 0:
+        print("No 'Anaplasma' condition option in the queue filter; 0 cases.")
+        anaplasma_case_count = 0
+
     # Check if there are any cases to process
     if anaplasma_case_count == 0:
         print("No Anaplasma cases found in queue. Exiting.")

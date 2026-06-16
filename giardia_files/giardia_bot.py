@@ -43,9 +43,12 @@ def start_giardia(username, passcode, login_complete: Event=None, is_logged_in=F
     
 
     load_dotenv()
-    
-    
-    NBS = Giardia(production=True)
+
+    # Environment is driven by .env (ENVIRONMENT=development -> test site).
+    # Computed here, after load_dotenv(), so it reflects .env rather than only a
+    # shell variable. Defaults to production when ENVIRONMENT is unset.
+    is_in_production = os.getenv('ENVIRONMENT', 'production') != 'development'
+    NBS = Giardia(production=is_in_production)
     NBS.set_credentials(username, passcode)
     NBS.log_in(is_logged_in)
     login_complete.set()

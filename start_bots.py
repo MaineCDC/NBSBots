@@ -7,6 +7,7 @@ from audrey_files.audrey_bot import start_audrey
 from athena_files.athena_bot import start_athena
 from giardia_files.giardia_bot import start_giardia
 from strep_files.strep_bot import start_strep
+from babesia_files.babesia_bot import start_babesia
 import subprocess
 import socket
 import atexit
@@ -132,7 +133,8 @@ bots = {
     2: start_audrey,
     3: start_anaplasma,
     4: start_giardia,
-    5: start_strep
+    5: start_strep,
+    6: start_babesia
 }
 targets = []
 def selection():
@@ -155,6 +157,7 @@ def run_bots():
     print("3. anaplasma")
     print("4. giardiasis")
     print("5. strep")
+    print("6. babesia")
     selection()
 
     

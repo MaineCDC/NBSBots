@@ -13020,3 +13020,124 @@ Stacktrace:
 	ntdll!RtlClearBits [0x7717c49f+bf]
 
 
+saved/06_05_2026 - 10:05:15.985309 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 88, in start_anaplasma
+    NBS = Anaplasma(production=is_in_production)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma.py", line 29, in __init__
+    super().__init__(production)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 107, in __init__
+    super().__init__(service=service, options=options)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 66, in __init__
+    super().__init__(command_executor=executor, options=options)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 241, in __init__
+    self.start_session(capabilities)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 329, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: cannot connect to chrome at 127.0.0.1:9223
+from chrome not reachable
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x115b593+105d3]
+	chromedriver!GetHandleVerifier [0x115b6c4+10704]
+	chromedriver!(No symbol) [0xf61cde]
+	chromedriver!(No symbol) [0xf55478]
+	chromedriver!(No symbol) [0xf9cb32]
+	chromedriver!(No symbol) [0xf92e25]
+	chromedriver!(No symbol) [0xf92c46]
+	chromedriver!(No symbol) [0xfd947f]
+	chromedriver!(No symbol) [0xfd8c97]
+	chromedriver!(No symbol) [0xfcd516]
+	chromedriver!(No symbol) [0xfa08e9]
+	chromedriver!(No symbol) [0xfa16a4]
+	chromedriver!GetHandleVerifier [0x13e3014+298054]
+	chromedriver!GetHandleVerifier [0x13de603+293643]
+	chromedriver!GetHandleVerifier [0x13fea05+2b3a45]
+	chromedriver!GetHandleVerifier [0x11754e8+2a528]
+	chromedriver!GetHandleVerifier [0x117cd1d+31d5d]
+	chromedriver!GetHandleVerifier [0x1163e68+18ea8]
+	chromedriver!GetHandleVerifier [0x1164015+19055]
+	chromedriver!GetHandleVerifier [0x114d65f+269f]
+	KERNEL32!BaseThreadInitThunk [0x76637ba9+19]
+	ntdll!RtlInitializeExceptionChain [0x77d5c51b+6b]
+	ntdll!RtlClearBits [0x77d5c49f+bf]
+
+
+saved/06_05_2026 - 16:17:18.840359 | babesia - Traceback (most recent call last):
+  File "c:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\caleb.jones\Repos\nbsbot.v1.5\babesia_files\babesia_bot.py", line 366, in start_babesia
+    raise Exception(error_list)
+Exception: ["'Babesia' object has no attribute 'FatigueMalaise'"]
+
+saved/06_05_2026 - 16:26:08.094386 | babesia - Traceback (most recent call last):
+  File "c:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\caleb.jones\Repos\nbsbot.v1.5\babesia_files\babesia_bot.py", line 366, in start_babesia
+    raise Exception(error_list)
+Exception: ['Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="ARB104"]"}\n  (Session info: chrome=148.0.7778.217); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n\tchromedriver!GetHandleVerifier [0x46b593+105d3]\n\tchromedriver!GetHandleVerifier [0x46b6c4+10704]\n\tchromedriver!(No symbol) [0x271ea0]\n\tchromedriver!(No symbol) [0x2bb28a]\n\tchromedriver!(No symbol) [0x2bb52b]\n\tchromedriver!(No symbol) [0x2fd052]\n\tchromedriver!(No symbol) [0x2dd7c4]\n\tchromedriver!(No symbol) [0x2fa936]\n\tchromedriver!(No symbol) [0x2dd516]\n\tchromedriver!(No symbol) [0x2b08e9]\n\tchromedriver!(No symbol) [0x2b16a4]\n\tchromedriver!GetHandleVerifier [0x6f3014+298054]\n\tchromedriver!GetHandleVerifier [0x6ee603+293643]\n\tchromedriver!GetHandleVerifier [0x70ea05+2b3a45]\n\tchromedriver!GetHandleVerifier [0x4854e8+2a528]\n\tchromedriver!GetHandleVerifier [0x48cd1d+31d5d]\n\tchromedriver!GetHandleVerifier [0x473e68+18ea8]\n\tchromedriver!GetHandleVerifier [0x474015+19055]\n\tchromedriver!GetHandleVerifier [0x45d65f+269f]\n\tKERNEL32!BaseThreadInitThunk [0x76637ba9+19]\n\tntdll!RtlInitializeExceptionChain [0x77d5c51b+6b]\n\tntdll!RtlClearBits [0x77d5c49f+bf]\n']
+
+saved/06_09_2026 - 09:08:29.013684 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 422, in start_anaplasma
+    raise Exception(error_list)
+Exception: ['Message: element not interactable\n  (Session info: chrome=149.0.7827.55)\nStacktrace:\n\tchromedriver!GetHandleVerifier [0x40fa13+106c3]\n\tchromedriver!GetHandleVerifier [0x40fa54+10704]\n\tchromedriver!(No symbol) [0x20a66e]\n\tchromedriver!(No symbol) [0x254e90]\n\tchromedriver!(No symbol) [0x24ad17]\n\tchromedriver!(No symbol) [0x27628c]\n\tchromedriver!(No symbol) [0x24a754]\n\tchromedriver!(No symbol) [0x276454]\n\tchromedriver!(No symbol) [0x2932fa]\n\tchromedriver!(No symbol) [0x276026]\n\tchromedriver!(No symbol) [0x249289]\n\tchromedriver!(No symbol) [0x24a054]\n\tchromedriver!GetHandleVerifier [0x6944fa+2951aa]\n\tchromedriver!GetHandleVerifier [0x68fb56+290806]\n\tchromedriver!GetHandleVerifier [0x6aff8b+2b0c3b]\n\tchromedriver!GetHandleVerifier [0x429ed6+2ab86]\n\tchromedriver!GetHandleVerifier [0x43124d+31efd]\n\tchromedriver!GetHandleVerifier [0x4183d8+19088]\n\tchromedriver!GetHandleVerifier [0x418585+19235]\n\tchromedriver!GetHandleVerifier [0x40125f+1f0f]\n\tKERNEL32!BaseThreadInitThunk [0x77485d49+19]\n\tntdll!RtlInitializeExceptionChain [0x7795d83b+6b]\n\tntdll!RtlGetAppContainerNamedObjectPath [0x7795d7c1+231]\n\t(No symbol) [(nil)]\n']
+
+saved/06_09_2026 - 12:55:44.636699 | anaplasma - Traceback (most recent call last):
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\decorator.py", line 9, in wrapper_error_handle
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\anaplasma_files\anaplasma_bot.py", line 90, in start_anaplasma
+    NBS.log_in(is_logged_in)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 392, in log_in
+    self._submit_login_form()
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\base.py", line 263, in _submit_login_form
+    if self.find_element(By.ID, "username").get_attribute("value") != self.username:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 770, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 384, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\caleb.jones\Repos\nbsbot.v1.5\env\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="username"]"}
+  (Session info: chrome=149.0.7827.55); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x90fa13+106c3]
+	chromedriver!GetHandleVerifier [0x90fa54+10704]
+	chromedriver!(No symbol) [0x70a830]
+	chromedriver!(No symbol) [0x753cdb]
+	chromedriver!(No symbol) [0x753efb]
+	chromedriver!(No symbol) [0x795a92]
+	chromedriver!(No symbol) [0x7762d4]
+	chromedriver!(No symbol) [0x7932fa]
+	chromedriver!(No symbol) [0x776026]
+	chromedriver!(No symbol) [0x749289]
+	chromedriver!(No symbol) [0x74a054]
+	chromedriver!GetHandleVerifier [0xb944fa+2951aa]
+	chromedriver!GetHandleVerifier [0xb8fb56+290806]
+	chromedriver!GetHandleVerifier [0xbaff8b+2b0c3b]
+	chromedriver!GetHandleVerifier [0x929ed6+2ab86]
+	chromedriver!GetHandleVerifier [0x93124d+31efd]
+	chromedriver!GetHandleVerifier [0x9183d8+19088]
+	chromedriver!GetHandleVerifier [0x918585+19235]
+	chromedriver!GetHandleVerifier [0x90125f+1f0f]
+	KERNEL32!BaseThreadInitThunk [0x77485d49+19]
+	ntdll!RtlInitializeExceptionChain [0x7795d83b+6b]
+	ntdll!RtlGetAppContainerNamedObjectPath [0x7795d7c1+231]
+
+

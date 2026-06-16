@@ -1,0 +1,1329 @@
+Field map for CAS11025000ME01
+TAB | ID | tag | row label
+================================================================================
+MAIN | isTestVar | input | View Investigation: Babesiosis User : Caleb Jones
+MAIN | manageAssociations | input | Manage Associations Create Notifications
+MAIN | createNoti | input | Manage Associations Create Notifications
+MAIN | delete | input | Edit Print
+MAIN | print | input | Edit Print
+MAIN | headerInvestigationStatus | span | Investigation Status: Closed Last Updated: 06/05/2026 By: Haris Sohail
+MAIN | headerCurrentInvestigator | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+MAIN | headerCaseStatus | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+MAIN | patientSummaryJSP_view_notificationStatus | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+MAIN | headerConditionCode | span | 12010
+MAIN | headerProcessingDecision | span | 12010
+MAIN | tabs0head0 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+MAIN | tabs0head1 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+MAIN | tabs0head2 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+MAIN | tabs0head3 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+MAIN | tabs0head4 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+MAIN | tabs0tab0 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | viewPatient | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | PatientInformation | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS_UI_6 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS104L | span | * Information As of Date: 06/05/2026
+MAIN | NBS104 | span | * Information As of Date: 06/05/2026
+MAIN | DEM196L | span | Comments:
+MAIN | DEM196 | span | Comments:
+MAIN | NBS_UI_7 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS095L | span | Name Information As Of Date: 06/05/2026
+MAIN | NBS095 | span | Name Information As Of Date: 06/05/2026
+MAIN | DEM102L | span | Last Name: GARLAND
+MAIN | DEM102 | span | Last Name: GARLAND
+MAIN | DEM104L | span | First Name: ROBERT
+MAIN | DEM104 | span | First Name: ROBERT
+MAIN | DEM105L | span | Middle Name:
+MAIN | DEM105 | span | Middle Name:
+MAIN | DEM107L | span | Suffix:
+MAIN | DEM107 | span | Suffix:
+MAIN | NBS_UI_8 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS096L | span | Other Personal Details As Of Date: 06/05/2026
+MAIN | NBS096 | span | Other Personal Details As Of Date: 06/05/2026
+MAIN | DEM115L | span | Date of Birth: 07/16/1948
+MAIN | DEM115 | span | Date of Birth: 07/16/1948
+MAIN | INV2001L | span | Reported Age: 77
+MAIN | INV2001 | span | Reported Age: 77
+MAIN | INV2002L | span | Reported Age Units: Years
+MAIN | INV2002 | span | Reported Age Units: Years
+MAIN | DEM113L | span | Current Sex: Male
+MAIN | DEM113 | span | Current Sex: Male
+MAIN | ME6100L | span | Parent Name:
+MAIN | ME6100 | span | Parent Name:
+MAIN | NBS097L | span | Mortality Information As Of Date: 06/05/2026
+MAIN | NBS097 | span | Mortality Information As Of Date: 06/05/2026
+MAIN | DEM127L | span | Is the patient deceased?: No
+MAIN | DEM127 | span | Is the patient deceased?: No
+MAIN | DEM128L | span | Deceased Date:
+MAIN | DEM128 | span | Deceased Date:
+MAIN | NBS098L | span | Marital Status As Of Date:
+MAIN | NBS098 | span | Marital Status As Of Date:
+MAIN | DEM140L | span | Marital Status:
+MAIN | DEM140 | span | Marital Status:
+MAIN | NBS_UI_15 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS102L | span | Address Information As Of Date: 06/05/2026
+MAIN | NBS102 | span | Address Information As Of Date: 06/05/2026
+MAIN | DEM159L | span | Street Address 1: 510 STETSON RD
+MAIN | DEM159 | span | Street Address 1: 510 STETSON RD
+MAIN | DEM160L | span | Street Address 2:
+MAIN | DEM160 | span | Street Address 2:
+MAIN | DEM161L | span | City: KENDUSKEAG
+MAIN | DEM161 | span | City: KENDUSKEAG
+MAIN | DEM162L | span | State: Maine
+MAIN | DEM162 | span | State: Maine
+MAIN | DEM163L | span | Zip: 04450
+MAIN | DEM163 | span | Zip: 04450
+MAIN | DEM165L | span | County: Penobscot County
+MAIN | DEM165 | span | County: Penobscot County
+MAIN | DEM167L | span | Country: UNITED STATES
+MAIN | DEM167 | span | Country: UNITED STATES
+MAIN | NBS_UI_16 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS103L | span | Telephone Information As Of Date: 06/05/2026
+MAIN | NBS103 | span | Telephone Information As Of Date: 06/05/2026
+MAIN | DEM177L | span | Home Phone: 603-860-0810
+MAIN | DEM177 | span | Home Phone: 603-860-0810
+MAIN | NBS002L | span | Work Phone:
+MAIN | NBS002 | span | Work Phone:
+MAIN | NBS003L | span | Ext.:
+MAIN | NBS003 | span | Ext.:
+MAIN | NBS006L | span | Cell Phone:
+MAIN | NBS006 | span | Cell Phone:
+MAIN | DEM182L | span | Email:
+MAIN | DEM182 | span | Email:
+MAIN | NBS_UI_9 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | NBS100L | span | Ethnicity Information As Of Date: 06/05/2026
+MAIN | NBS100 | span | Ethnicity Information As Of Date: 06/05/2026
+MAIN | DEM155L | span | Ethnicity: unknown
+MAIN | DEM155 | span | Ethnicity: unknown
+MAIN | NBS101L | span | Race Information As Of Date: 06/05/2026
+MAIN | NBS101 | span | Race Information As Of Date: 06/05/2026
+MAIN | DEM152L | span | Race: White
+MAIN | patientRacesViewContainer | div | Race: White
+MAIN | ME6104L | span | Recently arrived in the USA?:
+MAIN | ME6104 | span | Recently arrived in the USA?:
+MAIN | ME12168L | span | How long has patient been in the USA?:
+MAIN | ME12168 | span | How long has patient been in the USA?:
+MAIN | tabs0tab1 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | viewBabesiosis | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | InvestigationInformation | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | NBS_UI_19 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV107L | span | * Jurisdiction: Penobscot
+MAIN | INV107 | span | * Jurisdiction: Penobscot
+MAIN | INV108L | span | * Program Area: Vectorborne Diseases
+MAIN | INV108 | span | * Program Area: Vectorborne Diseases
+MAIN | INV147L | span | Investigation Start Date: 06/05/2026
+MAIN | INV147 | span | Investigation Start Date: 06/05/2026
+MAIN | INV109L | span | * Investigation Status: Closed
+MAIN | INV109 | span | * Investigation Status: Closed
+MAIN | NBS012L | span | * Shared Indicator: Yes
+MAIN | INV173L | span | State Case ID:
+MAIN | INV173 | span | State Case ID:
+MAIN | NBS_UI_20 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV180L | span | Investigator:
+MAIN | INV180 | span | Investigator:
+MAIN | INV110L | span | Date Assigned to Investigation:
+MAIN | INV110 | span | Date Assigned to Investigation:
+MAIN | ReportingInformation | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | NBS_UI_22 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV120L | span | Earliest Date Reported to County: 05/29/2026
+MAIN | INV120 | span | Earliest Date Reported to County: 05/29/2026
+MAIN | INV121L | span | Earliest Date Reported to State: 05/29/2026
+MAIN | INV121 | span | Earliest Date Reported to State: 05/29/2026
+MAIN | INV111L | span | Date of Report: 05/29/2026
+MAIN | INV111 | span | Date of Report: 05/29/2026
+MAIN | NBS_UI_23 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV112L | span | Reporting Source Type: Laboratory
+MAIN | INV112 | span | Reporting Source Type: Laboratory
+MAIN | INV183L | span | Reporting Organization: MAYO CLINIC DEPT. OF LAB MED AND PATHOLOGY
+MAIN | INV183 | span | Reporting Organization: MAYO CLINIC DEPT. OF LAB MED AND PATHOLOGY
+MAIN | NBS_UI_10 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV181L | span | Reporting Provider:
+MAIN | INV181 | span | Reporting Provider:
+MAIN | Clinical | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME12142 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME6105L | span | Laboratory Name: Mayo
+MAIN | ME6105 | span | Laboratory Name: Mayo
+MAIN | ME8117L | span | Date Specimen Collected: 05/25/2026
+MAIN | ME8117 | span | Date Specimen Collected: 05/25/2026
+MAIN | ME24129L | span | Confirmatory Lab Work: PCR (DNA)
+MAIN | ME24129 | span | Confirmatory Lab Work: PCR (DNA)
+MAIN | ME24130L | span | IgG Titer: Yes
+MAIN | ME24130 | span | IgG Titer: Yes
+MAIN | ME23133L | span | Titer Value: 512
+MAIN | ME23133 | span | Titer Value: 512
+MAIN | ME24133L | span | IgG Immunoblot:
+MAIN | ME24133 | span | IgG Immunoblot:
+MAIN | ME24134L | span | Babesia Species: B. microti
+MAIN | ME24134 | span | Babesia Species: B. microti
+MAIN | ME24135L | span | Other Babesia Species:
+MAIN | ME24135 | span | Other Babesia Species:
+MAIN | ME12143 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV136L | span | Diagnosis Date: 06/01/2026
+MAIN | INV136 | span | Diagnosis Date: 06/01/2026
+MAIN | INV137L | span | Illness Onset Date: 05/23/2026
+MAIN | INV137 | span | Illness Onset Date: 05/23/2026
+MAIN | INV138L | span | Illness End Date: 06/04/2026
+MAIN | INV138 | span | Illness End Date: 06/04/2026
+MAIN | INV139L | span | Illness Duration: 12
+MAIN | INV139 | span | Illness Duration: 12
+MAIN | INV140L | span | Illness Duration Units: Day
+MAIN | INV140 | span | Illness Duration Units: Day
+MAIN | INV143L | span | Age at Onset: 77
+MAIN | INV143 | span | Age at Onset: 77
+MAIN | INV144L | span | Age at Onset Units: Years
+MAIN | INV144 | span | Age at Onset Units: Years
+MAIN | ME12174L | span | Was patient symptomatic?: Yes
+MAIN | ME12174 | span | Was patient symptomatic?: Yes
+MAIN | ME14101L | span | Fever: Yes
+MAIN | ME14101 | span | Fever: Yes
+MAIN | ME24118L | span | Anemia: No
+MAIN | ME24118 | span | Anemia: No
+MAIN | ME24120L | span | Thrombocytopenia: Yes
+MAIN | ME24120 | span | Thrombocytopenia: Yes
+MAIN | ME24126L | span | Chills: No
+MAIN | ME24126 | span | Chills: No
+MAIN | ME24127L | span | Sweats: No
+MAIN | ME24127 | span | Sweats: No
+MAIN | ME23101L | span | Headache: Yes
+MAIN | ME23101 | span | Headache: Yes
+MAIN | ME23102L | span | Myalgia: Yes
+MAIN | ME23102 | span | Myalgia: Yes
+MAIN | ME23103L | span | Arthralgia: No
+MAIN | ME23103 | span | Arthralgia: No
+MAIN | ME8169L | span | Saw Physician: Yes
+MAIN | ME8169 | span | Saw Physician: Yes
+MAIN | INV182L | span | Physician: ALEXANDER CAMPBELL 360 BROADWAY BANGOR, Maine 04401-3979
+MAIN | INV182 | span | Physician: ALEXANDER CAMPBELL 360 BROADWAY BANGOR, Maine 04401-3979
+MAIN | ME12169L | span | Date of Physician Visit: 05/27/2026
+MAIN | ME12169 | span | Date of Physician Visit: 05/27/2026
+MAIN | ME12104L | span | Seen by PCP:
+MAIN | ME12104 | span | Seen by PCP:
+MAIN | ME12105L | span | PCP Name:
+MAIN | ME12105 | span | PCP Name:
+MAIN | ME12106L | span | Date of PCP Visit:
+MAIN | ME12106 | span | Date of PCP Visit:
+MAIN | INV128L | span | Was the patient hospitalized for this illness?: No
+MAIN | INV128 | span | Was the patient hospitalized for this illness?: No
+MAIN | INV184L | span | Hospital:
+MAIN | INV184 | span | Hospital:
+MAIN | INV132L | span | Admission Date:
+MAIN | INV132 | span | Admission Date:
+MAIN | INV133L | span | Discharge Date:
+MAIN | INV133 | span | Discharge Date:
+MAIN | INV134L | span | Total duration of stay in the hospital (in days):
+MAIN | INV134 | span | Total duration of stay in the hospital (in days):
+MAIN | INV145L | span | Did the patient die from this illness?: No
+MAIN | INV145 | span | Did the patient die from this illness?: No
+MAIN | INV146L | span | Date of Death:
+MAIN | INV146 | span | Date of Death:
+MAIN | INV178L | span | Is the patient pregnant?: No
+MAIN | INV178 | span | Is the patient pregnant?: No
+MAIN | ME8170L | span | Pregnancy Due Date:
+MAIN | ME8170 | span | Pregnancy Due Date:
+MAIN | ME24171 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | questionbodyME24171 | tbody | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+MAIN | patternME24171474 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+MAIN | view474 | input | Yes Azithromycin + atovaquone 06/02/2026
+MAIN | tableME8171474 | span | Yes Azithromycin + atovaquone 06/02/2026
+MAIN | tableME7116474 | span | Yes Azithromycin + atovaquone 06/02/2026
+MAIN | tableME7109474 | span | Yes Azithromycin + atovaquone 06/02/2026
+MAIN | patternME24171 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+MAIN | noquestionbodyME24171 | tbody | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+MAIN | nopatternME24171 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+MAIN | ME8171L | span | Patient Treated:
+MAIN | ME8171 | span | Patient Treated:
+MAIN | ME7116L | span | Treatment Name:
+MAIN | ME7116 | span | Treatment Name:
+MAIN | ME7109L | span | Treatment Start Date:
+MAIN | ME7109 | span | Treatment Start Date:
+MAIN | ME24172 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME3129L | span | Immunocompromised: No
+MAIN | ME3129 | span | Immunocompromised: No
+MAIN | ME17101L | span | Immunocompromised Condition:
+MAIN | ME17101 | span | Immunocompromised Condition:
+MAIN | ME15113L | span | Other Immunocompromised Condition:
+MAIN | ME15113 | span | Other Immunocompromised Condition:
+MAIN | ME19104L | span | Specify Organ Transplant:
+MAIN | ME19104 | span | Specify Organ Transplant:
+MAIN | ME24131L | span | Asplenic: No
+MAIN | ME24131 | span | Asplenic: No
+MAIN | ME24132L | span | Splenectomy Date:
+MAIN | ME24132 | span | Splenectomy Date:
+MAIN | ME11173L | span | Co-infection: Yes
+MAIN | ME11173 | span | Co-infection: Yes
+MAIN | ME11174L | span | Co-infection Condition: Anaplasma
+MAIN | ME11174 | span | Co-infection Condition: Anaplasma
+MAIN | Epidemiologic | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME24108 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME24136L | span | Donated blood in the last 12 months?: No
+MAIN | ME24136 | span | Donated blood in the last 12 months?: No
+MAIN | ARB014L | span | Date of Donation:
+MAIN | ARB014 | span | Date of Donation:
+MAIN | ME24137L | span | Blood Donation Organization:
+MAIN | ME24137 | span | Blood Donation Organization:
+MAIN | ARB006L | span | Received a blood transfusion in the last 12 months?: No
+MAIN | ARB006 | span | Received a blood transfusion in the last 12 months?: No
+MAIN | ME24138L | span | Blood Transfusion Date:
+MAIN | ME24138 | span | Blood Transfusion Date:
+MAIN | ME24139L | span | Blood Transfusion Organization:
+MAIN | ME24139 | span | Blood Transfusion Organization:
+MAIN | ME24141L | span | Blood Transfusion Product Received:
+MAIN | ME24141 | span | Blood Transfusion Product Received:
+MAIN | ARB007L | span | Donated an organ in the last 12 months?: No
+MAIN | ARB007 | span | Donated an organ in the last 12 months?: No
+MAIN | ME24146L | span | Organ Donation Date:
+MAIN | ME24146 | span | Organ Donation Date:
+MAIN | ME24145L | span | Organ Donation Organization:
+MAIN | ME24145 | span | Organ Donation Organization:
+MAIN | ME24144L | span | Organ Donated:
+MAIN | ME24144 | span | Organ Donated:
+MAIN | INV311L | span | Received organ in last 12 months?: No
+MAIN | INV311 | span | Received organ in last 12 months?: No
+MAIN | INV312L | span | Date of Transplant:
+MAIN | INV312 | span | Date of Transplant:
+MAIN | ME24147L | span | Organ Transplant Organization:
+MAIN | ME24147 | span | Organ Transplant Organization:
+MAIN | ME25101L | span | Organ Received:
+MAIN | ME25101 | span | Organ Received:
+MAIN | ME12160 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME8173L | span | Occupation: Teacher
+MAIN | ME8173 | span | Occupation: Teacher
+MAIN | ME11159L | span | Outdoor Exposure: Yes
+MAIN | ME11159 | span | Outdoor Exposure: Yes
+MAIN | ME24168L | span | State of Exposure: Maine
+MAIN | ME24168 | span | State of Exposure: Maine
+MAIN | ME24143L | span | County of Exposure: Cumberland
+MAIN | ME24143 | span | County of Exposure: Cumberland
+MAIN | ME23117L | span | History of Tick Bite?: Yes
+MAIN | ME23117 | span | History of Tick Bite?: Yes
+MAIN | ME24142L | span | Date of Tick Bite: 05/13/2026
+MAIN | ME24142 | span | Date of Tick Bite: 05/13/2026
+MAIN | ME12146 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | TRAVEL10L | span | Traveled or Lived Outside U.S.: No
+MAIN | TRAVEL10 | span | Traveled or Lived Outside U.S.: No
+MAIN | ME12107L | span | Travel Location - International:
+MAIN | ME12107 | span | Travel Location - International:
+MAIN | ME10116L | span | Travel Outside Maine but in USA: No
+MAIN | ME10116 | span | Travel Outside Maine but in USA: No
+MAIN | ME12108L | span | Travel Location - Domestic:
+MAIN | ME12108 | span | Travel Location - Domestic:
+MAIN | ME10117L | span | Travel Outside County but in Maine: No
+MAIN | ME10117 | span | Travel Outside County but in Maine: No
+MAIN | ME24128L | span | Travel County:
+MAIN | ME24128 | span | Travel County:
+MAIN | ME24109 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV150L | span | Is this case part of an outbreak?: No
+MAIN | INV150 | span | Is this case part of an outbreak?: No
+MAIN | ME125032L | span | Outbreak Name:
+MAIN | ME125032 | span | Outbreak Name:
+MAIN | ME11162L | span | Interview Date: 06/05/2026
+MAIN | ME11162 | span | Interview Date: 06/05/2026
+MAIN | ME11185L | span | Interviewed Individual: Parent/Guardian
+MAIN | ME11185 | span | Interviewed Individual: Parent/Guardian
+MAIN | NBS_UI_1 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV152L | span | Where was the disease acquired: Indigenous
+MAIN | INV152 | span | Where was the disease acquired: Indigenous
+MAIN | INV153L | span | Imported Country:
+MAIN | INV153 | span | Imported Country:
+MAIN | INV154L | span | Imported State:
+MAIN | INV154 | span | Imported State:
+MAIN | INV155L | span | Imported City:
+MAIN | INV155 | span | Imported City:
+MAIN | INV156L | span | Imported County:
+MAIN | INV156 | span | Imported County:
+MAIN | NBS_UI_2 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV157L | span | Transmission Mode: Vectorborne
+MAIN | INV157 | span | Transmission Mode: Vectorborne
+MAIN | INV159L | span | Detection Method: Provider reported
+MAIN | INV159 | span | Detection Method: Provider reported
+MAIN | INV161L | span | Confirmation Method: Laboratory confirmed
+MAIN | INV161 | span | Confirmation Method: Laboratory confirmed
+MAIN | INV162L | span | Confirmation Date: 06/05/2026
+MAIN | INV162 | span | Confirmation Date: 06/05/2026
+MAIN | INV163L | span | Case Status: Confirmed
+MAIN | INV163 | span | Case Status: Confirmed
+MAIN | INV165L | span | MMWR Week: 22
+MAIN | INV165 | span | MMWR Week: 22
+MAIN | INV166L | span | MMWR Year: 2026
+MAIN | INV166 | span | MMWR Year: 2026
+MAIN | ME10076129 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME11163L | span | Date Closed: 06/05/2026
+MAIN | ME11163 | span | Date Closed: 06/05/2026
+MAIN | ME64100L | span | Patient lost to follow up?: No
+MAIN | ME64100 | span | Patient lost to follow up?: No
+MAIN | GeneralComments | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | ME10076116 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | INV167L | span | General Comments:
+MAIN | INV167 | span | General Comments:
+MAIN | ME10076117 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | questionbodyME10076117 | tbody | . Comment date General Comments No Data has been entered.
+MAIN | patternME10076117 | tr | . Comment date General Comments No Data has been entered.
+MAIN | noquestionbodyME10076117 | tbody | . Comment date General Comments No Data has been entered.
+MAIN | nopatternME10076117 | tr | . Comment date General Comments No Data has been entered.
+MAIN | ME59144L | span | Comment date:
+MAIN | ME59144 | span | Comment date:
+MAIN | ME161010L | span | General Comments:
+MAIN | ME161010 | span | General Comments:
+MAIN | BacktoTop | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+MAIN | tabs0tab2 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | viewContactTracing | div | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | ContactInvestigation | div | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | NBS_UI_28 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | NBS055L | span | Contact Investigation Priority:
+MAIN | NBS055 | span | Contact Investigation Priority:
+MAIN | NBS056L | span | Infectious Period From:
+MAIN | NBS056 | span | Infectious Period From:
+MAIN | NBS057L | span | Infectious Period To:
+MAIN | NBS057 | span | Infectious Period To:
+MAIN | NBS_UI_29 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | NBS058L | span | Contact Investigation Status:
+MAIN | NBS058 | span | Contact Investigation Status:
+MAIN | NBS059L | span | Contact Investigation Comments:
+MAIN | NBS059 | span | Contact Investigation Comments:
+MAIN | NBS11001 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | NOT113L | span | Reporting County:
+MAIN | NOT113 | span | Reporting County:
+MAIN | INV501L | span | Country of Usual Residence:
+MAIN | INV501 | span | Country of Usual Residence:
+MAIN | DEM126L | span | Country of Birth:
+MAIN | DEM126 | span | Country of Birth:
+MAIN | NBS11002 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | questionbodyNBS11002 | tbody | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+MAIN | patternNBS11002 | tr | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+MAIN | noquestionbodyNBS11002 | tbody | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+MAIN | nopatternNBS11002 | tr | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+MAIN | INV502L | span | Country of Exposure:
+MAIN | INV502 | span | Country of Exposure:
+MAIN | INV503L | span | State or Province of Exposure:
+MAIN | INV503 | span | State or Province of Exposure:
+MAIN | INV504L | span | City of Exposure:
+MAIN | INV504 | span | City of Exposure:
+MAIN | INV505L | span | County of Exposure:
+MAIN | INV505 | span | County of Exposure:
+MAIN | NBS11003 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | INV515L | span | Binational Reporting Criteria:
+MAIN | INV515 | span | Binational Reporting Criteria:
+MAIN | NBS11004 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+MAIN | NOT120L | span | Immediate National Notifiable Condition:
+MAIN | NOT120 | span | Immediate National Notifiable Condition:
+MAIN | NOT120SPECL | span | If yes, describe:
+MAIN | NOT120SPEC | span | If yes, describe:
+MAIN | INV886L | span | Notification Comments to CDC:
+MAIN | INV886 | span | Notification Comments to CDC:
+MAIN | INV176L | span | Date CDC Was First Verbally Notified of This Case:
+MAIN | INV176 | span | Date CDC Was First Verbally Notified of This Case:
+MAIN | INV200L | span | Legacy Case ID:
+MAIN | INV200 | span | Legacy Case ID:
+MAIN | INV579L | span | Due Date:
+MAIN | INV579 | span | Due Date:
+MAIN | tabs0tab3 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | editContactTracing | div | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+MAIN | sect_editContactTracing1 | div | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+MAIN | editContactTracing1 | table | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+MAIN | contactNamedByPatListID | table | Date Named Contact Record ID Name Priority Disposition Investigation ID Nothing found to display.
+MAIN | editContactTracing2 | table | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+MAIN | patNamedByContactsListID | table | Date Named Contact Record ID Named By Priority Disposition Investigation ID Nothing found to display.
+MAIN | tabs0tab4 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | pamview | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+MAIN | viewSupplementalInformation | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | sect_viewSupplementalInformation0 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | viewSupplementalInformation1 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | eventLabReport | table | Date Received Reporting Facility/Provider Date Collected Test Results Program Area Event ID 05/29/2026 6:00 AM Reporting Facility: SJBLAB Ordering Provider: ALE
+MAIN | viewSupplementalInformation2 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | viewSupplementalInformation3 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | viewSupplementalInformation4 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | sect_viewSupplementalInformation1 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | viewSupplementalInformation5 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | notesDTTable | table | Date Added Added By Note Private Nothing found to display.
+MAIN | viewSupplementalInformation6 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | attachmentsDTTable | table | Select/Deselect All Date Added Added By File Name Description Nothing found to display.
+MAIN | sect_viewSupplementalInformation2 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | viewSupplementalInformation9 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | investigationHistorySection | span | Change Date User Jurisdiction Case Status Version 06/05/2026 Haris Sohail Penobscot Confirmed 3 06/05/2026 Haris Sohail Penobscot Probable 2 06/05/2026 Haris So
+MAIN | invHistoryTable | table | Change Date User Jurisdiction Case Status Version 06/05/2026 Haris Sohail Penobscot Confirmed 3 06/05/2026 Haris Sohail Penobscot Probable 2 06/05/2026 Haris So
+MAIN | viewSupplementalInformation10 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+MAIN | notificationSection | span | Status Change Date Date Sent Jurisdiction Case Status Status Type Recipient 06/05/2026 Penobscot Confirmed PEND_APPR NND Individual Case Notification CDC Commen
+MAIN | notificationHistoryTable | table | Status Change Date Date Sent Jurisdiction Case Status Status Type Recipient 06/05/2026 Penobscot Confirmed PEND_APPR NND Individual Case Notification CDC Commen
+TICKBORNE | isTestVar | input | View Investigation: Babesiosis User : Caleb Jones
+TICKBORNE | manageAssociations | input | Manage Associations Create Notifications
+TICKBORNE | createNoti | input | Manage Associations Create Notifications
+TICKBORNE | delete | input | Edit Print
+TICKBORNE | print | input | Edit Print
+TICKBORNE | headerInvestigationStatus | span | Investigation Status: Closed Last Updated: 06/05/2026 By: Haris Sohail
+TICKBORNE | headerCurrentInvestigator | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+TICKBORNE | headerCaseStatus | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+TICKBORNE | patientSummaryJSP_view_notificationStatus | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+TICKBORNE | headerConditionCode | span | 12010
+TICKBORNE | headerProcessingDecision | span | 12010
+TICKBORNE | tabs0head0 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+TICKBORNE | tabs0head1 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+TICKBORNE | tabs0head2 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+TICKBORNE | tabs0head3 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+TICKBORNE | tabs0head4 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+TICKBORNE | tabs0tab0 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | viewPatient | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | PatientInformation | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS_UI_6 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS104L | span | * Information As of Date: 06/05/2026
+TICKBORNE | NBS104 | span | * Information As of Date: 06/05/2026
+TICKBORNE | DEM196L | span | Comments:
+TICKBORNE | DEM196 | span | Comments:
+TICKBORNE | NBS_UI_7 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS095L | span | Name Information As Of Date: 06/05/2026
+TICKBORNE | NBS095 | span | Name Information As Of Date: 06/05/2026
+TICKBORNE | DEM102L | span | Last Name: GARLAND
+TICKBORNE | DEM102 | span | Last Name: GARLAND
+TICKBORNE | DEM104L | span | First Name: ROBERT
+TICKBORNE | DEM104 | span | First Name: ROBERT
+TICKBORNE | DEM105L | span | Middle Name:
+TICKBORNE | DEM105 | span | Middle Name:
+TICKBORNE | DEM107L | span | Suffix:
+TICKBORNE | DEM107 | span | Suffix:
+TICKBORNE | NBS_UI_8 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS096L | span | Other Personal Details As Of Date: 06/05/2026
+TICKBORNE | NBS096 | span | Other Personal Details As Of Date: 06/05/2026
+TICKBORNE | DEM115L | span | Date of Birth: 07/16/1948
+TICKBORNE | DEM115 | span | Date of Birth: 07/16/1948
+TICKBORNE | INV2001L | span | Reported Age: 77
+TICKBORNE | INV2001 | span | Reported Age: 77
+TICKBORNE | INV2002L | span | Reported Age Units: Years
+TICKBORNE | INV2002 | span | Reported Age Units: Years
+TICKBORNE | DEM113L | span | Current Sex: Male
+TICKBORNE | DEM113 | span | Current Sex: Male
+TICKBORNE | ME6100L | span | Parent Name:
+TICKBORNE | ME6100 | span | Parent Name:
+TICKBORNE | NBS097L | span | Mortality Information As Of Date: 06/05/2026
+TICKBORNE | NBS097 | span | Mortality Information As Of Date: 06/05/2026
+TICKBORNE | DEM127L | span | Is the patient deceased?: No
+TICKBORNE | DEM127 | span | Is the patient deceased?: No
+TICKBORNE | DEM128L | span | Deceased Date:
+TICKBORNE | DEM128 | span | Deceased Date:
+TICKBORNE | NBS098L | span | Marital Status As Of Date:
+TICKBORNE | NBS098 | span | Marital Status As Of Date:
+TICKBORNE | DEM140L | span | Marital Status:
+TICKBORNE | DEM140 | span | Marital Status:
+TICKBORNE | NBS_UI_15 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS102L | span | Address Information As Of Date: 06/05/2026
+TICKBORNE | NBS102 | span | Address Information As Of Date: 06/05/2026
+TICKBORNE | DEM159L | span | Street Address 1: 510 STETSON RD
+TICKBORNE | DEM159 | span | Street Address 1: 510 STETSON RD
+TICKBORNE | DEM160L | span | Street Address 2:
+TICKBORNE | DEM160 | span | Street Address 2:
+TICKBORNE | DEM161L | span | City: KENDUSKEAG
+TICKBORNE | DEM161 | span | City: KENDUSKEAG
+TICKBORNE | DEM162L | span | State: Maine
+TICKBORNE | DEM162 | span | State: Maine
+TICKBORNE | DEM163L | span | Zip: 04450
+TICKBORNE | DEM163 | span | Zip: 04450
+TICKBORNE | DEM165L | span | County: Penobscot County
+TICKBORNE | DEM165 | span | County: Penobscot County
+TICKBORNE | DEM167L | span | Country: UNITED STATES
+TICKBORNE | DEM167 | span | Country: UNITED STATES
+TICKBORNE | NBS_UI_16 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS103L | span | Telephone Information As Of Date: 06/05/2026
+TICKBORNE | NBS103 | span | Telephone Information As Of Date: 06/05/2026
+TICKBORNE | DEM177L | span | Home Phone: 603-860-0810
+TICKBORNE | DEM177 | span | Home Phone: 603-860-0810
+TICKBORNE | NBS002L | span | Work Phone:
+TICKBORNE | NBS002 | span | Work Phone:
+TICKBORNE | NBS003L | span | Ext.:
+TICKBORNE | NBS003 | span | Ext.:
+TICKBORNE | NBS006L | span | Cell Phone:
+TICKBORNE | NBS006 | span | Cell Phone:
+TICKBORNE | DEM182L | span | Email:
+TICKBORNE | DEM182 | span | Email:
+TICKBORNE | NBS_UI_9 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | NBS100L | span | Ethnicity Information As Of Date: 06/05/2026
+TICKBORNE | NBS100 | span | Ethnicity Information As Of Date: 06/05/2026
+TICKBORNE | DEM155L | span | Ethnicity: unknown
+TICKBORNE | DEM155 | span | Ethnicity: unknown
+TICKBORNE | NBS101L | span | Race Information As Of Date: 06/05/2026
+TICKBORNE | NBS101 | span | Race Information As Of Date: 06/05/2026
+TICKBORNE | DEM152L | span | Race: White
+TICKBORNE | patientRacesViewContainer | div | Race: White
+TICKBORNE | ME6104L | span | Recently arrived in the USA?:
+TICKBORNE | ME6104 | span | Recently arrived in the USA?:
+TICKBORNE | ME12168L | span | How long has patient been in the USA?:
+TICKBORNE | ME12168 | span | How long has patient been in the USA?:
+TICKBORNE | tabs0tab1 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | viewBabesiosis | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | InvestigationInformation | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | NBS_UI_19 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV107L | span | * Jurisdiction: Penobscot
+TICKBORNE | INV107 | span | * Jurisdiction: Penobscot
+TICKBORNE | INV108L | span | * Program Area: Vectorborne Diseases
+TICKBORNE | INV108 | span | * Program Area: Vectorborne Diseases
+TICKBORNE | INV147L | span | Investigation Start Date: 06/05/2026
+TICKBORNE | INV147 | span | Investigation Start Date: 06/05/2026
+TICKBORNE | INV109L | span | * Investigation Status: Closed
+TICKBORNE | INV109 | span | * Investigation Status: Closed
+TICKBORNE | NBS012L | span | * Shared Indicator: Yes
+TICKBORNE | INV173L | span | State Case ID:
+TICKBORNE | INV173 | span | State Case ID:
+TICKBORNE | NBS_UI_20 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV180L | span | Investigator:
+TICKBORNE | INV180 | span | Investigator:
+TICKBORNE | INV110L | span | Date Assigned to Investigation:
+TICKBORNE | INV110 | span | Date Assigned to Investigation:
+TICKBORNE | ReportingInformation | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | NBS_UI_22 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV120L | span | Earliest Date Reported to County: 05/29/2026
+TICKBORNE | INV120 | span | Earliest Date Reported to County: 05/29/2026
+TICKBORNE | INV121L | span | Earliest Date Reported to State: 05/29/2026
+TICKBORNE | INV121 | span | Earliest Date Reported to State: 05/29/2026
+TICKBORNE | INV111L | span | Date of Report: 05/29/2026
+TICKBORNE | INV111 | span | Date of Report: 05/29/2026
+TICKBORNE | NBS_UI_23 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV112L | span | Reporting Source Type: Laboratory
+TICKBORNE | INV112 | span | Reporting Source Type: Laboratory
+TICKBORNE | INV183L | span | Reporting Organization: MAYO CLINIC DEPT. OF LAB MED AND PATHOLOGY
+TICKBORNE | INV183 | span | Reporting Organization: MAYO CLINIC DEPT. OF LAB MED AND PATHOLOGY
+TICKBORNE | NBS_UI_10 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV181L | span | Reporting Provider:
+TICKBORNE | INV181 | span | Reporting Provider:
+TICKBORNE | Clinical | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME12142 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME6105L | span | Laboratory Name: Mayo
+TICKBORNE | ME6105 | span | Laboratory Name: Mayo
+TICKBORNE | ME8117L | span | Date Specimen Collected: 05/25/2026
+TICKBORNE | ME8117 | span | Date Specimen Collected: 05/25/2026
+TICKBORNE | ME24129L | span | Confirmatory Lab Work: PCR (DNA)
+TICKBORNE | ME24129 | span | Confirmatory Lab Work: PCR (DNA)
+TICKBORNE | ME24130L | span | IgG Titer: Yes
+TICKBORNE | ME24130 | span | IgG Titer: Yes
+TICKBORNE | ME23133L | span | Titer Value: 512
+TICKBORNE | ME23133 | span | Titer Value: 512
+TICKBORNE | ME24133L | span | IgG Immunoblot:
+TICKBORNE | ME24133 | span | IgG Immunoblot:
+TICKBORNE | ME24134L | span | Babesia Species: B. microti
+TICKBORNE | ME24134 | span | Babesia Species: B. microti
+TICKBORNE | ME24135L | span | Other Babesia Species:
+TICKBORNE | ME24135 | span | Other Babesia Species:
+TICKBORNE | ME12143 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV136L | span | Diagnosis Date: 06/01/2026
+TICKBORNE | INV136 | span | Diagnosis Date: 06/01/2026
+TICKBORNE | INV137L | span | Illness Onset Date: 05/23/2026
+TICKBORNE | INV137 | span | Illness Onset Date: 05/23/2026
+TICKBORNE | INV138L | span | Illness End Date: 06/04/2026
+TICKBORNE | INV138 | span | Illness End Date: 06/04/2026
+TICKBORNE | INV139L | span | Illness Duration: 12
+TICKBORNE | INV139 | span | Illness Duration: 12
+TICKBORNE | INV140L | span | Illness Duration Units: Day
+TICKBORNE | INV140 | span | Illness Duration Units: Day
+TICKBORNE | INV143L | span | Age at Onset: 77
+TICKBORNE | INV143 | span | Age at Onset: 77
+TICKBORNE | INV144L | span | Age at Onset Units: Years
+TICKBORNE | INV144 | span | Age at Onset Units: Years
+TICKBORNE | ME12174L | span | Was patient symptomatic?: Yes
+TICKBORNE | ME12174 | span | Was patient symptomatic?: Yes
+TICKBORNE | ME14101L | span | Fever: Yes
+TICKBORNE | ME14101 | span | Fever: Yes
+TICKBORNE | ME24118L | span | Anemia: No
+TICKBORNE | ME24118 | span | Anemia: No
+TICKBORNE | ME24120L | span | Thrombocytopenia: Yes
+TICKBORNE | ME24120 | span | Thrombocytopenia: Yes
+TICKBORNE | ME24126L | span | Chills: No
+TICKBORNE | ME24126 | span | Chills: No
+TICKBORNE | ME24127L | span | Sweats: No
+TICKBORNE | ME24127 | span | Sweats: No
+TICKBORNE | ME23101L | span | Headache: Yes
+TICKBORNE | ME23101 | span | Headache: Yes
+TICKBORNE | ME23102L | span | Myalgia: Yes
+TICKBORNE | ME23102 | span | Myalgia: Yes
+TICKBORNE | ME23103L | span | Arthralgia: No
+TICKBORNE | ME23103 | span | Arthralgia: No
+TICKBORNE | ME8169L | span | Saw Physician: Yes
+TICKBORNE | ME8169 | span | Saw Physician: Yes
+TICKBORNE | INV182L | span | Physician: ALEXANDER CAMPBELL 360 BROADWAY BANGOR, Maine 04401-3979
+TICKBORNE | INV182 | span | Physician: ALEXANDER CAMPBELL 360 BROADWAY BANGOR, Maine 04401-3979
+TICKBORNE | ME12169L | span | Date of Physician Visit: 05/27/2026
+TICKBORNE | ME12169 | span | Date of Physician Visit: 05/27/2026
+TICKBORNE | ME12104L | span | Seen by PCP:
+TICKBORNE | ME12104 | span | Seen by PCP:
+TICKBORNE | ME12105L | span | PCP Name:
+TICKBORNE | ME12105 | span | PCP Name:
+TICKBORNE | ME12106L | span | Date of PCP Visit:
+TICKBORNE | ME12106 | span | Date of PCP Visit:
+TICKBORNE | INV128L | span | Was the patient hospitalized for this illness?: No
+TICKBORNE | INV128 | span | Was the patient hospitalized for this illness?: No
+TICKBORNE | INV184L | span | Hospital:
+TICKBORNE | INV184 | span | Hospital:
+TICKBORNE | INV132L | span | Admission Date:
+TICKBORNE | INV132 | span | Admission Date:
+TICKBORNE | INV133L | span | Discharge Date:
+TICKBORNE | INV133 | span | Discharge Date:
+TICKBORNE | INV134L | span | Total duration of stay in the hospital (in days):
+TICKBORNE | INV134 | span | Total duration of stay in the hospital (in days):
+TICKBORNE | INV145L | span | Did the patient die from this illness?: No
+TICKBORNE | INV145 | span | Did the patient die from this illness?: No
+TICKBORNE | INV146L | span | Date of Death:
+TICKBORNE | INV146 | span | Date of Death:
+TICKBORNE | INV178L | span | Is the patient pregnant?: No
+TICKBORNE | INV178 | span | Is the patient pregnant?: No
+TICKBORNE | ME8170L | span | Pregnancy Due Date:
+TICKBORNE | ME8170 | span | Pregnancy Due Date:
+TICKBORNE | ME24171 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | questionbodyME24171 | tbody | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+TICKBORNE | patternME24171474 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+TICKBORNE | view474 | input | Yes Azithromycin + atovaquone 06/02/2026
+TICKBORNE | tableME8171474 | span | Yes Azithromycin + atovaquone 06/02/2026
+TICKBORNE | tableME7116474 | span | Yes Azithromycin + atovaquone 06/02/2026
+TICKBORNE | tableME7109474 | span | Yes Azithromycin + atovaquone 06/02/2026
+TICKBORNE | patternME24171 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+TICKBORNE | noquestionbodyME24171 | tbody | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+TICKBORNE | nopatternME24171 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+TICKBORNE | ME8171L | span | Patient Treated:
+TICKBORNE | ME8171 | span | Patient Treated:
+TICKBORNE | ME7116L | span | Treatment Name:
+TICKBORNE | ME7116 | span | Treatment Name:
+TICKBORNE | ME7109L | span | Treatment Start Date:
+TICKBORNE | ME7109 | span | Treatment Start Date:
+TICKBORNE | ME24172 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME3129L | span | Immunocompromised: No
+TICKBORNE | ME3129 | span | Immunocompromised: No
+TICKBORNE | ME17101L | span | Immunocompromised Condition:
+TICKBORNE | ME17101 | span | Immunocompromised Condition:
+TICKBORNE | ME15113L | span | Other Immunocompromised Condition:
+TICKBORNE | ME15113 | span | Other Immunocompromised Condition:
+TICKBORNE | ME19104L | span | Specify Organ Transplant:
+TICKBORNE | ME19104 | span | Specify Organ Transplant:
+TICKBORNE | ME24131L | span | Asplenic: No
+TICKBORNE | ME24131 | span | Asplenic: No
+TICKBORNE | ME24132L | span | Splenectomy Date:
+TICKBORNE | ME24132 | span | Splenectomy Date:
+TICKBORNE | ME11173L | span | Co-infection: Yes
+TICKBORNE | ME11173 | span | Co-infection: Yes
+TICKBORNE | ME11174L | span | Co-infection Condition: Anaplasma
+TICKBORNE | ME11174 | span | Co-infection Condition: Anaplasma
+TICKBORNE | Epidemiologic | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME24108 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME24136L | span | Donated blood in the last 12 months?: No
+TICKBORNE | ME24136 | span | Donated blood in the last 12 months?: No
+TICKBORNE | ARB014L | span | Date of Donation:
+TICKBORNE | ARB014 | span | Date of Donation:
+TICKBORNE | ME24137L | span | Blood Donation Organization:
+TICKBORNE | ME24137 | span | Blood Donation Organization:
+TICKBORNE | ARB006L | span | Received a blood transfusion in the last 12 months?: No
+TICKBORNE | ARB006 | span | Received a blood transfusion in the last 12 months?: No
+TICKBORNE | ME24138L | span | Blood Transfusion Date:
+TICKBORNE | ME24138 | span | Blood Transfusion Date:
+TICKBORNE | ME24139L | span | Blood Transfusion Organization:
+TICKBORNE | ME24139 | span | Blood Transfusion Organization:
+TICKBORNE | ME24141L | span | Blood Transfusion Product Received:
+TICKBORNE | ME24141 | span | Blood Transfusion Product Received:
+TICKBORNE | ARB007L | span | Donated an organ in the last 12 months?: No
+TICKBORNE | ARB007 | span | Donated an organ in the last 12 months?: No
+TICKBORNE | ME24146L | span | Organ Donation Date:
+TICKBORNE | ME24146 | span | Organ Donation Date:
+TICKBORNE | ME24145L | span | Organ Donation Organization:
+TICKBORNE | ME24145 | span | Organ Donation Organization:
+TICKBORNE | ME24144L | span | Organ Donated:
+TICKBORNE | ME24144 | span | Organ Donated:
+TICKBORNE | INV311L | span | Received organ in last 12 months?: No
+TICKBORNE | INV311 | span | Received organ in last 12 months?: No
+TICKBORNE | INV312L | span | Date of Transplant:
+TICKBORNE | INV312 | span | Date of Transplant:
+TICKBORNE | ME24147L | span | Organ Transplant Organization:
+TICKBORNE | ME24147 | span | Organ Transplant Organization:
+TICKBORNE | ME25101L | span | Organ Received:
+TICKBORNE | ME25101 | span | Organ Received:
+TICKBORNE | ME12160 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME8173L | span | Occupation: Teacher
+TICKBORNE | ME8173 | span | Occupation: Teacher
+TICKBORNE | ME11159L | span | Outdoor Exposure: Yes
+TICKBORNE | ME11159 | span | Outdoor Exposure: Yes
+TICKBORNE | ME24168L | span | State of Exposure: Maine
+TICKBORNE | ME24168 | span | State of Exposure: Maine
+TICKBORNE | ME24143L | span | County of Exposure: Cumberland
+TICKBORNE | ME24143 | span | County of Exposure: Cumberland
+TICKBORNE | ME23117L | span | History of Tick Bite?: Yes
+TICKBORNE | ME23117 | span | History of Tick Bite?: Yes
+TICKBORNE | ME24142L | span | Date of Tick Bite: 05/13/2026
+TICKBORNE | ME24142 | span | Date of Tick Bite: 05/13/2026
+TICKBORNE | ME12146 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | TRAVEL10L | span | Traveled or Lived Outside U.S.: No
+TICKBORNE | TRAVEL10 | span | Traveled or Lived Outside U.S.: No
+TICKBORNE | ME12107L | span | Travel Location - International:
+TICKBORNE | ME12107 | span | Travel Location - International:
+TICKBORNE | ME10116L | span | Travel Outside Maine but in USA: No
+TICKBORNE | ME10116 | span | Travel Outside Maine but in USA: No
+TICKBORNE | ME12108L | span | Travel Location - Domestic:
+TICKBORNE | ME12108 | span | Travel Location - Domestic:
+TICKBORNE | ME10117L | span | Travel Outside County but in Maine: No
+TICKBORNE | ME10117 | span | Travel Outside County but in Maine: No
+TICKBORNE | ME24128L | span | Travel County:
+TICKBORNE | ME24128 | span | Travel County:
+TICKBORNE | ME24109 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV150L | span | Is this case part of an outbreak?: No
+TICKBORNE | INV150 | span | Is this case part of an outbreak?: No
+TICKBORNE | ME125032L | span | Outbreak Name:
+TICKBORNE | ME125032 | span | Outbreak Name:
+TICKBORNE | ME11162L | span | Interview Date: 06/05/2026
+TICKBORNE | ME11162 | span | Interview Date: 06/05/2026
+TICKBORNE | ME11185L | span | Interviewed Individual: Parent/Guardian
+TICKBORNE | ME11185 | span | Interviewed Individual: Parent/Guardian
+TICKBORNE | NBS_UI_1 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV152L | span | Where was the disease acquired: Indigenous
+TICKBORNE | INV152 | span | Where was the disease acquired: Indigenous
+TICKBORNE | INV153L | span | Imported Country:
+TICKBORNE | INV153 | span | Imported Country:
+TICKBORNE | INV154L | span | Imported State:
+TICKBORNE | INV154 | span | Imported State:
+TICKBORNE | INV155L | span | Imported City:
+TICKBORNE | INV155 | span | Imported City:
+TICKBORNE | INV156L | span | Imported County:
+TICKBORNE | INV156 | span | Imported County:
+TICKBORNE | NBS_UI_2 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV157L | span | Transmission Mode: Vectorborne
+TICKBORNE | INV157 | span | Transmission Mode: Vectorborne
+TICKBORNE | INV159L | span | Detection Method: Provider reported
+TICKBORNE | INV159 | span | Detection Method: Provider reported
+TICKBORNE | INV161L | span | Confirmation Method: Laboratory confirmed
+TICKBORNE | INV161 | span | Confirmation Method: Laboratory confirmed
+TICKBORNE | INV162L | span | Confirmation Date: 06/05/2026
+TICKBORNE | INV162 | span | Confirmation Date: 06/05/2026
+TICKBORNE | INV163L | span | Case Status: Confirmed
+TICKBORNE | INV163 | span | Case Status: Confirmed
+TICKBORNE | INV165L | span | MMWR Week: 22
+TICKBORNE | INV165 | span | MMWR Week: 22
+TICKBORNE | INV166L | span | MMWR Year: 2026
+TICKBORNE | INV166 | span | MMWR Year: 2026
+TICKBORNE | ME10076129 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME11163L | span | Date Closed: 06/05/2026
+TICKBORNE | ME11163 | span | Date Closed: 06/05/2026
+TICKBORNE | ME64100L | span | Patient lost to follow up?: No
+TICKBORNE | ME64100 | span | Patient lost to follow up?: No
+TICKBORNE | GeneralComments | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | ME10076116 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | INV167L | span | General Comments:
+TICKBORNE | INV167 | span | General Comments:
+TICKBORNE | ME10076117 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | questionbodyME10076117 | tbody | . Comment date General Comments No Data has been entered.
+TICKBORNE | patternME10076117 | tr | . Comment date General Comments No Data has been entered.
+TICKBORNE | noquestionbodyME10076117 | tbody | . Comment date General Comments No Data has been entered.
+TICKBORNE | nopatternME10076117 | tr | . Comment date General Comments No Data has been entered.
+TICKBORNE | ME59144L | span | Comment date:
+TICKBORNE | ME59144 | span | Comment date:
+TICKBORNE | ME161010L | span | General Comments:
+TICKBORNE | ME161010 | span | General Comments:
+TICKBORNE | BacktoTop | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+TICKBORNE | tabs0tab2 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | viewContactTracing | div | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | ContactInvestigation | div | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | NBS_UI_28 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | NBS055L | span | Contact Investigation Priority:
+TICKBORNE | NBS055 | span | Contact Investigation Priority:
+TICKBORNE | NBS056L | span | Infectious Period From:
+TICKBORNE | NBS056 | span | Infectious Period From:
+TICKBORNE | NBS057L | span | Infectious Period To:
+TICKBORNE | NBS057 | span | Infectious Period To:
+TICKBORNE | NBS_UI_29 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | NBS058L | span | Contact Investigation Status:
+TICKBORNE | NBS058 | span | Contact Investigation Status:
+TICKBORNE | NBS059L | span | Contact Investigation Comments:
+TICKBORNE | NBS059 | span | Contact Investigation Comments:
+TICKBORNE | NBS11001 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | NOT113L | span | Reporting County:
+TICKBORNE | NOT113 | span | Reporting County:
+TICKBORNE | INV501L | span | Country of Usual Residence:
+TICKBORNE | INV501 | span | Country of Usual Residence:
+TICKBORNE | DEM126L | span | Country of Birth:
+TICKBORNE | DEM126 | span | Country of Birth:
+TICKBORNE | NBS11002 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | questionbodyNBS11002 | tbody | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+TICKBORNE | patternNBS11002 | tr | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+TICKBORNE | noquestionbodyNBS11002 | tbody | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+TICKBORNE | nopatternNBS11002 | tr | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+TICKBORNE | INV502L | span | Country of Exposure:
+TICKBORNE | INV502 | span | Country of Exposure:
+TICKBORNE | INV503L | span | State or Province of Exposure:
+TICKBORNE | INV503 | span | State or Province of Exposure:
+TICKBORNE | INV504L | span | City of Exposure:
+TICKBORNE | INV504 | span | City of Exposure:
+TICKBORNE | INV505L | span | County of Exposure:
+TICKBORNE | INV505 | span | County of Exposure:
+TICKBORNE | NBS11003 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | INV515L | span | Binational Reporting Criteria:
+TICKBORNE | INV515 | span | Binational Reporting Criteria:
+TICKBORNE | NBS11004 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+TICKBORNE | NOT120L | span | Immediate National Notifiable Condition:
+TICKBORNE | NOT120 | span | Immediate National Notifiable Condition:
+TICKBORNE | NOT120SPECL | span | If yes, describe:
+TICKBORNE | NOT120SPEC | span | If yes, describe:
+TICKBORNE | INV886L | span | Notification Comments to CDC:
+TICKBORNE | INV886 | span | Notification Comments to CDC:
+TICKBORNE | INV176L | span | Date CDC Was First Verbally Notified of This Case:
+TICKBORNE | INV176 | span | Date CDC Was First Verbally Notified of This Case:
+TICKBORNE | INV200L | span | Legacy Case ID:
+TICKBORNE | INV200 | span | Legacy Case ID:
+TICKBORNE | INV579L | span | Due Date:
+TICKBORNE | INV579 | span | Due Date:
+TICKBORNE | tabs0tab3 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | editContactTracing | div | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+TICKBORNE | sect_editContactTracing1 | div | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+TICKBORNE | editContactTracing1 | table | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+TICKBORNE | contactNamedByPatListID | table | Date Named Contact Record ID Name Priority Disposition Investigation ID Nothing found to display.
+TICKBORNE | editContactTracing2 | table | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+TICKBORNE | patNamedByContactsListID | table | Date Named Contact Record ID Named By Priority Disposition Investigation ID Nothing found to display.
+TICKBORNE | tabs0tab4 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | pamview | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+TICKBORNE | viewSupplementalInformation | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | sect_viewSupplementalInformation0 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | viewSupplementalInformation1 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | eventLabReport | table | Date Received Reporting Facility/Provider Date Collected Test Results Program Area Event ID 05/29/2026 6:00 AM Reporting Facility: SJBLAB Ordering Provider: ALE
+TICKBORNE | viewSupplementalInformation2 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | viewSupplementalInformation3 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | viewSupplementalInformation4 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | sect_viewSupplementalInformation1 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | viewSupplementalInformation5 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | notesDTTable | table | Date Added Added By Note Private Nothing found to display.
+TICKBORNE | viewSupplementalInformation6 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | attachmentsDTTable | table | Select/Deselect All Date Added Added By File Name Description Nothing found to display.
+TICKBORNE | sect_viewSupplementalInformation2 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | viewSupplementalInformation9 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | investigationHistorySection | span | Change Date User Jurisdiction Case Status Version 06/05/2026 Haris Sohail Penobscot Confirmed 3 06/05/2026 Haris Sohail Penobscot Probable 2 06/05/2026 Haris So
+TICKBORNE | invHistoryTable | table | Change Date User Jurisdiction Case Status Version 06/05/2026 Haris Sohail Penobscot Confirmed 3 06/05/2026 Haris Sohail Penobscot Probable 2 06/05/2026 Haris So
+TICKBORNE | viewSupplementalInformation10 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+TICKBORNE | notificationSection | span | Status Change Date Date Sent Jurisdiction Case Status Status Type Recipient 06/05/2026 Penobscot Confirmed PEND_APPR NND Individual Case Notification CDC Commen
+TICKBORNE | notificationHistoryTable | table | Status Change Date Date Sent Jurisdiction Case Status Status Type Recipient 06/05/2026 Penobscot Confirmed PEND_APPR NND Individual Case Notification CDC Commen
+SUPPLEMENTAL | isTestVar | input | View Investigation: Babesiosis User : Caleb Jones
+SUPPLEMENTAL | manageAssociations | input | Manage Associations Create Notifications
+SUPPLEMENTAL | createNoti | input | Manage Associations Create Notifications
+SUPPLEMENTAL | delete | input | Edit Print
+SUPPLEMENTAL | print | input | Edit Print
+SUPPLEMENTAL | headerInvestigationStatus | span | Investigation Status: Closed Last Updated: 06/05/2026 By: Haris Sohail
+SUPPLEMENTAL | headerCurrentInvestigator | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+SUPPLEMENTAL | headerCaseStatus | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+SUPPLEMENTAL | patientSummaryJSP_view_notificationStatus | span | Investigator: Case Status: Confirmed Notification Status: PEND_APPR
+SUPPLEMENTAL | headerConditionCode | span | 12010
+SUPPLEMENTAL | headerProcessingDecision | span | 12010
+SUPPLEMENTAL | tabs0head0 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+SUPPLEMENTAL | tabs0head1 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+SUPPLEMENTAL | tabs0head2 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+SUPPLEMENTAL | tabs0head3 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+SUPPLEMENTAL | tabs0head4 | td | Patient Babesiosis Contact Tracing Contact Records Supplemental Info
+SUPPLEMENTAL | tabs0tab0 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | viewPatient | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | PatientInformation | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS_UI_6 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS104L | span | * Information As of Date: 06/05/2026
+SUPPLEMENTAL | NBS104 | span | * Information As of Date: 06/05/2026
+SUPPLEMENTAL | DEM196L | span | Comments:
+SUPPLEMENTAL | DEM196 | span | Comments:
+SUPPLEMENTAL | NBS_UI_7 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS095L | span | Name Information As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS095 | span | Name Information As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM102L | span | Last Name: GARLAND
+SUPPLEMENTAL | DEM102 | span | Last Name: GARLAND
+SUPPLEMENTAL | DEM104L | span | First Name: ROBERT
+SUPPLEMENTAL | DEM104 | span | First Name: ROBERT
+SUPPLEMENTAL | DEM105L | span | Middle Name:
+SUPPLEMENTAL | DEM105 | span | Middle Name:
+SUPPLEMENTAL | DEM107L | span | Suffix:
+SUPPLEMENTAL | DEM107 | span | Suffix:
+SUPPLEMENTAL | NBS_UI_8 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS096L | span | Other Personal Details As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS096 | span | Other Personal Details As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM115L | span | Date of Birth: 07/16/1948
+SUPPLEMENTAL | DEM115 | span | Date of Birth: 07/16/1948
+SUPPLEMENTAL | INV2001L | span | Reported Age: 77
+SUPPLEMENTAL | INV2001 | span | Reported Age: 77
+SUPPLEMENTAL | INV2002L | span | Reported Age Units: Years
+SUPPLEMENTAL | INV2002 | span | Reported Age Units: Years
+SUPPLEMENTAL | DEM113L | span | Current Sex: Male
+SUPPLEMENTAL | DEM113 | span | Current Sex: Male
+SUPPLEMENTAL | ME6100L | span | Parent Name:
+SUPPLEMENTAL | ME6100 | span | Parent Name:
+SUPPLEMENTAL | NBS097L | span | Mortality Information As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS097 | span | Mortality Information As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM127L | span | Is the patient deceased?: No
+SUPPLEMENTAL | DEM127 | span | Is the patient deceased?: No
+SUPPLEMENTAL | DEM128L | span | Deceased Date:
+SUPPLEMENTAL | DEM128 | span | Deceased Date:
+SUPPLEMENTAL | NBS098L | span | Marital Status As Of Date:
+SUPPLEMENTAL | NBS098 | span | Marital Status As Of Date:
+SUPPLEMENTAL | DEM140L | span | Marital Status:
+SUPPLEMENTAL | DEM140 | span | Marital Status:
+SUPPLEMENTAL | NBS_UI_15 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS102L | span | Address Information As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS102 | span | Address Information As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM159L | span | Street Address 1: 510 STETSON RD
+SUPPLEMENTAL | DEM159 | span | Street Address 1: 510 STETSON RD
+SUPPLEMENTAL | DEM160L | span | Street Address 2:
+SUPPLEMENTAL | DEM160 | span | Street Address 2:
+SUPPLEMENTAL | DEM161L | span | City: KENDUSKEAG
+SUPPLEMENTAL | DEM161 | span | City: KENDUSKEAG
+SUPPLEMENTAL | DEM162L | span | State: Maine
+SUPPLEMENTAL | DEM162 | span | State: Maine
+SUPPLEMENTAL | DEM163L | span | Zip: 04450
+SUPPLEMENTAL | DEM163 | span | Zip: 04450
+SUPPLEMENTAL | DEM165L | span | County: Penobscot County
+SUPPLEMENTAL | DEM165 | span | County: Penobscot County
+SUPPLEMENTAL | DEM167L | span | Country: UNITED STATES
+SUPPLEMENTAL | DEM167 | span | Country: UNITED STATES
+SUPPLEMENTAL | NBS_UI_16 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS103L | span | Telephone Information As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS103 | span | Telephone Information As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM177L | span | Home Phone: 603-860-0810
+SUPPLEMENTAL | DEM177 | span | Home Phone: 603-860-0810
+SUPPLEMENTAL | NBS002L | span | Work Phone:
+SUPPLEMENTAL | NBS002 | span | Work Phone:
+SUPPLEMENTAL | NBS003L | span | Ext.:
+SUPPLEMENTAL | NBS003 | span | Ext.:
+SUPPLEMENTAL | NBS006L | span | Cell Phone:
+SUPPLEMENTAL | NBS006 | span | Cell Phone:
+SUPPLEMENTAL | DEM182L | span | Email:
+SUPPLEMENTAL | DEM182 | span | Email:
+SUPPLEMENTAL | NBS_UI_9 | table | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | NBS100L | span | Ethnicity Information As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS100 | span | Ethnicity Information As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM155L | span | Ethnicity: unknown
+SUPPLEMENTAL | DEM155 | span | Ethnicity: unknown
+SUPPLEMENTAL | NBS101L | span | Race Information As Of Date: 06/05/2026
+SUPPLEMENTAL | NBS101 | span | Race Information As Of Date: 06/05/2026
+SUPPLEMENTAL | DEM152L | span | Race: White
+SUPPLEMENTAL | patientRacesViewContainer | div | Race: White
+SUPPLEMENTAL | ME6104L | span | Recently arrived in the USA?:
+SUPPLEMENTAL | ME6104 | span | Recently arrived in the USA?:
+SUPPLEMENTAL | ME12168L | span | How long has patient been in the USA?:
+SUPPLEMENTAL | ME12168 | span | How long has patient been in the USA?:
+SUPPLEMENTAL | tabs0tab1 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | viewBabesiosis | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | InvestigationInformation | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | NBS_UI_19 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV107L | span | * Jurisdiction: Penobscot
+SUPPLEMENTAL | INV107 | span | * Jurisdiction: Penobscot
+SUPPLEMENTAL | INV108L | span | * Program Area: Vectorborne Diseases
+SUPPLEMENTAL | INV108 | span | * Program Area: Vectorborne Diseases
+SUPPLEMENTAL | INV147L | span | Investigation Start Date: 06/05/2026
+SUPPLEMENTAL | INV147 | span | Investigation Start Date: 06/05/2026
+SUPPLEMENTAL | INV109L | span | * Investigation Status: Closed
+SUPPLEMENTAL | INV109 | span | * Investigation Status: Closed
+SUPPLEMENTAL | NBS012L | span | * Shared Indicator: Yes
+SUPPLEMENTAL | INV173L | span | State Case ID:
+SUPPLEMENTAL | INV173 | span | State Case ID:
+SUPPLEMENTAL | NBS_UI_20 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV180L | span | Investigator:
+SUPPLEMENTAL | INV180 | span | Investigator:
+SUPPLEMENTAL | INV110L | span | Date Assigned to Investigation:
+SUPPLEMENTAL | INV110 | span | Date Assigned to Investigation:
+SUPPLEMENTAL | ReportingInformation | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | NBS_UI_22 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV120L | span | Earliest Date Reported to County: 05/29/2026
+SUPPLEMENTAL | INV120 | span | Earliest Date Reported to County: 05/29/2026
+SUPPLEMENTAL | INV121L | span | Earliest Date Reported to State: 05/29/2026
+SUPPLEMENTAL | INV121 | span | Earliest Date Reported to State: 05/29/2026
+SUPPLEMENTAL | INV111L | span | Date of Report: 05/29/2026
+SUPPLEMENTAL | INV111 | span | Date of Report: 05/29/2026
+SUPPLEMENTAL | NBS_UI_23 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV112L | span | Reporting Source Type: Laboratory
+SUPPLEMENTAL | INV112 | span | Reporting Source Type: Laboratory
+SUPPLEMENTAL | INV183L | span | Reporting Organization: MAYO CLINIC DEPT. OF LAB MED AND PATHOLOGY
+SUPPLEMENTAL | INV183 | span | Reporting Organization: MAYO CLINIC DEPT. OF LAB MED AND PATHOLOGY
+SUPPLEMENTAL | NBS_UI_10 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV181L | span | Reporting Provider:
+SUPPLEMENTAL | INV181 | span | Reporting Provider:
+SUPPLEMENTAL | Clinical | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME12142 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME6105L | span | Laboratory Name: Mayo
+SUPPLEMENTAL | ME6105 | span | Laboratory Name: Mayo
+SUPPLEMENTAL | ME8117L | span | Date Specimen Collected: 05/25/2026
+SUPPLEMENTAL | ME8117 | span | Date Specimen Collected: 05/25/2026
+SUPPLEMENTAL | ME24129L | span | Confirmatory Lab Work: PCR (DNA)
+SUPPLEMENTAL | ME24129 | span | Confirmatory Lab Work: PCR (DNA)
+SUPPLEMENTAL | ME24130L | span | IgG Titer: Yes
+SUPPLEMENTAL | ME24130 | span | IgG Titer: Yes
+SUPPLEMENTAL | ME23133L | span | Titer Value: 512
+SUPPLEMENTAL | ME23133 | span | Titer Value: 512
+SUPPLEMENTAL | ME24133L | span | IgG Immunoblot:
+SUPPLEMENTAL | ME24133 | span | IgG Immunoblot:
+SUPPLEMENTAL | ME24134L | span | Babesia Species: B. microti
+SUPPLEMENTAL | ME24134 | span | Babesia Species: B. microti
+SUPPLEMENTAL | ME24135L | span | Other Babesia Species:
+SUPPLEMENTAL | ME24135 | span | Other Babesia Species:
+SUPPLEMENTAL | ME12143 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV136L | span | Diagnosis Date: 06/01/2026
+SUPPLEMENTAL | INV136 | span | Diagnosis Date: 06/01/2026
+SUPPLEMENTAL | INV137L | span | Illness Onset Date: 05/23/2026
+SUPPLEMENTAL | INV137 | span | Illness Onset Date: 05/23/2026
+SUPPLEMENTAL | INV138L | span | Illness End Date: 06/04/2026
+SUPPLEMENTAL | INV138 | span | Illness End Date: 06/04/2026
+SUPPLEMENTAL | INV139L | span | Illness Duration: 12
+SUPPLEMENTAL | INV139 | span | Illness Duration: 12
+SUPPLEMENTAL | INV140L | span | Illness Duration Units: Day
+SUPPLEMENTAL | INV140 | span | Illness Duration Units: Day
+SUPPLEMENTAL | INV143L | span | Age at Onset: 77
+SUPPLEMENTAL | INV143 | span | Age at Onset: 77
+SUPPLEMENTAL | INV144L | span | Age at Onset Units: Years
+SUPPLEMENTAL | INV144 | span | Age at Onset Units: Years
+SUPPLEMENTAL | ME12174L | span | Was patient symptomatic?: Yes
+SUPPLEMENTAL | ME12174 | span | Was patient symptomatic?: Yes
+SUPPLEMENTAL | ME14101L | span | Fever: Yes
+SUPPLEMENTAL | ME14101 | span | Fever: Yes
+SUPPLEMENTAL | ME24118L | span | Anemia: No
+SUPPLEMENTAL | ME24118 | span | Anemia: No
+SUPPLEMENTAL | ME24120L | span | Thrombocytopenia: Yes
+SUPPLEMENTAL | ME24120 | span | Thrombocytopenia: Yes
+SUPPLEMENTAL | ME24126L | span | Chills: No
+SUPPLEMENTAL | ME24126 | span | Chills: No
+SUPPLEMENTAL | ME24127L | span | Sweats: No
+SUPPLEMENTAL | ME24127 | span | Sweats: No
+SUPPLEMENTAL | ME23101L | span | Headache: Yes
+SUPPLEMENTAL | ME23101 | span | Headache: Yes
+SUPPLEMENTAL | ME23102L | span | Myalgia: Yes
+SUPPLEMENTAL | ME23102 | span | Myalgia: Yes
+SUPPLEMENTAL | ME23103L | span | Arthralgia: No
+SUPPLEMENTAL | ME23103 | span | Arthralgia: No
+SUPPLEMENTAL | ME8169L | span | Saw Physician: Yes
+SUPPLEMENTAL | ME8169 | span | Saw Physician: Yes
+SUPPLEMENTAL | INV182L | span | Physician: ALEXANDER CAMPBELL 360 BROADWAY BANGOR, Maine 04401-3979
+SUPPLEMENTAL | INV182 | span | Physician: ALEXANDER CAMPBELL 360 BROADWAY BANGOR, Maine 04401-3979
+SUPPLEMENTAL | ME12169L | span | Date of Physician Visit: 05/27/2026
+SUPPLEMENTAL | ME12169 | span | Date of Physician Visit: 05/27/2026
+SUPPLEMENTAL | ME12104L | span | Seen by PCP:
+SUPPLEMENTAL | ME12104 | span | Seen by PCP:
+SUPPLEMENTAL | ME12105L | span | PCP Name:
+SUPPLEMENTAL | ME12105 | span | PCP Name:
+SUPPLEMENTAL | ME12106L | span | Date of PCP Visit:
+SUPPLEMENTAL | ME12106 | span | Date of PCP Visit:
+SUPPLEMENTAL | INV128L | span | Was the patient hospitalized for this illness?: No
+SUPPLEMENTAL | INV128 | span | Was the patient hospitalized for this illness?: No
+SUPPLEMENTAL | INV184L | span | Hospital:
+SUPPLEMENTAL | INV184 | span | Hospital:
+SUPPLEMENTAL | INV132L | span | Admission Date:
+SUPPLEMENTAL | INV132 | span | Admission Date:
+SUPPLEMENTAL | INV133L | span | Discharge Date:
+SUPPLEMENTAL | INV133 | span | Discharge Date:
+SUPPLEMENTAL | INV134L | span | Total duration of stay in the hospital (in days):
+SUPPLEMENTAL | INV134 | span | Total duration of stay in the hospital (in days):
+SUPPLEMENTAL | INV145L | span | Did the patient die from this illness?: No
+SUPPLEMENTAL | INV145 | span | Did the patient die from this illness?: No
+SUPPLEMENTAL | INV146L | span | Date of Death:
+SUPPLEMENTAL | INV146 | span | Date of Death:
+SUPPLEMENTAL | INV178L | span | Is the patient pregnant?: No
+SUPPLEMENTAL | INV178 | span | Is the patient pregnant?: No
+SUPPLEMENTAL | ME8170L | span | Pregnancy Due Date:
+SUPPLEMENTAL | ME8170 | span | Pregnancy Due Date:
+SUPPLEMENTAL | ME24171 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | questionbodyME24171 | tbody | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+SUPPLEMENTAL | patternME24171474 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+SUPPLEMENTAL | view474 | input | Yes Azithromycin + atovaquone 06/02/2026
+SUPPLEMENTAL | tableME8171474 | span | Yes Azithromycin + atovaquone 06/02/2026
+SUPPLEMENTAL | tableME7116474 | span | Yes Azithromycin + atovaquone 06/02/2026
+SUPPLEMENTAL | tableME7109474 | span | Yes Azithromycin + atovaquone 06/02/2026
+SUPPLEMENTAL | patternME24171 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+SUPPLEMENTAL | noquestionbodyME24171 | tbody | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+SUPPLEMENTAL | nopatternME24171 | tr | . Patient Treated Treatment Name Treatment Start Date Yes Azithromycin + atovaquone 06/02/2026 No Data has been entered.
+SUPPLEMENTAL | ME8171L | span | Patient Treated:
+SUPPLEMENTAL | ME8171 | span | Patient Treated:
+SUPPLEMENTAL | ME7116L | span | Treatment Name:
+SUPPLEMENTAL | ME7116 | span | Treatment Name:
+SUPPLEMENTAL | ME7109L | span | Treatment Start Date:
+SUPPLEMENTAL | ME7109 | span | Treatment Start Date:
+SUPPLEMENTAL | ME24172 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME3129L | span | Immunocompromised: No
+SUPPLEMENTAL | ME3129 | span | Immunocompromised: No
+SUPPLEMENTAL | ME17101L | span | Immunocompromised Condition:
+SUPPLEMENTAL | ME17101 | span | Immunocompromised Condition:
+SUPPLEMENTAL | ME15113L | span | Other Immunocompromised Condition:
+SUPPLEMENTAL | ME15113 | span | Other Immunocompromised Condition:
+SUPPLEMENTAL | ME19104L | span | Specify Organ Transplant:
+SUPPLEMENTAL | ME19104 | span | Specify Organ Transplant:
+SUPPLEMENTAL | ME24131L | span | Asplenic: No
+SUPPLEMENTAL | ME24131 | span | Asplenic: No
+SUPPLEMENTAL | ME24132L | span | Splenectomy Date:
+SUPPLEMENTAL | ME24132 | span | Splenectomy Date:
+SUPPLEMENTAL | ME11173L | span | Co-infection: Yes
+SUPPLEMENTAL | ME11173 | span | Co-infection: Yes
+SUPPLEMENTAL | ME11174L | span | Co-infection Condition: Anaplasma
+SUPPLEMENTAL | ME11174 | span | Co-infection Condition: Anaplasma
+SUPPLEMENTAL | Epidemiologic | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME24108 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME24136L | span | Donated blood in the last 12 months?: No
+SUPPLEMENTAL | ME24136 | span | Donated blood in the last 12 months?: No
+SUPPLEMENTAL | ARB014L | span | Date of Donation:
+SUPPLEMENTAL | ARB014 | span | Date of Donation:
+SUPPLEMENTAL | ME24137L | span | Blood Donation Organization:
+SUPPLEMENTAL | ME24137 | span | Blood Donation Organization:
+SUPPLEMENTAL | ARB006L | span | Received a blood transfusion in the last 12 months?: No
+SUPPLEMENTAL | ARB006 | span | Received a blood transfusion in the last 12 months?: No
+SUPPLEMENTAL | ME24138L | span | Blood Transfusion Date:
+SUPPLEMENTAL | ME24138 | span | Blood Transfusion Date:
+SUPPLEMENTAL | ME24139L | span | Blood Transfusion Organization:
+SUPPLEMENTAL | ME24139 | span | Blood Transfusion Organization:
+SUPPLEMENTAL | ME24141L | span | Blood Transfusion Product Received:
+SUPPLEMENTAL | ME24141 | span | Blood Transfusion Product Received:
+SUPPLEMENTAL | ARB007L | span | Donated an organ in the last 12 months?: No
+SUPPLEMENTAL | ARB007 | span | Donated an organ in the last 12 months?: No
+SUPPLEMENTAL | ME24146L | span | Organ Donation Date:
+SUPPLEMENTAL | ME24146 | span | Organ Donation Date:
+SUPPLEMENTAL | ME24145L | span | Organ Donation Organization:
+SUPPLEMENTAL | ME24145 | span | Organ Donation Organization:
+SUPPLEMENTAL | ME24144L | span | Organ Donated:
+SUPPLEMENTAL | ME24144 | span | Organ Donated:
+SUPPLEMENTAL | INV311L | span | Received organ in last 12 months?: No
+SUPPLEMENTAL | INV311 | span | Received organ in last 12 months?: No
+SUPPLEMENTAL | INV312L | span | Date of Transplant:
+SUPPLEMENTAL | INV312 | span | Date of Transplant:
+SUPPLEMENTAL | ME24147L | span | Organ Transplant Organization:
+SUPPLEMENTAL | ME24147 | span | Organ Transplant Organization:
+SUPPLEMENTAL | ME25101L | span | Organ Received:
+SUPPLEMENTAL | ME25101 | span | Organ Received:
+SUPPLEMENTAL | ME12160 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME8173L | span | Occupation: Teacher
+SUPPLEMENTAL | ME8173 | span | Occupation: Teacher
+SUPPLEMENTAL | ME11159L | span | Outdoor Exposure: Yes
+SUPPLEMENTAL | ME11159 | span | Outdoor Exposure: Yes
+SUPPLEMENTAL | ME24168L | span | State of Exposure: Maine
+SUPPLEMENTAL | ME24168 | span | State of Exposure: Maine
+SUPPLEMENTAL | ME24143L | span | County of Exposure: Cumberland
+SUPPLEMENTAL | ME24143 | span | County of Exposure: Cumberland
+SUPPLEMENTAL | ME23117L | span | History of Tick Bite?: Yes
+SUPPLEMENTAL | ME23117 | span | History of Tick Bite?: Yes
+SUPPLEMENTAL | ME24142L | span | Date of Tick Bite: 05/13/2026
+SUPPLEMENTAL | ME24142 | span | Date of Tick Bite: 05/13/2026
+SUPPLEMENTAL | ME12146 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | TRAVEL10L | span | Traveled or Lived Outside U.S.: No
+SUPPLEMENTAL | TRAVEL10 | span | Traveled or Lived Outside U.S.: No
+SUPPLEMENTAL | ME12107L | span | Travel Location - International:
+SUPPLEMENTAL | ME12107 | span | Travel Location - International:
+SUPPLEMENTAL | ME10116L | span | Travel Outside Maine but in USA: No
+SUPPLEMENTAL | ME10116 | span | Travel Outside Maine but in USA: No
+SUPPLEMENTAL | ME12108L | span | Travel Location - Domestic:
+SUPPLEMENTAL | ME12108 | span | Travel Location - Domestic:
+SUPPLEMENTAL | ME10117L | span | Travel Outside County but in Maine: No
+SUPPLEMENTAL | ME10117 | span | Travel Outside County but in Maine: No
+SUPPLEMENTAL | ME24128L | span | Travel County:
+SUPPLEMENTAL | ME24128 | span | Travel County:
+SUPPLEMENTAL | ME24109 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV150L | span | Is this case part of an outbreak?: No
+SUPPLEMENTAL | INV150 | span | Is this case part of an outbreak?: No
+SUPPLEMENTAL | ME125032L | span | Outbreak Name:
+SUPPLEMENTAL | ME125032 | span | Outbreak Name:
+SUPPLEMENTAL | ME11162L | span | Interview Date: 06/05/2026
+SUPPLEMENTAL | ME11162 | span | Interview Date: 06/05/2026
+SUPPLEMENTAL | ME11185L | span | Interviewed Individual: Parent/Guardian
+SUPPLEMENTAL | ME11185 | span | Interviewed Individual: Parent/Guardian
+SUPPLEMENTAL | NBS_UI_1 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV152L | span | Where was the disease acquired: Indigenous
+SUPPLEMENTAL | INV152 | span | Where was the disease acquired: Indigenous
+SUPPLEMENTAL | INV153L | span | Imported Country:
+SUPPLEMENTAL | INV153 | span | Imported Country:
+SUPPLEMENTAL | INV154L | span | Imported State:
+SUPPLEMENTAL | INV154 | span | Imported State:
+SUPPLEMENTAL | INV155L | span | Imported City:
+SUPPLEMENTAL | INV155 | span | Imported City:
+SUPPLEMENTAL | INV156L | span | Imported County:
+SUPPLEMENTAL | INV156 | span | Imported County:
+SUPPLEMENTAL | NBS_UI_2 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV157L | span | Transmission Mode: Vectorborne
+SUPPLEMENTAL | INV157 | span | Transmission Mode: Vectorborne
+SUPPLEMENTAL | INV159L | span | Detection Method: Provider reported
+SUPPLEMENTAL | INV159 | span | Detection Method: Provider reported
+SUPPLEMENTAL | INV161L | span | Confirmation Method: Laboratory confirmed
+SUPPLEMENTAL | INV161 | span | Confirmation Method: Laboratory confirmed
+SUPPLEMENTAL | INV162L | span | Confirmation Date: 06/05/2026
+SUPPLEMENTAL | INV162 | span | Confirmation Date: 06/05/2026
+SUPPLEMENTAL | INV163L | span | Case Status: Confirmed
+SUPPLEMENTAL | INV163 | span | Case Status: Confirmed
+SUPPLEMENTAL | INV165L | span | MMWR Week: 22
+SUPPLEMENTAL | INV165 | span | MMWR Week: 22
+SUPPLEMENTAL | INV166L | span | MMWR Year: 2026
+SUPPLEMENTAL | INV166 | span | MMWR Year: 2026
+SUPPLEMENTAL | ME10076129 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME11163L | span | Date Closed: 06/05/2026
+SUPPLEMENTAL | ME11163 | span | Date Closed: 06/05/2026
+SUPPLEMENTAL | ME64100L | span | Patient lost to follow up?: No
+SUPPLEMENTAL | ME64100 | span | Patient lost to follow up?: No
+SUPPLEMENTAL | GeneralComments | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | ME10076116 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | INV167L | span | General Comments:
+SUPPLEMENTAL | INV167 | span | General Comments:
+SUPPLEMENTAL | ME10076117 | table | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | questionbodyME10076117 | tbody | . Comment date General Comments No Data has been entered.
+SUPPLEMENTAL | patternME10076117 | tr | . Comment date General Comments No Data has been entered.
+SUPPLEMENTAL | noquestionbodyME10076117 | tbody | . Comment date General Comments No Data has been entered.
+SUPPLEMENTAL | nopatternME10076117 | tr | . Comment date General Comments No Data has been entered.
+SUPPLEMENTAL | ME59144L | span | Comment date:
+SUPPLEMENTAL | ME59144 | span | Comment date:
+SUPPLEMENTAL | ME161010L | span | General Comments:
+SUPPLEMENTAL | ME161010 | span | General Comments:
+SUPPLEMENTAL | BacktoTop | div | Go to: Investigation Information | Reporting Information | Clinical | Epidemiologic | General Comments | Back to Top Collapse Sections Investigation Information
+SUPPLEMENTAL | tabs0tab2 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | viewContactTracing | div | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | ContactInvestigation | div | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | NBS_UI_28 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | NBS055L | span | Contact Investigation Priority:
+SUPPLEMENTAL | NBS055 | span | Contact Investigation Priority:
+SUPPLEMENTAL | NBS056L | span | Infectious Period From:
+SUPPLEMENTAL | NBS056 | span | Infectious Period From:
+SUPPLEMENTAL | NBS057L | span | Infectious Period To:
+SUPPLEMENTAL | NBS057 | span | Infectious Period To:
+SUPPLEMENTAL | NBS_UI_29 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | NBS058L | span | Contact Investigation Status:
+SUPPLEMENTAL | NBS058 | span | Contact Investigation Status:
+SUPPLEMENTAL | NBS059L | span | Contact Investigation Comments:
+SUPPLEMENTAL | NBS059 | span | Contact Investigation Comments:
+SUPPLEMENTAL | NBS11001 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | NOT113L | span | Reporting County:
+SUPPLEMENTAL | NOT113 | span | Reporting County:
+SUPPLEMENTAL | INV501L | span | Country of Usual Residence:
+SUPPLEMENTAL | INV501 | span | Country of Usual Residence:
+SUPPLEMENTAL | DEM126L | span | Country of Birth:
+SUPPLEMENTAL | DEM126 | span | Country of Birth:
+SUPPLEMENTAL | NBS11002 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | questionbodyNBS11002 | tbody | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+SUPPLEMENTAL | patternNBS11002 | tr | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+SUPPLEMENTAL | noquestionbodyNBS11002 | tbody | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+SUPPLEMENTAL | nopatternNBS11002 | tr | . Country of Exposure State or Province of Exposure City of Exposure County of Exposure No Data has been entered.
+SUPPLEMENTAL | INV502L | span | Country of Exposure:
+SUPPLEMENTAL | INV502 | span | Country of Exposure:
+SUPPLEMENTAL | INV503L | span | State or Province of Exposure:
+SUPPLEMENTAL | INV503 | span | State or Province of Exposure:
+SUPPLEMENTAL | INV504L | span | City of Exposure:
+SUPPLEMENTAL | INV504 | span | City of Exposure:
+SUPPLEMENTAL | INV505L | span | County of Exposure:
+SUPPLEMENTAL | INV505 | span | County of Exposure:
+SUPPLEMENTAL | NBS11003 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | INV515L | span | Binational Reporting Criteria:
+SUPPLEMENTAL | INV515 | span | Binational Reporting Criteria:
+SUPPLEMENTAL | NBS11004 | table | Contact Investigation Back to top Collapse Subsections Risk Assessment Contact Investigation Priority: Infectious Period From: Infectious Period To: Administrat
+SUPPLEMENTAL | NOT120L | span | Immediate National Notifiable Condition:
+SUPPLEMENTAL | NOT120 | span | Immediate National Notifiable Condition:
+SUPPLEMENTAL | NOT120SPECL | span | If yes, describe:
+SUPPLEMENTAL | NOT120SPEC | span | If yes, describe:
+SUPPLEMENTAL | INV886L | span | Notification Comments to CDC:
+SUPPLEMENTAL | INV886 | span | Notification Comments to CDC:
+SUPPLEMENTAL | INV176L | span | Date CDC Was First Verbally Notified of This Case:
+SUPPLEMENTAL | INV176 | span | Date CDC Was First Verbally Notified of This Case:
+SUPPLEMENTAL | INV200L | span | Legacy Case ID:
+SUPPLEMENTAL | INV200 | span | Legacy Case ID:
+SUPPLEMENTAL | INV579L | span | Due Date:
+SUPPLEMENTAL | INV579 | span | Due Date:
+SUPPLEMENTAL | tabs0tab3 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | editContactTracing | div | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+SUPPLEMENTAL | sect_editContactTracing1 | div | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+SUPPLEMENTAL | editContactTracing1 | table | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+SUPPLEMENTAL | contactNamedByPatListID | table | Date Named Contact Record ID Name Priority Disposition Investigation ID Nothing found to display.
+SUPPLEMENTAL | editContactTracing2 | table | Contact Records Back to top Collapse Subsections Contacts Named By Patient The following contacts were named within ROBERT GARLAND's investigation: Date Named C
+SUPPLEMENTAL | patNamedByContactsListID | table | Date Named Contact Record ID Named By Priority Disposition Investigation ID Nothing found to display.
+SUPPLEMENTAL | tabs0tab4 | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | pamview | div | Patient Information Back to top Collapse Subsections General Information * Information As of Date: 06/05/2026 Comments: Name Information Name Information As Of 
+SUPPLEMENTAL | viewSupplementalInformation | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | sect_viewSupplementalInformation0 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | viewSupplementalInformation1 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | eventLabReport | table | Date Received Reporting Facility/Provider Date Collected Test Results Program Area Event ID 05/29/2026 6:00 AM Reporting Facility: SJBLAB Ordering Provider: ALE
+SUPPLEMENTAL | viewSupplementalInformation2 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | viewSupplementalInformation3 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | viewSupplementalInformation4 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | sect_viewSupplementalInformation1 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | viewSupplementalInformation5 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | notesDTTable | table | Date Added Added By Note Private Nothing found to display.
+SUPPLEMENTAL | viewSupplementalInformation6 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | attachmentsDTTable | table | Select/Deselect All Date Added Added By File Name Description Nothing found to display.
+SUPPLEMENTAL | sect_viewSupplementalInformation2 | div | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | viewSupplementalInformation9 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | investigationHistorySection | span | Change Date User Jurisdiction Case Status Version 06/05/2026 Haris Sohail Penobscot Confirmed 3 06/05/2026 Haris Sohail Penobscot Probable 2 06/05/2026 Haris So
+SUPPLEMENTAL | invHistoryTable | table | Change Date User Jurisdiction Case Status Version 06/05/2026 Haris Sohail Penobscot Confirmed 3 06/05/2026 Haris Sohail Penobscot Probable 2 06/05/2026 Haris So
+SUPPLEMENTAL | viewSupplementalInformation10 | table | Supplemental Information Go to: Associations | Notes and Attachments | History Collapse Sections Associations Back to top Collapse Subsections Associated Lab Re
+SUPPLEMENTAL | notificationSection | span | Status Change Date Date Sent Jurisdiction Case Status Status Type Recipient 06/05/2026 Penobscot Confirmed PEND_APPR NND Individual Case Notification CDC Commen
+SUPPLEMENTAL | notificationHistoryTable | table | Status Change Date Date Sent Jurisdiction Case Status Status Type Recipient 06/05/2026 Penobscot Confirmed PEND_APPR NND Individual Case Notification CDC Commen
